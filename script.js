@@ -26,45 +26,105 @@ sections.forEach(section => navObserver.observe(section));
    SECTION DECOR
    ═══════════════════════════════════════════════════ */
 const rocketIcon = `
-  <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <path d="M40 10c-8 2-14 8-18 18l14 14c10-4 16-10 18-18-3-6-8-11-14-14Z" />
-    <path d="M29 35 19 45" />
-    <path d="M39 45 49 55" />
-    <path d="M22 48c-6 0-10 4-10 10 6 0 10-4 10-10Z" />
-    <circle cx="38" cy="26" r="4" />
-    <path d="M16 28 9 21" />
+  <svg viewBox="0 0 120 120" aria-hidden="true">
+    <ellipse cx="60" cy="103" rx="20" ry="8" fill="rgba(255,255,255,0.14)" />
+    <path d="M65 20c18 8 29 28 24 58L60 94 31 78c-5-30 6-50 24-58Z" fill="#93c5fd" stroke="#f8fafc" stroke-width="4" stroke-linejoin="round" />
+    <path d="M60 18c9 0 16 4 22 11-8 2-15 2-22 2s-14 0-22-2c6-7 13-11 22-11Z" fill="#f9a8d4" />
+    <circle cx="60" cy="52" r="12" fill="#eff6ff" stroke="#38bdf8" stroke-width="4" />
+    <circle cx="60" cy="52" r="5" fill="#38bdf8" opacity="0.75" />
+    <path d="M43 73c4 4 10 6 17 6s13-2 17-6" fill="none" stroke="#1e3a8a" stroke-width="4" stroke-linecap="round" />
+    <circle cx="52" cy="67" r="2.5" fill="#1e3a8a" />
+    <circle cx="68" cy="67" r="2.5" fill="#1e3a8a" />
+    <path d="M36 79 24 92l15-3 6-11Z" fill="#fbbf24" stroke="#fff7db" stroke-width="4" stroke-linejoin="round" />
+    <path d="M84 79 96 92l-15-3-6-11Z" fill="#fbbf24" stroke="#fff7db" stroke-width="4" stroke-linejoin="round" />
+    <path d="M60 94c-7 9-7 14 0 22 7-8 7-13 0-22Z" fill="#fb7185" />
+    <path d="M60 95c-4 6-4 10 0 16 4-6 4-10 0-16Z" fill="#fde68a" />
   </svg>
 `;
 
 const robotIcon = `
-  <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <rect x="18" y="20" width="28" height="24" rx="8" />
-    <path d="M32 12v8" />
-    <path d="M24 52v-8" />
-    <path d="M40 52v-8" />
-    <path d="M15 30h-5" />
-    <path d="M54 30h-5" />
-    <circle cx="27" cy="30" r="2.5" fill="currentColor" stroke="none" />
-    <circle cx="37" cy="30" r="2.5" fill="currentColor" stroke="none" />
-    <path d="M26 38c1.8 1.6 4 2.4 6 2.4s4.2-.8 6-2.4" />
+  <svg viewBox="0 0 120 120" aria-hidden="true">
+    <ellipse cx="60" cy="103" rx="21" ry="8" fill="rgba(255,255,255,0.14)" />
+    <path d="M60 18v11" fill="none" stroke="#fff7db" stroke-width="4" stroke-linecap="round" />
+    <circle cx="60" cy="15" r="6" fill="#f472b6" stroke="#fff7db" stroke-width="4" />
+    <rect x="28" y="30" width="64" height="50" rx="20" fill="#fde68a" stroke="#fff7db" stroke-width="4" />
+    <rect x="37" y="41" width="46" height="22" rx="11" fill="#93c5fd" />
+    <circle cx="50" cy="52" r="5" fill="#1e3a8a" />
+    <circle cx="70" cy="52" r="5" fill="#1e3a8a" />
+    <circle cx="42" cy="63" r="4" fill="#f9a8d4" opacity="0.9" />
+    <circle cx="78" cy="63" r="4" fill="#f9a8d4" opacity="0.9" />
+    <path d="M49 68c3 3 7 4 11 4s8-1 11-4" fill="none" stroke="#92400e" stroke-width="4" stroke-linecap="round" />
+    <path d="M28 52H17" fill="none" stroke="#fff7db" stroke-width="4" stroke-linecap="round" />
+    <path d="M103 52H92" fill="none" stroke="#fff7db" stroke-width="4" stroke-linecap="round" />
+    <path d="M42 80v15" fill="none" stroke="#fff7db" stroke-width="4" stroke-linecap="round" />
+    <path d="M78 80v15" fill="none" stroke="#fff7db" stroke-width="4" stroke-linecap="round" />
+    <path d="M39 96c2 3 4 4 7 4" fill="none" stroke="#fff7db" stroke-width="4" stroke-linecap="round" />
+    <path d="M74 100c3 0 5-1 7-4" fill="none" stroke="#fff7db" stroke-width="4" stroke-linecap="round" />
   </svg>
 `;
 
-function buildSectionScene() {
+const sceneLayouts = [
+  [
+    { type: 'rocket', pos: 'left: 3%; top: 12%;', size: '5.8rem', rotate: '-14deg', parallaxX: '-14px', parallaxY: '10px', opacity: '0.24', duration: '9s', delay: '-2s' },
+    { type: 'robot', pos: 'left: 16%; top: 40%;', size: '5.1rem', rotate: '8deg', parallaxX: '-10px', parallaxY: '8px', opacity: '0.2', duration: '8.6s', delay: '-1.5s' },
+    { type: 'rocket', pos: 'right: 8%; top: 18%;', size: '5.4rem', rotate: '12deg', parallaxX: '12px', parallaxY: '-9px', opacity: '0.25', duration: '8.8s', delay: '-3.2s' },
+    { type: 'robot', pos: 'right: 4%; top: 52%;', size: '5rem', rotate: '-9deg', parallaxX: '9px', parallaxY: '10px', opacity: '0.21', duration: '9.6s', delay: '-0.8s' },
+    { type: 'rocket', pos: 'left: 30%; bottom: 8%;', size: '4.9rem', rotate: '-10deg', parallaxX: '-7px', parallaxY: '9px', opacity: '0.18', duration: '8.1s', delay: '-4s' },
+    { type: 'robot', pos: 'right: 27%; bottom: 7%;', size: '4.6rem', rotate: '7deg', parallaxX: '8px', parallaxY: '-8px', opacity: '0.18', duration: '9.9s', delay: '-2.7s' },
+    { type: 'rocket', pos: 'left: 48%; top: 8%;', size: '4.5rem', rotate: '6deg', parallaxX: '6px', parallaxY: '-6px', opacity: '0.15', duration: '7.8s', delay: '-1.9s' },
+    { type: 'robot', pos: 'left: 52%; bottom: 15%;', size: '4.3rem', rotate: '-5deg', parallaxX: '-6px', parallaxY: '7px', opacity: '0.14', duration: '10.2s', delay: '-3.7s' },
+  ],
+  [
+    { type: 'robot', pos: 'left: 5%; top: 18%;', size: '5.6rem', rotate: '-12deg', parallaxX: '-11px', parallaxY: '8px', opacity: '0.23', duration: '9.2s', delay: '-2.8s' },
+    { type: 'rocket', pos: 'left: 23%; top: 6%;', size: '5rem', rotate: '11deg', parallaxX: '9px', parallaxY: '-10px', opacity: '0.19', duration: '8.1s', delay: '-1.3s' },
+    { type: 'robot', pos: 'right: 10%; top: 14%;', size: '5.2rem', rotate: '10deg', parallaxX: '10px', parallaxY: '-8px', opacity: '0.22', duration: '9.8s', delay: '-3.1s' },
+    { type: 'rocket', pos: 'right: 3%; bottom: 18%;', size: '5.6rem', rotate: '-14deg', parallaxX: '13px', parallaxY: '10px', opacity: '0.24', duration: '8.9s', delay: '-4.2s' },
+    { type: 'robot', pos: 'left: 34%; bottom: 9%;', size: '4.7rem', rotate: '6deg', parallaxX: '-7px', parallaxY: '7px', opacity: '0.18', duration: '10.4s', delay: '-1.7s' },
+    { type: 'rocket', pos: 'right: 33%; bottom: 6%;', size: '4.8rem', rotate: '9deg', parallaxX: '7px', parallaxY: '-6px', opacity: '0.17', duration: '8.4s', delay: '-2.1s' },
+    { type: 'robot', pos: 'left: 52%; top: 22%;', size: '4.4rem', rotate: '-6deg', parallaxX: '-6px', parallaxY: '6px', opacity: '0.14', duration: '9.5s', delay: '-0.9s' },
+    { type: 'rocket', pos: 'left: 58%; bottom: 20%;', size: '4.2rem', rotate: '-8deg', parallaxX: '5px', parallaxY: '5px', opacity: '0.13', duration: '7.6s', delay: '-3.4s' },
+  ],
+  [
+    { type: 'rocket', pos: 'left: 8%; top: 10%;', size: '5.4rem', rotate: '-11deg', parallaxX: '-12px', parallaxY: '10px', opacity: '0.24', duration: '8.7s', delay: '-2.6s' },
+    { type: 'robot', pos: 'left: 6%; bottom: 14%;', size: '5.3rem', rotate: '9deg', parallaxX: '-10px', parallaxY: '9px', opacity: '0.21', duration: '10.1s', delay: '-1.2s' },
+    { type: 'rocket', pos: 'right: 16%; top: 12%;', size: '5rem', rotate: '10deg', parallaxX: '11px', parallaxY: '-7px', opacity: '0.21', duration: '8.2s', delay: '-3.9s' },
+    { type: 'robot', pos: 'right: 6%; bottom: 10%;', size: '5.2rem', rotate: '-10deg', parallaxX: '10px', parallaxY: '10px', opacity: '0.22', duration: '9.3s', delay: '-2.4s' },
+    { type: 'rocket', pos: 'left: 32%; top: 28%;', size: '4.8rem', rotate: '8deg', parallaxX: '7px', parallaxY: '-7px', opacity: '0.17', duration: '7.9s', delay: '-1.8s' },
+    { type: 'robot', pos: 'right: 31%; top: 36%;', size: '4.6rem', rotate: '6deg', parallaxX: '-7px', parallaxY: '7px', opacity: '0.17', duration: '10.6s', delay: '-4.1s' },
+    { type: 'rocket', pos: 'left: 48%; bottom: 7%;', size: '4.3rem', rotate: '-7deg', parallaxX: '5px', parallaxY: '6px', opacity: '0.14', duration: '8.3s', delay: '-0.7s' },
+    { type: 'robot', pos: 'left: 57%; top: 8%;', size: '4.1rem', rotate: '-4deg', parallaxX: '-5px', parallaxY: '5px', opacity: '0.13', duration: '9.7s', delay: '-3s' },
+  ],
+];
+
+function buildSpriteMarkup(sprite) {
+  const icon = sprite.type === 'rocket' ? rocketIcon : robotIcon;
+  const style = [
+    sprite.pos,
+    `--size: ${sprite.size}`,
+    `--rotate: ${sprite.rotate}`,
+    `--parallax-x: ${sprite.parallaxX}`,
+    `--parallax-y: ${sprite.parallaxY}`,
+    `--opacity: ${sprite.opacity}`,
+    `--float-duration: ${sprite.duration}`,
+    `--float-delay: ${sprite.delay}`,
+  ].join('; ');
+
+  return `<div class="scene-sprite scene-${sprite.type}" style="${style}">${icon}</div>`;
+}
+
+function buildSectionScene(index) {
+  const layout = sceneLayouts[index % sceneLayouts.length];
   const scene = document.createElement('div');
   scene.className = 'section-scene';
   scene.setAttribute('aria-hidden', 'true');
-  scene.innerHTML = `
-    <div class="scene-sprite scene-rocket">${rocketIcon}</div>
-    <div class="scene-sprite scene-robot">${robotIcon}</div>
-  `;
+  scene.innerHTML = layout.map(buildSpriteMarkup).join('');
   return scene;
 }
 
-Array.from(sections).forEach(section => {
+Array.from(sections).forEach((section, index) => {
   if (section.querySelector('.section-scene')) return;
 
-  const scene = buildSectionScene();
+  const scene = buildSectionScene(index);
   if (section.id === 'home') {
     const stars = section.querySelector('#stars');
     if (stars) {
@@ -75,6 +135,9 @@ Array.from(sections).forEach(section => {
   } else {
     section.prepend(scene);
   }
+
+  section.style.setProperty('--scene-x', '0');
+  section.style.setProperty('--scene-y', '0');
 
   const updateScene = event => {
     const rect = section.getBoundingClientRect();
