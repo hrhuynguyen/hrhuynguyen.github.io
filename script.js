@@ -23,6 +23,75 @@ const navObserver = new IntersectionObserver(entries => {
 sections.forEach(section => navObserver.observe(section));
 
 /* ═══════════════════════════════════════════════════
+   SECTION DECOR
+   ═══════════════════════════════════════════════════ */
+const rocketIcon = `
+  <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M40 10c-8 2-14 8-18 18l14 14c10-4 16-10 18-18-3-6-8-11-14-14Z" />
+    <path d="M29 35 19 45" />
+    <path d="M39 45 49 55" />
+    <path d="M22 48c-6 0-10 4-10 10 6 0 10-4 10-10Z" />
+    <circle cx="38" cy="26" r="4" />
+    <path d="M16 28 9 21" />
+  </svg>
+`;
+
+const robotIcon = `
+  <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <rect x="18" y="20" width="28" height="24" rx="8" />
+    <path d="M32 12v8" />
+    <path d="M24 52v-8" />
+    <path d="M40 52v-8" />
+    <path d="M15 30h-5" />
+    <path d="M54 30h-5" />
+    <circle cx="27" cy="30" r="2.5" fill="currentColor" stroke="none" />
+    <circle cx="37" cy="30" r="2.5" fill="currentColor" stroke="none" />
+    <path d="M26 38c1.8 1.6 4 2.4 6 2.4s4.2-.8 6-2.4" />
+  </svg>
+`;
+
+function buildSectionScene() {
+  const scene = document.createElement('div');
+  scene.className = 'section-scene';
+  scene.setAttribute('aria-hidden', 'true');
+  scene.innerHTML = `
+    <div class="scene-sprite scene-rocket">${rocketIcon}</div>
+    <div class="scene-sprite scene-robot">${robotIcon}</div>
+  `;
+  return scene;
+}
+
+Array.from(sections).forEach(section => {
+  if (section.querySelector('.section-scene')) return;
+
+  const scene = buildSectionScene();
+  if (section.id === 'home') {
+    const stars = section.querySelector('#stars');
+    if (stars) {
+      stars.insertAdjacentElement('afterend', scene);
+    } else {
+      section.prepend(scene);
+    }
+  } else {
+    section.prepend(scene);
+  }
+
+  const updateScene = event => {
+    const rect = section.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width) - 0.5;
+    const y = ((event.clientY - rect.top) / rect.height) - 0.5;
+    section.style.setProperty('--scene-x', x.toFixed(3));
+    section.style.setProperty('--scene-y', y.toFixed(3));
+  };
+
+  section.addEventListener('pointermove', updateScene);
+  section.addEventListener('pointerleave', () => {
+    section.style.setProperty('--scene-x', '0');
+    section.style.setProperty('--scene-y', '0');
+  });
+});
+
+/* ═══════════════════════════════════════════════════
    STARFIELD CANVAS
    ═══════════════════════════════════════════════════ */
 const canvas = document.getElementById('stars');
