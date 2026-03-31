@@ -10,28 +10,17 @@ navLinks?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => n
 
 // Active link on scroll
 const sections = document.querySelectorAll('section[id]');
-new IntersectionObserver(entries => {
+const navSectionLinks = navLinks ? Array.from(navLinks.querySelectorAll('a')) : [];
+const navObserver = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
-      navLinks?.querySelectorAll('a').forEach(a => {
+      navSectionLinks.forEach(a => {
         a.classList.toggle('active', a.getAttribute('href') === `#${e.target.id}`);
       });
     }
   });
-}, { threshold: 0.35 }).observe(...sections, sections);
-
-/* separate observer per section */
-sections.forEach(s => {
-  new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        navLinks?.querySelectorAll('a').forEach(a => {
-          a.classList.toggle('active', a.getAttribute('href') === `#${e.target.id}`);
-        });
-      }
-    });
-  }, { threshold: 0.35 }).observe(s);
-});
+}, { threshold: 0.35 });
+sections.forEach(section => navObserver.observe(section));
 
 /* ═══════════════════════════════════════════════════
    STARFIELD CANVAS
@@ -178,6 +167,140 @@ document.querySelector('.carousel-prev')?.addEventListener('click', () => goTo(p
 document.querySelector('.carousel-next')?.addEventListener('click', () => goTo(page + 1));
 window.addEventListener('resize', initCarousel);
 initCarousel();
+
+/* ═══════════════════════════════════════════════════
+   PROFILE DASHBOARDS
+   ═══════════════════════════════════════════════════ */
+const dashboardCards = document.querySelectorAll('.achievement-dashboard[data-profile-source]');
+
+function formatInteger(value) {
+  const number = Number(value);
+  if (!Number.isFinite(number)) return '—';
+  return new Intl.NumberFormat('en-US').format(Math.round(number));
+}
+
+function formatPercent(value, digits = 2) {
+  const number = Number(value);
+  if (!Number.isFinite(number)) return '—';
+  return `${number.toFixed(digits)}%`;
+}
+
+function titleCase(value = '') {
+  return value
+    .split(/\s+/)
+    .filter(Boolean)
+    .map(part => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(' ');
+}
+
+function setDashboardStat(card, key, value) {
+  const stat = card.querySelector(`[data-stat="${key}"]`);
+  if (stat && value) stat.textContent = value;
+}
+
+function setDashboardNote(card, value) {
+  const note = card.querySelector('.achievement-dashboard-note');
+  if (note && value) note.textContent = value;
+}
+
+async function loadCodeforcesDashboard(card) {
+  try {
+    const response = await fetch(`https://codeforces.com/api/user.info?handles=${encodeURIComponent(card.dataset.handle)}`);
+    if (!response.ok) throw new Error(`Codeforces HTTP ${response.status}`);
+
+    const payload = await response.json();
+    const user = payload.result?.[0];
+    if (!user) throw new Error('Missing Codeforces user data');
+
+    setDashboardStat(card, 'rating', formatInteger(user.rating));
+    setDashboardStat(card, 'rank', titleCase(user.rank));
+    setDashboardStat(card, 'maxRating', formatInteger(user.maxRating));
+    setDashboardStat(card, 'country', user.country || '—');
+    setDashboardNote(card, 'Live profile data synced from the public Codeforces API.');
+  } catch (error) {
+    console.warn('Codeforces dashboard fallback', error);
+  }
+}
+
+async function loadLeetCodeDashboard(card) {
+  const query = `
+    query userPublicProfile($username: String!) {
+      matchedUser(username: $username) {
+        submitStatsGlobal {
+          acSubmissionNum {
+            difficulty
+            count
+          }
+        }
+      }
+      userContestRanking(username: $username) {
+        rating
+        globalRanking
+        topPercentage
+      }
+    }
+  `;
+
+  try {
+    const response = await fetch('https://leetcode.com/graphql/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        query,
+        variables: { username: card.dataset.username },
+      }),
+    });
+
+    if (!response.ok) throw new Error(`LeetCode HTTP ${response.status}`);
+
+    const payload = await response.json();
+    const ranking = payload.data?.userContestRanking;
+    const solvedStats = payload.data?.matchedUser?.submitStatsGlobal?.acSubmissionNum || [];
+    const solvedAll = solvedStats.find(entry => entry.difficulty === 'All')?.count;
+
+    if (!ranking && solvedAll == null) throw new Error('Missing LeetCode profile data');
+
+    setDashboardStat(card, 'rating', formatInteger(ranking?.rating));
+    setDashboardStat(card, 'globalRank', formatInteger(ranking?.globalRanking));
+    setDashboardStat(card, 'topPercent', formatPercent(ranking?.topPercentage));
+    setDashboardStat(card, 'solved', formatInteger(solvedAll));
+    setDashboardNote(card, 'Live profile data synced from LeetCode\'s public profile query.');
+  } catch (error) {
+    console.warn('LeetCode dashboard fallback', error);
+  }
+}
+
+async function loadDevpostDashboard(card) {
+  const profileUrl = card.dataset.profileUrl;
+  if (!profileUrl) return;
+
+  try {
+    const response = await fetch(profileUrl);
+    if (!response.ok) throw new Error(`Devpost HTTP ${response.status}`);
+
+    const html = await response.text();
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    const navItems = Array.from(doc.querySelectorAll('#portfolio-navigation li a'));
+    const getCount = label => navItems.find(item => item.textContent.includes(label))?.querySelector('.totals span')?.textContent?.trim();
+
+    setDashboardStat(card, 'projects', getCount('Projects'));
+    setDashboardStat(card, 'hackathons', getCount('Hackathons'));
+    setDashboardStat(card, 'achievements', getCount('Achievements'));
+    setDashboardStat(card, 'followers', getCount('Followers'));
+    setDashboardNote(card, 'Live profile data synced from your public Devpost profile.');
+  } catch (error) {
+    console.warn('Devpost dashboard fallback', error);
+  }
+}
+
+dashboardCards.forEach(card => {
+  const source = card.dataset.profileSource;
+  if (source === 'codeforces') loadCodeforcesDashboard(card);
+  if (source === 'leetcode') loadLeetCodeDashboard(card);
+  if (source === 'devpost') loadDevpostDashboard(card);
+});
 
 /* ═══════════════════════════════════════════════════
    SCROLL REVEAL
