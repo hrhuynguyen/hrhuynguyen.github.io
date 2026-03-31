@@ -149,7 +149,7 @@ ul { list-style: none; }
 .hero-name-row {
   display: flex;
   align-items: center;
-  gap: 6rem;
+  gap: 10rem;
   flex-wrap: nowrap;
   margin-bottom: 0;
 }
