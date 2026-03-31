@@ -37,8 +37,8 @@ const rocketIcon = `
     <circle cx="68" cy="67" r="2.5" fill="#1e3a8a" />
     <path d="M36 79 24 92l15-3 6-11Z" fill="#fbbf24" stroke="#fff7db" stroke-width="4" stroke-linejoin="round" />
     <path d="M84 79 96 92l-15-3-6-11Z" fill="#fbbf24" stroke="#fff7db" stroke-width="4" stroke-linejoin="round" />
-    <path d="M60 94c-7 9-7 14 0 22 7-8 7-13 0-22Z" fill="#fb7185" />
-    <path d="M60 95c-4 6-4 10 0 16 4-6 4-10 0-16Z" fill="#fde68a" />
+    <path class="rocket-flame" d="M60 94c-7 9-7 14 0 22 7-8 7-13 0-22Z" fill="#fb7185" />
+    <path class="rocket-flame" d="M60 95c-4 6-4 10 0 16 4-6 4-10 0-16Z" fill="#fde68a" />
   </svg>
 `;
 
@@ -49,17 +49,40 @@ const robotIcon = `
     <circle cx="60" cy="15" r="6" fill="#f472b6" stroke="#fff7db" stroke-width="4" />
     <rect x="28" y="30" width="64" height="50" rx="20" fill="#fde68a" stroke="#fff7db" stroke-width="4" />
     <rect x="37" y="41" width="46" height="22" rx="11" fill="#93c5fd" />
-    <circle cx="50" cy="52" r="5" fill="#1e3a8a" />
-    <circle cx="70" cy="52" r="5" fill="#1e3a8a" />
+    <circle class="robot-eye" cx="50" cy="52" r="5" fill="#1e3a8a" />
+    <circle class="robot-eye" cx="70" cy="52" r="5" fill="#1e3a8a" />
     <circle cx="42" cy="63" r="4" fill="#f9a8d4" opacity="0.9" />
     <circle cx="78" cy="63" r="4" fill="#f9a8d4" opacity="0.9" />
     <path d="M49 68c3 3 7 4 11 4s8-1 11-4" fill="none" stroke="#92400e" stroke-width="4" stroke-linecap="round" />
     <path d="M28 52H17" fill="none" stroke="#fff7db" stroke-width="4" stroke-linecap="round" />
-    <path d="M103 52H92" fill="none" stroke="#fff7db" stroke-width="4" stroke-linecap="round" />
+    <g class="robot-wave-arm">
+      <path d="M92 52h11" fill="none" stroke="#fff7db" stroke-width="4" stroke-linecap="round" />
+      <path d="M103 52c5-1 8-4 9-9" fill="none" stroke="#fff7db" stroke-width="4" stroke-linecap="round" />
+    </g>
     <path d="M42 80v15" fill="none" stroke="#fff7db" stroke-width="4" stroke-linecap="round" />
     <path d="M78 80v15" fill="none" stroke="#fff7db" stroke-width="4" stroke-linecap="round" />
     <path d="M39 96c2 3 4 4 7 4" fill="none" stroke="#fff7db" stroke-width="4" stroke-linecap="round" />
     <path d="M74 100c3 0 5-1 7-4" fill="none" stroke="#fff7db" stroke-width="4" stroke-linecap="round" />
+  </svg>
+`;
+
+const starIcon = `
+  <svg viewBox="0 0 120 120" aria-hidden="true">
+    <path class="star-core" d="M60 18c7 20 10 23 31 31-21 8-24 11-31 31-7-20-10-23-31-31 21-8 24-11 31-31Z" fill="#fef08a" stroke="#fff7db" stroke-width="4" stroke-linejoin="round" />
+    <circle cx="50" cy="54" r="3.6" fill="#854d0e" />
+    <circle cx="70" cy="54" r="3.6" fill="#854d0e" />
+    <path d="M50 67c3 3 6 4 10 4s7-1 10-4" fill="none" stroke="#854d0e" stroke-width="4" stroke-linecap="round" />
+    <circle cx="39" cy="40" r="4" fill="#f9a8d4" opacity="0.9" />
+    <circle cx="82" cy="42" r="3.4" fill="#93c5fd" opacity="0.9" />
+  </svg>
+`;
+
+const bubbleIcon = `
+  <svg viewBox="0 0 120 120" aria-hidden="true">
+    <path d="M28 34c0-9 7-16 16-16h32c10 0 18 8 18 18v16c0 10-8 18-18 18H57L40 86l4-16h-2c-8 0-14-6-14-14V34Z" fill="#fce7f3" stroke="#fff7db" stroke-width="4" stroke-linejoin="round" />
+    <path class="bubble-heart" d="M60 57c-9-6-13-10-13-16 0-5 3-8 8-8 3 0 5 1 7 4 2-3 4-4 7-4 5 0 8 3 8 8 0 6-4 10-13 16l-2 1-2-1Z" fill="#f472b6" />
+    <circle cx="88" cy="82" r="6" fill="#bae6fd" opacity="0.95" />
+    <circle cx="99" cy="92" r="3.5" fill="#fef08a" opacity="0.95" />
   </svg>
 `;
 
@@ -71,8 +94,12 @@ const sceneLayouts = [
     { type: 'robot', pos: 'right: 4%; top: 52%;', size: '5rem', rotate: '-9deg', parallaxX: '9px', parallaxY: '10px', opacity: '0.21', duration: '9.6s', delay: '-0.8s' },
     { type: 'rocket', pos: 'left: 30%; bottom: 8%;', size: '4.9rem', rotate: '-10deg', parallaxX: '-7px', parallaxY: '9px', opacity: '0.18', duration: '8.1s', delay: '-4s' },
     { type: 'robot', pos: 'right: 27%; bottom: 7%;', size: '4.6rem', rotate: '7deg', parallaxX: '8px', parallaxY: '-8px', opacity: '0.18', duration: '9.9s', delay: '-2.7s' },
+    { type: 'star', pos: 'left: 22%; top: 16%;', size: '3rem', rotate: '4deg', parallaxX: '-5px', parallaxY: '5px', opacity: '0.2', duration: '6.4s', delay: '-0.9s' },
+    { type: 'bubble', pos: 'right: 19%; top: 34%;', size: '3.6rem', rotate: '-5deg', parallaxX: '6px', parallaxY: '-4px', opacity: '0.18', duration: '7.1s', delay: '-2.2s' },
     { type: 'rocket', pos: 'left: 48%; top: 8%;', size: '4.5rem', rotate: '6deg', parallaxX: '6px', parallaxY: '-6px', opacity: '0.15', duration: '7.8s', delay: '-1.9s' },
     { type: 'robot', pos: 'left: 52%; bottom: 15%;', size: '4.3rem', rotate: '-5deg', parallaxX: '-6px', parallaxY: '7px', opacity: '0.14', duration: '10.2s', delay: '-3.7s' },
+    { type: 'star', pos: 'right: 43%; bottom: 12%;', size: '2.7rem', rotate: '10deg', parallaxX: '4px', parallaxY: '4px', opacity: '0.15', duration: '5.8s', delay: '-1.1s' },
+    { type: 'bubble', pos: 'left: 60%; top: 26%;', size: '3.1rem', rotate: '7deg', parallaxX: '-4px', parallaxY: '4px', opacity: '0.14', duration: '6.8s', delay: '-3.3s' },
   ],
   [
     { type: 'robot', pos: 'left: 5%; top: 18%;', size: '5.6rem', rotate: '-12deg', parallaxX: '-11px', parallaxY: '8px', opacity: '0.23', duration: '9.2s', delay: '-2.8s' },
@@ -81,8 +108,12 @@ const sceneLayouts = [
     { type: 'rocket', pos: 'right: 3%; bottom: 18%;', size: '5.6rem', rotate: '-14deg', parallaxX: '13px', parallaxY: '10px', opacity: '0.24', duration: '8.9s', delay: '-4.2s' },
     { type: 'robot', pos: 'left: 34%; bottom: 9%;', size: '4.7rem', rotate: '6deg', parallaxX: '-7px', parallaxY: '7px', opacity: '0.18', duration: '10.4s', delay: '-1.7s' },
     { type: 'rocket', pos: 'right: 33%; bottom: 6%;', size: '4.8rem', rotate: '9deg', parallaxX: '7px', parallaxY: '-6px', opacity: '0.17', duration: '8.4s', delay: '-2.1s' },
+    { type: 'star', pos: 'left: 16%; top: 58%;', size: '2.9rem', rotate: '-8deg', parallaxX: '-4px', parallaxY: '4px', opacity: '0.18', duration: '5.9s', delay: '-2.7s' },
+    { type: 'bubble', pos: 'right: 18%; top: 38%;', size: '3.4rem', rotate: '6deg', parallaxX: '5px', parallaxY: '-5px', opacity: '0.17', duration: '7.3s', delay: '-0.6s' },
     { type: 'robot', pos: 'left: 52%; top: 22%;', size: '4.4rem', rotate: '-6deg', parallaxX: '-6px', parallaxY: '6px', opacity: '0.14', duration: '9.5s', delay: '-0.9s' },
     { type: 'rocket', pos: 'left: 58%; bottom: 20%;', size: '4.2rem', rotate: '-8deg', parallaxX: '5px', parallaxY: '5px', opacity: '0.13', duration: '7.6s', delay: '-3.4s' },
+    { type: 'star', pos: 'right: 44%; top: 12%;', size: '2.5rem', rotate: '12deg', parallaxX: '4px', parallaxY: '3px', opacity: '0.14', duration: '5.4s', delay: '-1.8s' },
+    { type: 'bubble', pos: 'left: 63%; bottom: 10%;', size: '2.9rem', rotate: '-6deg', parallaxX: '-4px', parallaxY: '4px', opacity: '0.13', duration: '6.9s', delay: '-2.9s' },
   ],
   [
     { type: 'rocket', pos: 'left: 8%; top: 10%;', size: '5.4rem', rotate: '-11deg', parallaxX: '-12px', parallaxY: '10px', opacity: '0.24', duration: '8.7s', delay: '-2.6s' },
@@ -91,13 +122,23 @@ const sceneLayouts = [
     { type: 'robot', pos: 'right: 6%; bottom: 10%;', size: '5.2rem', rotate: '-10deg', parallaxX: '10px', parallaxY: '10px', opacity: '0.22', duration: '9.3s', delay: '-2.4s' },
     { type: 'rocket', pos: 'left: 32%; top: 28%;', size: '4.8rem', rotate: '8deg', parallaxX: '7px', parallaxY: '-7px', opacity: '0.17', duration: '7.9s', delay: '-1.8s' },
     { type: 'robot', pos: 'right: 31%; top: 36%;', size: '4.6rem', rotate: '6deg', parallaxX: '-7px', parallaxY: '7px', opacity: '0.17', duration: '10.6s', delay: '-4.1s' },
+    { type: 'star', pos: 'left: 23%; bottom: 24%;', size: '2.8rem', rotate: '6deg', parallaxX: '-3px', parallaxY: '3px', opacity: '0.18', duration: '5.5s', delay: '-3.1s' },
+    { type: 'bubble', pos: 'right: 21%; top: 28%;', size: '3.5rem', rotate: '-7deg', parallaxX: '5px', parallaxY: '-5px', opacity: '0.18', duration: '7.5s', delay: '-1.4s' },
     { type: 'rocket', pos: 'left: 48%; bottom: 7%;', size: '4.3rem', rotate: '-7deg', parallaxX: '5px', parallaxY: '6px', opacity: '0.14', duration: '8.3s', delay: '-0.7s' },
     { type: 'robot', pos: 'left: 57%; top: 8%;', size: '4.1rem', rotate: '-4deg', parallaxX: '-5px', parallaxY: '5px', opacity: '0.13', duration: '9.7s', delay: '-3s' },
+    { type: 'star', pos: 'right: 40%; bottom: 12%;', size: '2.6rem', rotate: '-10deg', parallaxX: '4px', parallaxY: '4px', opacity: '0.14', duration: '5.6s', delay: '-2.2s' },
+    { type: 'bubble', pos: 'left: 64%; top: 18%;', size: '3rem', rotate: '5deg', parallaxX: '-4px', parallaxY: '4px', opacity: '0.13', duration: '6.7s', delay: '-0.8s' },
   ],
 ];
 
 function buildSpriteMarkup(sprite) {
-  const icon = sprite.type === 'rocket' ? rocketIcon : robotIcon;
+  const iconMap = {
+    rocket: rocketIcon,
+    robot: robotIcon,
+    star: starIcon,
+    bubble: bubbleIcon,
+  };
+  const icon = iconMap[sprite.type] || robotIcon;
   const style = [
     sprite.pos,
     `--size: ${sprite.size}`,

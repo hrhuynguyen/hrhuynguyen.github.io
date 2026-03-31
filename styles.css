@@ -166,23 +166,30 @@ ul { list-style: none; }
   flex-direction: column;
   gap: 2.5rem;
 }
-.hero-text { max-width: 900px; }
+.hero-text {
+  max-width: min(1120px, 100%);
+  width: 100%;
+}
 
 /* ── Name + GIF inline row ── */
 .hero-name-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  gap: 10rem;
-  flex-wrap: nowrap;
+  gap: clamp(4rem, 12vw, 12rem);
+  width: 100%;
   margin-bottom: 0;
 }
 .coder-gif {
-  height: 400px;
+  height: clamp(230px, 24vw, 320px);
   width: auto;
   max-width: none;
   flex-shrink: 0;
   display: block;
-  border-radius: 6px;
+  justify-self: end;
+  align-self: center;
+  border-radius: 10px;
+  filter: drop-shadow(0 18px 36px rgba(56, 189, 248, 0.14));
 }
 .hero-greeting {
   font-family: var(--font-mono);
@@ -197,7 +204,8 @@ ul { list-style: none; }
   letter-spacing: -0.04em;
   line-height: 1;
   color: var(--text);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0;
+  max-width: 12ch;
 }
 .hero-role {
   font-family: var(--font-mono);
@@ -348,17 +356,56 @@ ul { list-style: none; }
   height: 100%;
   overflow: visible;
 }
+.scene-sprite svg .robot-eye,
+.scene-sprite svg .robot-wave-arm,
+.scene-sprite svg .rocket-flame,
+.scene-sprite svg .star-core,
+.scene-sprite svg .bubble-heart {
+  transform-box: fill-box;
+  transform-origin: center;
+}
 .scene-rocket {
   filter: drop-shadow(0 14px 24px rgba(91, 124, 250, 0.18));
 }
 .scene-rocket::before {
   background: radial-gradient(circle, rgba(125, 211, 252, 0.34) 0%, rgba(125, 211, 252, 0) 72%);
 }
+.scene-rocket svg .rocket-flame {
+  animation: rocketFlame 1.2s ease-in-out infinite alternate;
+}
 .scene-robot {
   filter: drop-shadow(0 14px 24px rgba(245, 158, 11, 0.16));
 }
 .scene-robot::before {
   background: radial-gradient(circle, rgba(253, 224, 71, 0.3) 0%, rgba(253, 224, 71, 0) 72%);
+}
+.scene-robot svg .robot-eye {
+  animation: robotBlink 7.2s infinite;
+}
+.scene-robot svg .robot-wave-arm {
+  transform-origin: 92px 50px;
+  animation: robotWave 3.6s ease-in-out infinite;
+}
+.scene-star {
+  filter: drop-shadow(0 10px 20px rgba(244, 114, 182, 0.14));
+}
+.scene-star::before {
+  background: radial-gradient(circle, rgba(250, 204, 21, 0.22) 0%, rgba(250, 204, 21, 0) 72%);
+}
+.scene-star svg .star-core {
+  animation: starTwinkle 1.8s ease-in-out infinite alternate;
+}
+.scene-bubble {
+  filter: drop-shadow(0 10px 20px rgba(244, 114, 182, 0.14));
+}
+.scene-bubble::before {
+  background: radial-gradient(circle, rgba(244, 114, 182, 0.2) 0%, rgba(244, 114, 182, 0) 72%);
+}
+.scene-bubble svg {
+  animation: bubbleDrift 4.4s ease-in-out infinite;
+}
+.scene-bubble svg .bubble-heart {
+  animation: bubblePulse 1.8s ease-in-out infinite;
 }
 .scene-sprite:nth-child(3n) {
   animation-name: sceneBob;
@@ -993,10 +1040,43 @@ ul { list-style: none; }
   0%, 100% { margin-top: -4px; }
   50% { margin-top: 7px; }
 }
+@keyframes robotBlink {
+  0%, 44%, 48%, 100% { transform: scaleY(1); }
+  46% { transform: scaleY(0.15); }
+}
+@keyframes robotWave {
+  0%, 100% { transform: rotate(0deg); }
+  30% { transform: rotate(10deg); }
+  60% { transform: rotate(-8deg); }
+}
+@keyframes rocketFlame {
+  from { transform: scaleY(0.88); opacity: 0.9; }
+  to { transform: scaleY(1.12); opacity: 1; }
+}
+@keyframes starTwinkle {
+  from { transform: scale(0.92); opacity: 0.72; }
+  to { transform: scale(1.08); opacity: 1; }
+}
+@keyframes bubbleDrift {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+@keyframes bubblePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.16); }
+}
 
 @media (prefers-reduced-motion: reduce) {
   .scene-sprite {
     transition: none;
+    animation: none;
+  }
+  .scene-sprite svg,
+  .scene-sprite svg .robot-eye,
+  .scene-sprite svg .robot-wave-arm,
+  .scene-sprite svg .rocket-flame,
+  .scene-sprite svg .star-core,
+  .scene-sprite svg .bubble-heart {
     animation: none;
   }
 }
@@ -1015,6 +1095,17 @@ ul { list-style: none; }
   .achievements-grid { grid-template-columns: 1fr; }
   .achievement-stats { grid-template-columns: 1fr; }
   .project-card-body { padding: 1.25rem; }
+  .hero-name-row {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .coder-gif {
+    justify-self: center;
+    height: min(240px, 42vw);
+  }
+  .hero-name {
+    max-width: none;
+  }
   .project-badge {
     left: -2.6rem;
     width: 9.6rem;
@@ -1036,7 +1127,7 @@ ul { list-style: none; }
   .section-scene::after {
     opacity: 0.22;
   }
-  .scene-sprite:nth-child(n + 7) {
+  .scene-sprite:nth-child(n + 9) {
     display: none;
   }
 
@@ -1062,10 +1153,13 @@ ul { list-style: none; }
   .hero-btns .btn { justify-content: center; }
   .footer-inner { flex-direction: column; text-align: center; }
   .nav-inner { gap: 0.8rem; }
+  .coder-gif {
+    height: min(210px, 50vw);
+  }
   .scene-sprite {
     opacity: calc(var(--opacity, 0.28) * 0.82);
   }
-  .scene-sprite:nth-child(n + 6) {
+  .scene-sprite:nth-child(n + 7) {
     display: none;
   }
 }
