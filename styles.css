@@ -5,11 +5,11 @@
   --space:       #150b29;   /* main background */
   --dark:        #0a0514;   /* card background */
   --purple:      #7209b7;   /* secondary accent */
-  --pink:        #f72585;   /* primary accent */
+  --pink:        #38bdf8;   /* primary accent */
   --text:        #e2e8f0;   /* primary text */
   --text-light:  #94a3b8;   /* muted text */
   --border-p:    rgba(114, 9, 183, 0.2);
-  --border-pk:   rgba(247, 37, 133, 0.2);
+  --border-pk:   rgba(56, 189, 248, 0.2);
   --card-bg:     rgba(10, 5, 20, 0.5);
   --font-sans:   'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono:   'JetBrains Mono', 'Fira Code', monospace;
@@ -86,7 +86,7 @@ ul { list-style: none; }
 }
 .nav-links a:hover, .nav-links a.active {
   color: var(--pink);
-  background: rgba(247, 37, 133, 0.08);
+  background: rgba(56, 189, 248, 0.08);
 }
 .nav-github {
   color: var(--text-light);
@@ -242,7 +242,7 @@ ul { list-style: none; }
   border-color: var(--pink);
 }
 .btn-outline:hover {
-  background: rgba(247, 37, 133, 0.1);
+  background: rgba(56, 189, 248, 0.1);
   transform: translateY(-2px);
 }
 .btn-lg { padding: 0.9rem 2.2rem; font-size: 1rem; }
@@ -310,7 +310,7 @@ ul { list-style: none; }
 .project-card:hover {
   border-color: var(--border-pk);
   transform: translateY(-4px);
-  box-shadow: 0 8px 32px rgba(247, 37, 133, 0.08);
+  box-shadow: 0 8px 32px rgba(56, 189, 248, 0.08);
 }
 .project-card-body {
   padding: 1.75rem;
@@ -501,13 +501,13 @@ ul { list-style: none; }
 .achievement-card:hover {
   border-color: var(--border-pk);
   transform: translateY(-3px);
-  box-shadow: 0 6px 24px rgba(247, 37, 133, 0.08);
+  box-shadow: 0 6px 24px rgba(56, 189, 248, 0.08);
 }
 .achievement-icon {
   width: 44px;
   height: 44px;
   border-radius: var(--radius);
-  background: rgba(247, 37, 133, 0.1);
+  background: rgba(56, 189, 248, 0.1);
   border: 1px solid var(--border-pk);
   display: flex;
   align-items: center;
