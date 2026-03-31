@@ -4,11 +4,11 @@
 :root {
   --space:       #150b29;   /* main background */
   --dark:        #0a0514;   /* card background */
-  --purple:      #7209b7;   /* secondary accent */
+  --purple:      #38bdf8;   /* secondary accent */
   --pink:        #38bdf8;   /* primary accent */
   --text:        #e2e8f0;   /* primary text */
   --text-light:  #94a3b8;   /* muted text */
-  --border-p:    rgba(114, 9, 183, 0.2);
+  --border-p:    rgba(56, 189, 248, 0.2);
   --border-pk:   rgba(56, 189, 248, 0.2);
   --card-bg:     rgba(10, 5, 20, 0.5);
   --font-sans:   'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -149,7 +149,7 @@ ul { list-style: none; }
 .hero-name-row {
   display: flex;
   align-items: center;
-  gap: 3rem;
+  gap: 6rem;
   flex-wrap: nowrap;
   margin-bottom: 0;
 }
@@ -277,9 +277,9 @@ ul { list-style: none; }
   padding: 0.2rem 0.65rem;
   font-size: 0.72rem;
   border-radius: 999px;
-  background: rgba(114, 9, 183, 0.1);
+  background: rgba(56, 189, 248, 0.1);
   color: var(--purple);
-  border: 1px solid rgba(114, 9, 183, 0.25);
+  border: 1px solid rgba(56, 189, 248, 0.25);
   font-family: var(--font-mono);
 }
 
@@ -438,8 +438,8 @@ ul { list-style: none; }
   font-family: var(--font-mono);
   font-size: 0.8rem;
   color: var(--purple);
-  background: rgba(114, 9, 183, 0.1);
-  border: 1px solid rgba(114, 9, 183, 0.25);
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.25);
   padding: 0.25rem 0.75rem;
   border-radius: 999px;
   white-space: nowrap;
@@ -531,8 +531,8 @@ ul { list-style: none; }
   font-family: var(--font-mono);
   font-size: 0.75rem;
   color: var(--purple);
-  background: rgba(114, 9, 183, 0.1);
-  border: 1px solid rgba(114, 9, 183, 0.2);
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.2);
   padding: 0.2rem 0.6rem;
   border-radius: 999px;
 }
