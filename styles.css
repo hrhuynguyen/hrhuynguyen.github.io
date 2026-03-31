@@ -154,7 +154,7 @@ ul { list-style: none; }
   margin-bottom: 0;
 }
 .coder-gif {
-  height: clamp(48px, 6vw, 80px);
+  height: clamp(192px, 24vw, 320px);
   width: auto;
   flex-shrink: 0;
   display: block;
