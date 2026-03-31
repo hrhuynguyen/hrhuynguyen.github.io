@@ -101,11 +101,9 @@ draw();
    TYPEWRITER
    ═══════════════════════════════════════════════════ */
 const phrases = [
+  'Student',
   'Software Engineer',
-  'AI / ML Researcher',
-  'Accessibility Advocate',
-  'Full-Stack Developer',
-  'BCI Enthusiast',
+  'AI Enthusiast',
 ];
 const typedEl = document.querySelector('.typed');
 let pi = 0, ci = 0, del = false;
