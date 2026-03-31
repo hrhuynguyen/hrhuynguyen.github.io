@@ -140,10 +140,93 @@ ul { list-style: none; }
   position: relative;
   z-index: 1;
   display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
 }
-.hero-text { max-width: 700px; }
+.hero-text {
+  flex: 1;
+  max-width: 580px;
+}
+
+/* ── Programmer illustration ── */
+.hero-illustration {
+  flex-shrink: 0;
+  width: 380px;
+  animation: fadeUp 1s ease both 0.3s;
+}
+.coder-svg {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 30px rgba(247, 37, 133, 0.15));
+}
+
+/* screen glow pulse */
+.anim-screen-glow { animation: screenGlow 3s ease-in-out infinite; }
+@keyframes screenGlow {
+  0%,100% { opacity: 0.6; }
+  50%      { opacity: 1; }
+}
+
+/* code cursor blink */
+.anim-cursor { animation: cursorBlink 1.1s step-end infinite; }
+@keyframes cursorBlink {
+  0%,100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+/* code lines scroll upward */
+.anim-code-scroll { animation: codeScroll 6s linear infinite; }
+@keyframes codeScroll {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-40px); }
+}
+
+/* typing arm bounce */
+.anim-arm-l { animation: typingL 0.18s ease-in-out infinite alternate; }
+.anim-arm-r { animation: typingR 0.18s ease-in-out infinite alternate 0.09s; }
+@keyframes typingL {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-3px); }
+}
+@keyframes typingR {
+  from { transform: translateY(-2px); }
+  to   { transform: translateY(1px); }
+}
+
+/* ambient pulse */
+.anim-pulse-slow { animation: pulseSlow 4s ease-in-out infinite; }
+@keyframes pulseSlow {
+  0%,100% { opacity: 0.6; transform: scaleX(1); }
+  50%      { opacity: 1;   transform: scaleX(1.05); }
+}
+
+/* floating code symbols */
+.float-sym { animation-timing-function: ease-in-out; animation-iteration-count: infinite; animation-direction: alternate; }
+.sym1 { animation: floatA 3.2s ease-in-out infinite alternate; }
+.sym2 { animation: floatB 4.1s ease-in-out infinite alternate; }
+.sym3 { animation: floatA 2.8s ease-in-out infinite alternate 0.5s; }
+.sym4 { animation: floatB 3.7s ease-in-out infinite alternate 0.8s; }
+.sym5 { animation: floatA 4.5s ease-in-out infinite alternate 0.3s; }
+.sym6 { animation: floatB 3.0s ease-in-out infinite alternate 1s; }
+.sym7 { animation: floatA 3.5s ease-in-out infinite alternate 0.2s; }
+.sym8 { animation: floatB 4.8s ease-in-out infinite alternate 0.6s; }
+@keyframes floatA {
+  from { transform: translateY(0px) rotate(-3deg); }
+  to   { transform: translateY(-14px) rotate(3deg); }
+}
+@keyframes floatB {
+  from { transform: translateY(-8px) rotate(2deg); }
+  to   { transform: translateY(6px) rotate(-2deg); }
+}
+
+/* overall SVG gentle bob */
+.coder-svg { animation: svgBob 5s ease-in-out infinite; }
+@keyframes svgBob {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
 .hero-greeting {
   font-family: var(--font-mono);
   font-size: 1rem;
@@ -596,12 +679,25 @@ ul { list-style: none; }
   0%,100% { opacity: 1; }
   50%      { opacity: 0; }
 }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
 /* ═══════════════════════════════════════════════════════════════
    RESPONSIVE
    ═══════════════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
   .carousel { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 960px) {
+  .hero-inner { flex-direction: column; text-align: center; }
+  .hero-text { max-width: 100%; }
+  .hero-illustration { width: 280px; order: -1; }
+  .hero-btns { justify-content: center; }
+  .hero-socials { justify-content: center; }
+  .hero-bio { margin-left: auto; margin-right: auto; }
 }
 
 @media (max-width: 768px) {
