@@ -860,6 +860,160 @@ ul { list-style: none; }
   color: var(--text-light);
 }
 
+.achievement-card.achievement-kaggle {
+  border-color: rgba(251, 146, 60, 0.3);
+  box-shadow: 0 10px 28px rgba(251, 146, 60, 0.08);
+}
+.achievement-card.achievement-kaggle:hover {
+  border-color: rgba(251, 146, 60, 0.55);
+  box-shadow: 0 12px 32px rgba(251, 146, 60, 0.14);
+}
+.achievement-card.achievement-kaggle .achievement-icon {
+  background: rgba(251, 146, 60, 0.12);
+  border-color: rgba(251, 146, 60, 0.26);
+}
+.achievement-card.achievement-kaggle .achievement-icon svg,
+.achievement-card.achievement-kaggle .achievement-title,
+.achievement-card.achievement-kaggle .achievement-year,
+.achievement-card.achievement-kaggle .achievement-profile-link {
+  color: #fb923c;
+}
+.achievement-card.achievement-kaggle .achievement-year {
+  background: rgba(251, 146, 60, 0.1);
+  border-color: rgba(251, 146, 60, 0.22);
+}
+.achievement-card.achievement-kaggle .achievement-dashboard {
+  border-top-color: rgba(251, 146, 60, 0.18);
+}
+.achievement-card.achievement-kaggle .achievement-stat {
+  background: rgba(251, 146, 60, 0.07);
+  border-color: rgba(251, 146, 60, 0.14);
+}
+.achievement-card.achievement-kaggle .achievement-profile-link {
+  border-color: rgba(251, 146, 60, 0.24);
+  background: rgba(251, 146, 60, 0.08);
+}
+.achievement-card.achievement-kaggle .achievement-profile-link:hover {
+  border-color: rgba(251, 146, 60, 0.4);
+  background: rgba(251, 146, 60, 0.14);
+}
+
+.achievement-card.achievement-leetcode {
+  border-color: rgba(96, 165, 250, 0.3);
+  box-shadow: 0 10px 28px rgba(96, 165, 250, 0.08);
+}
+.achievement-card.achievement-leetcode:hover {
+  border-color: rgba(96, 165, 250, 0.55);
+  box-shadow: 0 12px 32px rgba(96, 165, 250, 0.14);
+}
+.achievement-card.achievement-leetcode .achievement-icon {
+  background: rgba(96, 165, 250, 0.12);
+  border-color: rgba(96, 165, 250, 0.26);
+}
+.achievement-card.achievement-leetcode .achievement-icon svg,
+.achievement-card.achievement-leetcode .achievement-title,
+.achievement-card.achievement-leetcode .achievement-year,
+.achievement-card.achievement-leetcode .achievement-profile-link {
+  color: #7dd3fc;
+}
+.achievement-card.achievement-leetcode .achievement-year {
+  background: rgba(125, 211, 252, 0.1);
+  border-color: rgba(125, 211, 252, 0.22);
+}
+.achievement-card.achievement-leetcode .achievement-dashboard {
+  border-top-color: rgba(125, 211, 252, 0.18);
+}
+.achievement-card.achievement-leetcode .achievement-stat {
+  background: rgba(125, 211, 252, 0.07);
+  border-color: rgba(125, 211, 252, 0.14);
+}
+.achievement-card.achievement-leetcode .achievement-profile-link {
+  border-color: rgba(125, 211, 252, 0.24);
+  background: rgba(125, 211, 252, 0.08);
+}
+.achievement-card.achievement-leetcode .achievement-profile-link:hover {
+  border-color: rgba(125, 211, 252, 0.4);
+  background: rgba(125, 211, 252, 0.14);
+}
+
+.achievement-card.achievement-codeforces {
+  border-color: rgba(167, 139, 250, 0.32);
+  box-shadow: 0 10px 28px rgba(167, 139, 250, 0.08);
+}
+.achievement-card.achievement-codeforces:hover {
+  border-color: rgba(167, 139, 250, 0.58);
+  box-shadow: 0 12px 32px rgba(167, 139, 250, 0.14);
+}
+.achievement-card.achievement-codeforces .achievement-icon {
+  background: rgba(167, 139, 250, 0.13);
+  border-color: rgba(167, 139, 250, 0.28);
+}
+.achievement-card.achievement-codeforces .achievement-icon svg,
+.achievement-card.achievement-codeforces .achievement-title,
+.achievement-card.achievement-codeforces .achievement-year,
+.achievement-card.achievement-codeforces .achievement-profile-link {
+  color: #a78bfa;
+}
+.achievement-card.achievement-codeforces .achievement-year {
+  background: rgba(167, 139, 250, 0.1);
+  border-color: rgba(167, 139, 250, 0.22);
+}
+.achievement-card.achievement-codeforces .achievement-dashboard {
+  border-top-color: rgba(167, 139, 250, 0.18);
+}
+.achievement-card.achievement-codeforces .achievement-stat {
+  background: rgba(167, 139, 250, 0.07);
+  border-color: rgba(167, 139, 250, 0.14);
+}
+.achievement-card.achievement-codeforces .achievement-profile-link {
+  border-color: rgba(167, 139, 250, 0.24);
+  background: rgba(167, 139, 250, 0.08);
+}
+.achievement-card.achievement-codeforces .achievement-profile-link:hover {
+  border-color: rgba(167, 139, 250, 0.4);
+  background: rgba(167, 139, 250, 0.14);
+}
+
+.achievement-card.achievement-meta {
+  border-color: rgba(96, 165, 250, 0.28);
+  box-shadow: 0 10px 28px rgba(30, 64, 175, 0.08);
+}
+.achievement-card.achievement-meta:hover {
+  border-color: rgba(96, 165, 250, 0.52);
+  box-shadow: 0 12px 32px rgba(30, 64, 175, 0.16);
+}
+.achievement-card.achievement-meta .achievement-icon {
+  background: rgba(37, 99, 235, 0.14);
+  border-color: rgba(96, 165, 250, 0.28);
+}
+.achievement-card.achievement-meta .achievement-icon svg,
+.achievement-card.achievement-meta .achievement-title,
+.achievement-card.achievement-meta .achievement-year,
+.achievement-card.achievement-meta .achievement-profile-link {
+  color: #60a5fa;
+}
+.achievement-card.achievement-meta .achievement-year {
+  background: rgba(96, 165, 250, 0.1);
+  border-color: rgba(96, 165, 250, 0.22);
+}
+.achievement-card.achievement-meta .achievement-profile-link {
+  border-color: rgba(96, 165, 250, 0.24);
+  background: rgba(96, 165, 250, 0.08);
+}
+.achievement-card.achievement-meta .achievement-profile-link:hover {
+  border-color: rgba(96, 165, 250, 0.4);
+  background: rgba(96, 165, 250, 0.14);
+}
+.achievement-card.achievement-meta .achievement-desc strong {
+  color: #ef4444;
+  font-weight: 800;
+  background: rgba(239, 68, 68, 0.14);
+  border: 1px solid rgba(239, 68, 68, 0.22);
+  padding: 0.1rem 0.42rem;
+  border-radius: 999px;
+  box-shadow: 0 0 18px rgba(239, 68, 68, 0.18);
+}
+
 /* Featured achievement card — Google DeepMind */
 .achievement-card.achievement-featured {
   grid-column: 1 / -1;
