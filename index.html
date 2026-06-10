@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=13" />
+  <link rel="stylesheet" href="styles.css?v=15" />
 </head>
 <body>
   <!-- ═══════════════ NAVBAR ═══════════════ -->
@@ -801,7 +801,7 @@
       <h2 class="section-title">Machine Learning Research Projects</h2>
       <p class="section-sub">Kaggle competition research, ordered with active work first, then completed challenges from earliest to latest.</p>
 
-      <div class="research-grid">
+      <div class="research-grid is-collapsed" id="ml-research-grid" data-research-grid>
         <article class="research-card reveal research-active">
           <div class="research-card-top">
             <span class="research-status">Active</span>
@@ -892,7 +892,7 @@
           <a href="https://www.kaggle.com/competitions/2023-kaggle-ai-report" target="_blank" rel="noopener" class="project-action">Kaggle</a>
         </article>
 
-        <article class="research-card reveal">
+        <article class="research-card reveal research-extra">
           <div class="research-card-top">
             <span class="research-status research-status-complete">Completed</span>
             <span class="research-date">Mar 2024</span>
@@ -907,7 +907,7 @@
           <a href="https://www.kaggle.com/competitions/optiver-trading-at-the-close" target="_blank" rel="noopener" class="project-action">Kaggle</a>
         </article>
 
-        <article class="research-card reveal">
+        <article class="research-card reveal research-extra">
           <div class="research-card-top">
             <span class="research-status research-status-complete">Completed</span>
             <span class="research-date">Apr 2024</span>
@@ -922,7 +922,7 @@
           <a href="https://www.kaggle.com/competitions/pii-detection-removal-from-educational-data" target="_blank" rel="noopener" class="project-action">Kaggle</a>
         </article>
 
-        <article class="research-card reveal">
+        <article class="research-card reveal research-extra">
           <div class="research-card-top">
             <span class="research-status research-status-complete">Completed</span>
             <span class="research-date">Apr 2024</span>
@@ -937,7 +937,7 @@
           <a href="https://www.kaggle.com/competitions/llm-prompt-recovery" target="_blank" rel="noopener" class="project-action">Kaggle</a>
         </article>
 
-        <article class="research-card reveal">
+        <article class="research-card reveal research-extra">
           <div class="research-card-top">
             <span class="research-status research-status-complete">Completed</span>
             <span class="research-date">Jun 2024</span>
@@ -952,7 +952,7 @@
           <a href="https://www.kaggle.com/competitions/ai-mathematical-olympiad-prize" target="_blank" rel="noopener" class="project-action">Kaggle</a>
         </article>
 
-        <article class="research-card reveal">
+        <article class="research-card reveal research-extra">
           <div class="research-card-top">
             <span class="research-status research-status-complete">Completed</span>
             <span class="research-date">Nov 2024</span>
@@ -967,7 +967,7 @@
           <a href="https://www.kaggle.com/competitions/arc-prize-2024" target="_blank" rel="noopener" class="project-action">Kaggle</a>
         </article>
 
-        <article class="research-card reveal">
+        <article class="research-card reveal research-extra">
           <div class="research-card-top">
             <span class="research-status research-status-complete">Completed</span>
             <span class="research-date">Jan 2025</span>
@@ -982,7 +982,7 @@
           <a href="https://www.kaggle.com/competitions/gemma-language-tuning" target="_blank" rel="noopener" class="project-action">Kaggle</a>
         </article>
 
-        <article class="research-card reveal">
+        <article class="research-card reveal research-extra">
           <div class="research-card-top">
             <span class="research-status research-status-complete">Completed</span>
             <span class="research-date">Mar 2025</span>
@@ -997,7 +997,7 @@
           <a href="https://www.kaggle.com/competitions/fide-google-efficiency-chess-ai-challenge" target="_blank" rel="noopener" class="project-action">Kaggle</a>
         </article>
 
-        <article class="research-card reveal">
+        <article class="research-card reveal research-extra">
           <div class="research-card-top">
             <span class="research-status research-status-complete">Completed</span>
             <span class="research-date">Sep 2025</span>
@@ -1011,6 +1011,12 @@
           </div>
           <a href="https://www.kaggle.com/competitions/bigquery-ai-hackathon" target="_blank" rel="noopener" class="project-action">Kaggle</a>
         </article>
+      </div>
+      <div class="research-expand-controls">
+        <button type="button" class="project-action research-toggle" data-research-toggle aria-expanded="false" aria-controls="ml-research-grid">
+          <span data-research-toggle-label>Show 8 more projects</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
       </div>
     </div>
   </section>
@@ -1117,6 +1123,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=7"></script>
+  <script src="script.js?v=9"></script>
 </body>
 </html>

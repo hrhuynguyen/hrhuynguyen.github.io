@@ -514,6 +514,37 @@ skillTabs.forEach((tab, index) => {
 });
 
 /* ═══════════════════════════════════════════════════
+   RESEARCH EXPANDER
+   ═══════════════════════════════════════════════════ */
+const researchGrid = document.querySelector('[data-research-grid]');
+const researchToggle = document.querySelector('[data-research-toggle]');
+const researchToggleLabel = document.querySelector('[data-research-toggle-label]');
+const researchExtraCards = researchGrid ? Array.from(researchGrid.querySelectorAll('.research-extra')) : [];
+
+function setResearchExpanded(expanded) {
+  if (!researchGrid || !researchToggle) return;
+  researchGrid.classList.toggle('is-collapsed', !expanded);
+  researchToggle.setAttribute('aria-expanded', String(expanded));
+  if (researchToggleLabel) {
+    researchToggleLabel.textContent = expanded ? 'Show fewer projects' : `Show ${researchExtraCards.length} more projects`;
+  }
+  researchExtraCards.forEach((card, index) => {
+    if (expanded) {
+      setTimeout(() => card.classList.add('visible'), index * 55);
+    } else {
+      card.classList.remove('visible');
+    }
+  });
+  if (!expanded) {
+    document.getElementById('ml-research')?.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  }
+}
+
+researchToggle?.addEventListener('click', () => {
+  setResearchExpanded(researchToggle.getAttribute('aria-expanded') !== 'true');
+});
+
+/* ═══════════════════════════════════════════════════
    SCROLL REVEAL
    ═══════════════════════════════════════════════════ */
 const revealEls = document.querySelectorAll('.reveal, .timeline-item, .achievement-card, .contact-card');

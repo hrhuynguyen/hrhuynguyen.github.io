@@ -814,6 +814,9 @@ ul { list-style: none; }
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.25rem;
 }
+.research-grid.is-collapsed .research-extra {
+  display: none;
+}
 .research-card {
   position: relative;
   min-height: 21rem;
@@ -910,6 +913,23 @@ ul { list-style: none; }
 .research-card .project-action {
   width: max-content;
   margin-top: 0.15rem;
+}
+.research-expand-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+.research-toggle {
+  gap: 0.45rem;
+  cursor: pointer;
+}
+.research-toggle svg {
+  width: 1rem;
+  height: 1rem;
+  transition: transform var(--transition);
+}
+.research-toggle[aria-expanded="true"] svg {
+  transform: rotate(180deg);
 }
 
 /* ═══════════════════════════════════════════════════════════════
