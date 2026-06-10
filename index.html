@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=11" />
+  <link rel="stylesheet" href="styles.css?v=12" />
 </head>
 <body>
   <!-- ═══════════════ NAVBAR ═══════════════ -->
@@ -146,122 +146,142 @@
       <h2 class="section-title">Skills</h2>
       <p class="section-sub">Tools and methods I use across AI products, Kaggle research, accessibility systems, and full-stack prototypes</p>
 
-      <div class="skills-catalog">
-        <div class="skill-group reveal">
-          <h3 class="skill-group-title">Featured</h3>
-          <div class="skill-badges">
-            <span class="skill-badge"><span class="skill-mark">Py</span>Python</span>
-            <span class="skill-badge"><span class="skill-mark">TS</span>TypeScript</span>
-            <span class="skill-badge"><span class="skill-mark">Re</span>React</span>
-            <span class="skill-badge"><span class="skill-mark">FA</span>FastAPI</span>
-            <span class="skill-badge"><span class="skill-mark">PT</span>PyTorch</span>
-            <span class="skill-badge"><span class="skill-mark">SK</span>scikit-learn</span>
-            <span class="skill-badge"><span class="skill-mark">Gi</span>Gemini</span>
-            <span class="skill-badge"><span class="skill-mark">BQ</span>BigQuery AI</span>
-            <span class="skill-badge"><span class="skill-mark">Kg</span>Kaggle</span>
-            <span class="skill-badge"><span class="skill-mark">GC</span>Google Cloud</span>
-            <span class="skill-badge"><span class="skill-mark">Sp</span>Supabase</span>
-            <span class="skill-badge"><span class="skill-mark">Tw</span>Tailwind CSS</span>
+      <div class="skills-dashboard reveal">
+        <div class="skills-dashboard-top">
+          <div class="skill-metric">
+            <span class="skill-metric-value">7</span>
+            <span class="skill-metric-label">focus areas</span>
+          </div>
+          <div class="skill-metric">
+            <span class="skill-metric-value">60+</span>
+            <span class="skill-metric-label">tools &amp; methods</span>
+          </div>
+          <div class="skill-metric">
+            <span class="skill-metric-value">AI</span>
+            <span class="skill-metric-label">research-centered stack</span>
           </div>
         </div>
 
-        <div class="skill-group reveal">
-          <h3 class="skill-group-title">Languages</h3>
-          <div class="skill-badges">
-            <span class="skill-badge"><span class="skill-mark">Py</span>Python</span>
-            <span class="skill-badge"><span class="skill-mark">TS</span>TypeScript</span>
-            <span class="skill-badge"><span class="skill-mark">JS</span>JavaScript</span>
-            <span class="skill-badge"><span class="skill-mark">C++</span>C++</span>
-            <span class="skill-badge"><span class="skill-mark">C#</span>C#</span>
-            <span class="skill-badge"><span class="skill-mark">SQL</span>SQL</span>
-            <span class="skill-badge"><span class="skill-mark">Ja</span>Java</span>
-            <span class="skill-badge"><span class="skill-mark">HT</span>HTML</span>
-            <span class="skill-badge"><span class="skill-mark">CS</span>CSS</span>
-            <span class="skill-badge"><span class="skill-mark">Sh</span>Bash</span>
-          </div>
+        <div class="skill-tabs" role="tablist" aria-label="Skill categories">
+          <button type="button" class="skill-tab active" id="skill-tab-featured" data-skill-tab="featured" role="tab" aria-selected="true" aria-controls="skill-panel-featured">Featured</button>
+          <button type="button" class="skill-tab" id="skill-tab-languages" data-skill-tab="languages" role="tab" aria-selected="false" aria-controls="skill-panel-languages">Languages</button>
+          <button type="button" class="skill-tab" id="skill-tab-ai" data-skill-tab="ai" role="tab" aria-selected="false" aria-controls="skill-panel-ai">ML &amp; AI</button>
+          <button type="button" class="skill-tab" id="skill-tab-research" data-skill-tab="research" role="tab" aria-selected="false" aria-controls="skill-panel-research">Research</button>
+          <button type="button" class="skill-tab" id="skill-tab-frontend" data-skill-tab="frontend" role="tab" aria-selected="false" aria-controls="skill-panel-frontend">Frontend</button>
+          <button type="button" class="skill-tab" id="skill-tab-backend" data-skill-tab="backend" role="tab" aria-selected="false" aria-controls="skill-panel-backend">Backend</button>
+          <button type="button" class="skill-tab" id="skill-tab-systems" data-skill-tab="systems" role="tab" aria-selected="false" aria-controls="skill-panel-systems">Systems</button>
         </div>
 
-        <div class="skill-group reveal">
-          <h3 class="skill-group-title">Machine Learning &amp; AI</h3>
-          <div class="skill-badges">
-            <span class="skill-badge"><span class="skill-mark">PT</span>PyTorch</span>
-            <span class="skill-badge"><span class="skill-mark">TF</span>TensorFlow</span>
-            <span class="skill-badge"><span class="skill-mark">SK</span>scikit-learn</span>
-            <span class="skill-badge"><span class="skill-mark">HF</span>Hugging Face</span>
-            <span class="skill-badge"><span class="skill-mark">LLM</span>LLM Fine-Tuning</span>
-            <span class="skill-badge"><span class="skill-mark">CoT</span>Chain-of-Thought</span>
-            <span class="skill-badge"><span class="skill-mark">RAG</span>RAG</span>
-            <span class="skill-badge"><span class="skill-mark">SD</span>Synthetic Data</span>
-            <span class="skill-badge"><span class="skill-mark">CV</span>Computer Vision</span>
-            <span class="skill-badge"><span class="skill-mark">NLP</span>NLP</span>
-            <span class="skill-badge"><span class="skill-mark">RL</span>Reinforcement Learning</span>
-            <span class="skill-badge"><span class="skill-mark">MM</span>Multimodal AI</span>
+        <div class="skills-panel-stack">
+          <div class="skill-panel active" id="skill-panel-featured" data-skill-panel="featured" role="tabpanel" aria-labelledby="skill-tab-featured">
+            <div class="skill-badges">
+              <span class="skill-badge"><span class="skill-mark">Py</span>Python</span>
+              <span class="skill-badge"><span class="skill-mark">TS</span>TypeScript</span>
+              <span class="skill-badge"><span class="skill-mark">Re</span>React</span>
+              <span class="skill-badge"><span class="skill-mark">FA</span>FastAPI</span>
+              <span class="skill-badge"><span class="skill-mark">PT</span>PyTorch</span>
+              <span class="skill-badge"><span class="skill-mark">SK</span>scikit-learn</span>
+              <span class="skill-badge"><span class="skill-mark">Gi</span>Gemini</span>
+              <span class="skill-badge"><span class="skill-mark">BQ</span>BigQuery AI</span>
+              <span class="skill-badge"><span class="skill-mark">Kg</span>Kaggle</span>
+              <span class="skill-badge"><span class="skill-mark">GC</span>Google Cloud</span>
+              <span class="skill-badge"><span class="skill-mark">Sp</span>Supabase</span>
+              <span class="skill-badge"><span class="skill-mark">Tw</span>Tailwind CSS</span>
+            </div>
           </div>
-        </div>
 
-        <div class="skill-group reveal">
-          <h3 class="skill-group-title">Data Science &amp; Research</h3>
-          <div class="skill-badges">
-            <span class="skill-badge"><span class="skill-mark">Np</span>NumPy</span>
-            <span class="skill-badge"><span class="skill-mark">Pd</span>Pandas</span>
-            <span class="skill-badge"><span class="skill-mark">XG</span>XGBoost</span>
-            <span class="skill-badge"><span class="skill-mark">FE</span>Feature Engineering</span>
-            <span class="skill-badge"><span class="skill-mark">TS</span>Time Series</span>
-            <span class="skill-badge"><span class="skill-mark">TB</span>Tabular ML</span>
-            <span class="skill-badge"><span class="skill-mark">EV</span>Model Evaluation</span>
-            <span class="skill-badge"><span class="skill-mark">AB</span>Ablation Studies</span>
-            <span class="skill-badge"><span class="skill-mark">EX</span>Experiment Design</span>
-            <span class="skill-badge"><span class="skill-mark">JR</span>Jupyter</span>
-            <span class="skill-badge"><span class="skill-mark">RW</span>Research Writing</span>
+          <div class="skill-panel" id="skill-panel-languages" data-skill-panel="languages" role="tabpanel" aria-labelledby="skill-tab-languages" hidden>
+            <div class="skill-badges">
+              <span class="skill-badge"><span class="skill-mark">Py</span>Python</span>
+              <span class="skill-badge"><span class="skill-mark">TS</span>TypeScript</span>
+              <span class="skill-badge"><span class="skill-mark">JS</span>JavaScript</span>
+              <span class="skill-badge"><span class="skill-mark">C++</span>C++</span>
+              <span class="skill-badge"><span class="skill-mark">C#</span>C#</span>
+              <span class="skill-badge"><span class="skill-mark">SQL</span>SQL</span>
+              <span class="skill-badge"><span class="skill-mark">Ja</span>Java</span>
+              <span class="skill-badge"><span class="skill-mark">HT</span>HTML</span>
+              <span class="skill-badge"><span class="skill-mark">CS</span>CSS</span>
+              <span class="skill-badge"><span class="skill-mark">Sh</span>Bash</span>
+            </div>
           </div>
-        </div>
 
-        <div class="skill-group reveal">
-          <h3 class="skill-group-title">Frontend</h3>
-          <div class="skill-badges">
-            <span class="skill-badge"><span class="skill-mark">Re</span>React</span>
-            <span class="skill-badge"><span class="skill-mark">Nx</span>Next.js</span>
-            <span class="skill-badge"><span class="skill-mark">TS</span>TypeScript</span>
-            <span class="skill-badge"><span class="skill-mark">Tw</span>Tailwind CSS</span>
-            <span class="skill-badge"><span class="skill-mark">HT</span>HTML</span>
-            <span class="skill-badge"><span class="skill-mark">CS</span>CSS</span>
-            <span class="skill-badge"><span class="skill-mark">3D</span>Three.js</span>
-            <span class="skill-badge"><span class="skill-mark">UX</span>Accessible UI</span>
-            <span class="skill-badge"><span class="skill-mark">EX</span>Browser Extensions</span>
+          <div class="skill-panel" id="skill-panel-ai" data-skill-panel="ai" role="tabpanel" aria-labelledby="skill-tab-ai" hidden>
+            <div class="skill-badges">
+              <span class="skill-badge"><span class="skill-mark">PT</span>PyTorch</span>
+              <span class="skill-badge"><span class="skill-mark">TF</span>TensorFlow</span>
+              <span class="skill-badge"><span class="skill-mark">SK</span>scikit-learn</span>
+              <span class="skill-badge"><span class="skill-mark">HF</span>Hugging Face</span>
+              <span class="skill-badge"><span class="skill-mark">LLM</span>LLM Fine-Tuning</span>
+              <span class="skill-badge"><span class="skill-mark">CoT</span>Chain-of-Thought</span>
+              <span class="skill-badge"><span class="skill-mark">RAG</span>RAG</span>
+              <span class="skill-badge"><span class="skill-mark">SD</span>Synthetic Data</span>
+              <span class="skill-badge"><span class="skill-mark">CV</span>Computer Vision</span>
+              <span class="skill-badge"><span class="skill-mark">NLP</span>NLP</span>
+              <span class="skill-badge"><span class="skill-mark">RL</span>Reinforcement Learning</span>
+              <span class="skill-badge"><span class="skill-mark">MM</span>Multimodal AI</span>
+            </div>
           </div>
-        </div>
 
-        <div class="skill-group reveal">
-          <h3 class="skill-group-title">Backend &amp; Cloud</h3>
-          <div class="skill-badges">
-            <span class="skill-badge"><span class="skill-mark">FA</span>FastAPI</span>
-            <span class="skill-badge"><span class="skill-mark">Nd</span>Node.js</span>
-            <span class="skill-badge"><span class="skill-mark">Ex</span>Express</span>
-            <span class="skill-badge"><span class="skill-mark">Pg</span>PostgreSQL</span>
-            <span class="skill-badge"><span class="skill-mark">Sp</span>Supabase</span>
-            <span class="skill-badge"><span class="skill-mark">Fb</span>Firebase</span>
-            <span class="skill-badge"><span class="skill-mark">GC</span>Google Cloud</span>
-            <span class="skill-badge"><span class="skill-mark">BQ</span>BigQuery</span>
-            <span class="skill-badge"><span class="skill-mark">API</span>REST APIs</span>
-            <span class="skill-badge"><span class="skill-mark">ADK</span>Google ADK</span>
-            <span class="skill-badge"><span class="skill-mark">GL</span>Gemini Live API</span>
+          <div class="skill-panel" id="skill-panel-research" data-skill-panel="research" role="tabpanel" aria-labelledby="skill-tab-research" hidden>
+            <div class="skill-badges">
+              <span class="skill-badge"><span class="skill-mark">Np</span>NumPy</span>
+              <span class="skill-badge"><span class="skill-mark">Pd</span>Pandas</span>
+              <span class="skill-badge"><span class="skill-mark">XG</span>XGBoost</span>
+              <span class="skill-badge"><span class="skill-mark">FE</span>Feature Engineering</span>
+              <span class="skill-badge"><span class="skill-mark">TS</span>Time Series</span>
+              <span class="skill-badge"><span class="skill-mark">TB</span>Tabular ML</span>
+              <span class="skill-badge"><span class="skill-mark">EV</span>Model Evaluation</span>
+              <span class="skill-badge"><span class="skill-mark">AB</span>Ablation Studies</span>
+              <span class="skill-badge"><span class="skill-mark">EX</span>Experiment Design</span>
+              <span class="skill-badge"><span class="skill-mark">JR</span>Jupyter</span>
+              <span class="skill-badge"><span class="skill-mark">RW</span>Research Writing</span>
+            </div>
           </div>
-        </div>
 
-        <div class="skill-group reveal">
-          <h3 class="skill-group-title">Systems, Tools &amp; Algorithms</h3>
-          <div class="skill-badges">
-            <span class="skill-badge"><span class="skill-mark">Git</span>Git</span>
-            <span class="skill-badge"><span class="skill-mark">GH</span>GitHub</span>
-            <span class="skill-badge"><span class="skill-mark">Ln</span>Linux</span>
-            <span class="skill-badge"><span class="skill-mark">CI</span>CI/CD</span>
-            <span class="skill-badge"><span class="skill-mark">DS</span>Data Structures</span>
-            <span class="skill-badge"><span class="skill-mark">AG</span>Algorithms</span>
-            <span class="skill-badge"><span class="skill-mark">CP</span>Competitive Programming</span>
-            <span class="skill-badge"><span class="skill-mark">BCI</span>Brain-Computer Interfaces</span>
-            <span class="skill-badge"><span class="skill-mark">EEG</span>EEG Signals</span>
-            <span class="skill-badge"><span class="skill-mark">AX</span>Accessibility Engineering</span>
-            <span class="skill-badge"><span class="skill-mark">AI</span>Agentic Workflows</span>
+          <div class="skill-panel" id="skill-panel-frontend" data-skill-panel="frontend" role="tabpanel" aria-labelledby="skill-tab-frontend" hidden>
+            <div class="skill-badges">
+              <span class="skill-badge"><span class="skill-mark">Re</span>React</span>
+              <span class="skill-badge"><span class="skill-mark">Nx</span>Next.js</span>
+              <span class="skill-badge"><span class="skill-mark">TS</span>TypeScript</span>
+              <span class="skill-badge"><span class="skill-mark">Tw</span>Tailwind CSS</span>
+              <span class="skill-badge"><span class="skill-mark">HT</span>HTML</span>
+              <span class="skill-badge"><span class="skill-mark">CS</span>CSS</span>
+              <span class="skill-badge"><span class="skill-mark">3D</span>Three.js</span>
+              <span class="skill-badge"><span class="skill-mark">UX</span>Accessible UI</span>
+              <span class="skill-badge"><span class="skill-mark">EX</span>Browser Extensions</span>
+            </div>
+          </div>
+
+          <div class="skill-panel" id="skill-panel-backend" data-skill-panel="backend" role="tabpanel" aria-labelledby="skill-tab-backend" hidden>
+            <div class="skill-badges">
+              <span class="skill-badge"><span class="skill-mark">FA</span>FastAPI</span>
+              <span class="skill-badge"><span class="skill-mark">Nd</span>Node.js</span>
+              <span class="skill-badge"><span class="skill-mark">Ex</span>Express</span>
+              <span class="skill-badge"><span class="skill-mark">Pg</span>PostgreSQL</span>
+              <span class="skill-badge"><span class="skill-mark">Sp</span>Supabase</span>
+              <span class="skill-badge"><span class="skill-mark">Fb</span>Firebase</span>
+              <span class="skill-badge"><span class="skill-mark">GC</span>Google Cloud</span>
+              <span class="skill-badge"><span class="skill-mark">BQ</span>BigQuery</span>
+              <span class="skill-badge"><span class="skill-mark">API</span>REST APIs</span>
+              <span class="skill-badge"><span class="skill-mark">ADK</span>Google ADK</span>
+              <span class="skill-badge"><span class="skill-mark">GL</span>Gemini Live API</span>
+            </div>
+          </div>
+
+          <div class="skill-panel" id="skill-panel-systems" data-skill-panel="systems" role="tabpanel" aria-labelledby="skill-tab-systems" hidden>
+            <div class="skill-badges">
+              <span class="skill-badge"><span class="skill-mark">Git</span>Git</span>
+              <span class="skill-badge"><span class="skill-mark">GH</span>GitHub</span>
+              <span class="skill-badge"><span class="skill-mark">Ln</span>Linux</span>
+              <span class="skill-badge"><span class="skill-mark">CI</span>CI/CD</span>
+              <span class="skill-badge"><span class="skill-mark">DS</span>Data Structures</span>
+              <span class="skill-badge"><span class="skill-mark">AG</span>Algorithms</span>
+              <span class="skill-badge"><span class="skill-mark">CP</span>Competitive Programming</span>
+              <span class="skill-badge"><span class="skill-mark">BCI</span>Brain-Computer Interfaces</span>
+              <span class="skill-badge"><span class="skill-mark">EEG</span>EEG Signals</span>
+              <span class="skill-badge"><span class="skill-mark">AX</span>Accessibility Engineering</span>
+              <span class="skill-badge"><span class="skill-mark">AI</span>Agentic Workflows</span>
+            </div>
           </div>
         </div>
       </div>

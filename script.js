@@ -477,6 +477,43 @@ dashboardCards.forEach(card => {
 });
 
 /* ═══════════════════════════════════════════════════
+   SKILLS DASHBOARD
+   ═══════════════════════════════════════════════════ */
+const skillTabs = Array.from(document.querySelectorAll('[data-skill-tab]'));
+const skillPanels = Array.from(document.querySelectorAll('[data-skill-panel]'));
+
+function activateSkillTab(tab) {
+  const target = tab.dataset.skillTab;
+  skillTabs.forEach(btn => {
+    const isActive = btn === tab;
+    btn.classList.toggle('active', isActive);
+    btn.setAttribute('aria-selected', String(isActive));
+    btn.tabIndex = isActive ? 0 : -1;
+  });
+  skillPanels.forEach(panel => {
+    const isActive = panel.dataset.skillPanel === target;
+    panel.classList.toggle('active', isActive);
+    panel.hidden = !isActive;
+  });
+}
+
+skillTabs.forEach((tab, index) => {
+  tab.tabIndex = tab.classList.contains('active') ? 0 : -1;
+  tab.addEventListener('click', () => activateSkillTab(tab));
+  tab.addEventListener('keydown', event => {
+    if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+    event.preventDefault();
+    let nextIndex = index;
+    if (event.key === 'ArrowRight') nextIndex = (index + 1) % skillTabs.length;
+    if (event.key === 'ArrowLeft') nextIndex = (index - 1 + skillTabs.length) % skillTabs.length;
+    if (event.key === 'Home') nextIndex = 0;
+    if (event.key === 'End') nextIndex = skillTabs.length - 1;
+    skillTabs[nextIndex].focus();
+    activateSkillTab(skillTabs[nextIndex]);
+  });
+});
+
+/* ═══════════════════════════════════════════════════
    SCROLL REVEAL
    ═══════════════════════════════════════════════════ */
 const revealEls = document.querySelectorAll('.reveal, .timeline-item, .achievement-card, .contact-card');
