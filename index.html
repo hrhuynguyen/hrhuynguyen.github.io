@@ -3,31 +3,63 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Huy T. Nguyen</title>
+  <title>Huy T. Nguyen — Player One</title>
   <meta name="description" content="Portfolio of Huy T. Nguyen — Software Engineer and Researcher based in Houston, TX." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=15" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=16" />
 </head>
 <body>
+  <canvas id="stars"></canvas>
+
+  <!-- ambient rockets -->
+  <div class="ambient-rocket ambient-rocket-1" aria-hidden="true">
+    <div class="rocket-tilt">
+      <div class="rocket">
+        <div class="rocket-hull"></div>
+        <div class="rocket-band"></div>
+        <div class="rocket-window"></div>
+        <div class="rocket-fin rocket-fin-l"></div>
+        <div class="rocket-fin rocket-fin-r"></div>
+        <div class="rocket-nozzle"></div>
+        <div class="rocket-flame"></div>
+      </div>
+    </div>
+  </div>
+  <div class="ambient-rocket ambient-rocket-2 rocket-purple" aria-hidden="true">
+    <div class="rocket-tilt">
+      <div class="rocket">
+        <div class="rocket-hull"></div>
+        <div class="rocket-band"></div>
+        <div class="rocket-window"></div>
+        <div class="rocket-fin rocket-fin-l"></div>
+        <div class="rocket-fin rocket-fin-r"></div>
+        <div class="rocket-nozzle"></div>
+        <div class="rocket-flame"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="xp-bar-track"><div class="xp-bar-fill" id="xp-bar"></div></div>
+
   <!-- ═══════════════ NAVBAR ═══════════════ -->
   <nav id="navbar">
     <div class="nav-inner">
-      <a href="#home" class="nav-logo">Huy T. Nguyen</a>
+      <a href="#home" class="nav-logo">
+        <span class="mascot-face mascot-face-sm"><span class="eye"></span><span class="eye"></span></span>
+        <span class="nav-logo-text">Huy T. Nguyen</span>
+      </a>
       <ul class="nav-links" id="nav-links">
-        <li><a href="#education">Education</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#achievements">Achievements</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#ml-research">ML Research</a></li>
-        <li><a href="#experience">Experience</a></li>
+        <li><a href="#quests">Quests</a></li>
+        <li><a href="#sidequests">Side quests</a></li>
+        <li><a href="#awards">Awards</a></li>
+        <li><a href="#skills">Skill tree</a></li>
+        <li><a href="#story">Story</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+      <span class="status-badge"><span class="status-dot"></span>ONLINE</span>
       <a href="Huy%20T%20Nguyen%20Resume%20(April%2021,%202026).docx.pdf" target="_blank" rel="noopener" class="nav-resume">View CV</a>
-      <a href="https://github.com/hrhuynguyen" target="_blank" rel="noopener" class="nav-github" aria-label="GitHub">
-        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-      </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
@@ -36,117 +68,683 @@
 
   <!-- ═══════════════ HERO ═══════════════ -->
   <section id="home" class="hero">
-    <canvas id="stars"></canvas>
     <div class="hero-inner">
       <div class="hero-text">
-        <p class="hero-greeting">Hello, I'm</p>
-        <div class="hero-name-row">
-          <h1 class="hero-name">Huy T. Nguyen</h1>
-          <img
-            src="https://camo.githubusercontent.com/62cf3b1249cb16e770ea25bb3e7a12925f50065e8aa4bd0b26e805b2a10b7689/68747470733a2f2f6d69726f2e6d656469756d2e636f6d2f6d61782f313336302f302a37513379765349765f7430696f4a2d5a2e676966"
-            alt="Animated coder"
-            class="coder-gif"
-            aria-hidden="true"
-          />
-        </div>
-        <p class="hero-role"><span class="typed"></span><span class="cursor-blink">|</span></p>
-        <p class="hero-bio">
-          Computer science master's student at <span class="pink">Rice University</span> building AI, data, and accessibility systems across hackathons, research projects, and open-source work.
-        </p>
-        <div class="hero-highlights" aria-label="Portfolio highlights">
-          <div class="hero-highlight">
-            <span class="hero-highlight-value">9+</span>
-            <span class="hero-highlight-label">Hackathon wins</span>
+        <span class="hero-tag">PLAYER ONE — HOUSTON, TX</span>
+        <h1 class="hero-name">Hi, I'm <span class="amber">Huy</span>.<br>I ship quests.</h1>
+        <p class="hero-role">&gt; <span class="typed"></span><span class="cursor-blink">▌</span></p>
+        <p class="hero-bio">Computer science master's student at <span class="amber">Rice University</span> building AI, data, and accessibility systems across hackathons, research projects, and open-source work.</p>
+
+        <div class="player-stats">
+          <div class="player-stats-head">
+            <span class="player-stats-label">SEASON XP — HACKATHON WINS</span>
+            <span class="player-stats-value">9+ / ∞</span>
           </div>
-          <div class="hero-highlight">
-            <span class="hero-highlight-value">Master</span>
-            <span class="hero-highlight-label">Kaggle tier</span>
-          </div>
-          <div class="hero-highlight">
-            <span class="hero-highlight-value">2332</span>
-            <span class="hero-highlight-label">LeetCode peak</span>
+          <div class="player-xp-track"><div class="player-xp-fill"></div></div>
+          <div class="player-stat-grid">
+            <div class="player-stat"><span class="player-stat-num">9+</span><span class="player-stat-tag">WINS</span></div>
+            <div class="player-stat"><span class="player-stat-num amber">Master</span><span class="player-stat-tag">KAGGLE</span></div>
+            <div class="player-stat"><span class="player-stat-num green">2332</span><span class="player-stat-tag">LEETCODE</span></div>
           </div>
         </div>
+
         <div class="hero-btns">
-          <a href="#projects" class="btn btn-pink">View Projects</a>
-          <a href="#skills" class="btn btn-outline">Explore Skills</a>
-          <a href="#contact" class="btn btn-outline">Get in Touch</a>
+          <a href="#quests" class="btn btn-amber">▶ Start quest</a>
+          <a href="#skills" class="btn btn-outline">Skill tree</a>
+          <a href="#contact" class="btn btn-green-outline">Party up</a>
+        </div>
+
+        <div class="hero-socials">
+          <a href="https://github.com/hrhuynguyen" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/huy-nguyen-a39815195/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="mailto:hn33@rice.edu" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+          <a href="https://www.kaggle.com/hrhuynguyen" target="_blank" rel="noopener" aria-label="Kaggle">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.155 0 .25.051.28.153.029.1-.011.196-.128.291l-5.895 5.671 6.244 7.797c.104.104.128.208.1.308z"/></svg>
+          </a>
+          <a href="https://codeforces.com/profile/hrhuynguyen" target="_blank" rel="noopener" aria-label="Codeforces">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.5 7.5C5.328 7.5 6 8.172 6 9v10.5c0 .828-.672 1.5-1.5 1.5h-3C.672 21 0 20.328 0 19.5V9c0-.828.672-1.5 1.5-1.5h3zm9-4.5c.828 0 1.5.672 1.5 1.5v15c0 .828-.672 1.5-1.5 1.5h-3c-.828 0-1.5-.672-1.5-1.5V4.5C9 3.672 9.672 3 10.5 3h3zm9 7.5c.828 0 1.5.672 1.5 1.5v9c0 .828-.672 1.5-1.5 1.5h-3c-.828 0-1.5-.672-1.5-1.5v-9c0-.828.672-1.5 1.5-1.5h3z"/></svg>
+          </a>
+          <a href="https://leetcode.com/u/hrhuynguyen/" target="_blank" rel="noopener" aria-label="LeetCode">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg>
+          </a>
+          <a href="https://devpost.com/thanhhuy062?ref_content=user-portfolio&amp;ref_feature=portfolio&amp;ref_medium=global-nav" target="_blank" rel="noopener" aria-label="Devpost">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.002 1.61L0 12.004 6.002 22.39h11.996L24 12.004 17.998 1.61zm1.593 4.084h4.811c3.173 0 5.405 2.222 5.405 6.31 0 4.089-2.232 6.31-5.405 6.31H7.595V5.694zm2.282 2.249v8.122h2.253c1.93 0 3.286-1.344 3.286-4.061 0-2.717-1.356-4.061-3.286-4.061z"/></svg>
+          </a>
+          <a href="tel:+18329338271" aria-label="Phone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.49 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.96-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </a>
         </div>
       </div>
 
-      <div class="hero-socials">
-        <a href="https://github.com/hrhuynguyen" target="_blank" rel="noopener" aria-label="GitHub">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-        </a>
-        <a href="https://www.linkedin.com/in/huy-nguyen-a39815195/" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        </a>
-        <a href="mailto:hn33@rice.edu" aria-label="Email">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        </a>
-        <a href="https://www.kaggle.com/hrhuynguyen" target="_blank" rel="noopener" aria-label="Kaggle">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.155 0 .25.051.28.153.029.1-.011.196-.128.291l-5.895 5.671 6.244 7.797c.104.104.128.208.1.308z"/></svg>
-        </a>
-        <a href="https://codeforces.com/profile/hrhuynguyen" target="_blank" rel="noopener" aria-label="Codeforces">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.5 7.5C5.328 7.5 6 8.172 6 9v10.5c0 .828-.672 1.5-1.5 1.5h-3C.672 21 0 20.328 0 19.5V9c0-.828.672-1.5 1.5-1.5h3zm9-4.5c.828 0 1.5.672 1.5 1.5v15c0 .828-.672 1.5-1.5 1.5h-3c-.828 0-1.5-.672-1.5-1.5V4.5C9 3.672 9.672 3 10.5 3h3zm9 7.5c.828 0 1.5.672 1.5 1.5v9c0 .828-.672 1.5-1.5 1.5h-3c-.828 0-1.5-.672-1.5-1.5v-9c0-.828.672-1.5 1.5-1.5h3z"/></svg>
-        </a>
-        <a href="https://leetcode.com/u/hrhuynguyen/" target="_blank" rel="noopener" aria-label="LeetCode">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg>
-        </a>
-        <a href="https://devpost.com/thanhhuy062?ref_content=user-portfolio&amp;ref_feature=portfolio&amp;ref_medium=global-nav" target="_blank" rel="noopener" aria-label="Devpost">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.002 1.61L0 12.004 6.002 22.39h11.996L24 12.004 17.998 1.61zm1.593 4.084h4.811c3.173 0 5.405 2.222 5.405 6.31 0 4.089-2.232 6.31-5.405 6.31H7.595V5.694zm2.282 2.249v8.122h2.253c1.93 0 3.286-1.344 3.286-4.061 0-2.717-1.356-4.061-3.286-4.061z"/></svg>
-        </a>
-        <a href="tel:+18329338271" aria-label="Phone">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.49 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.96-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        </a>
+      <!-- MASCOT: ORBIT -->
+      <div class="mascot-hero">
+        <div class="mascot-bubble" id="mascot-msg">Hi! I'm Orbit — Huy's copilot.</div>
+        <div class="mascot-figure">
+          <div class="mascot-rocket-buddy" aria-hidden="true">
+            <div class="rocket">
+              <div class="rocket-hull"></div>
+              <div class="rocket-band"></div>
+              <div class="rocket-window"></div>
+              <div class="rocket-fin rocket-fin-l"></div>
+              <div class="rocket-fin rocket-fin-r"></div>
+              <div class="rocket-nozzle"></div>
+              <div class="rocket-flame"></div>
+            </div>
+          </div>
+          <div class="mascot-antenna"></div>
+          <div class="mascot-antenna-tip"></div>
+          <div class="mascot-helmet">
+            <div class="mascot-visor">
+              <div class="mascot-visor-eyes"><span class="eye"></span><span class="eye"></span></div>
+              <div class="mascot-visor-mouth"></div>
+              <div class="mascot-visor-glow mascot-visor-glow-l"></div>
+              <div class="mascot-visor-glow mascot-visor-glow-r"></div>
+            </div>
+            <div class="mascot-helmet-shine"></div>
+          </div>
+          <div class="mascot-arm-wave"></div>
+          <div class="mascot-body"><div class="mascot-body-light"></div></div>
+          <div class="mascot-arm-left"></div>
+          <div class="mascot-leg mascot-leg-l"></div>
+          <div class="mascot-leg mascot-leg-r"></div>
+        </div>
+        <span class="mascot-caption">ORBIT — MISSION COPILOT</span>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════ EDUCATION ═══════════════ -->
-  <section id="education" class="section section-alt">
+  <!-- ═══════════════ QUESTS (PROJECTS) ═══════════════ -->
+  <section id="quests" class="section section-alt">
     <div class="container">
-      <h2 class="section-title">Education</h2>
-      <p class="section-sub">Academic background and coursework</p>
+      <div class="section-head reveal">
+        <span class="mascot-face mascot-face-md mascot-face-wobble"><span class="eye"></span><span class="eye"></span></span>
+        <h2 class="section-title">Quests</h2>
+        <span class="section-pill section-pill-green">7 CLEARED ★</span>
+      </div>
+      <p class="section-sub reveal">Things I've built — from hackathon experiments to research tools. Orbit says: start with the cleared ones.</p>
 
-      <div class="timeline">
+      <div class="quest-grid" id="quest-grid">
 
-        <div class="timeline-item reveal">
-          <div class="timeline-card">
-            <div class="timeline-header">
-              <div>
-                <h3 class="timeline-title">Master's in Computer Science</h3>
-                <p class="timeline-org">Rice University — Houston, Texas</p>
-              </div>
-              <span class="timeline-date">Graduation: May 2027</span>
+        <div class="quest-card reveal">
+          <div class="quest-media">
+            <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/004/203/923/datas/medium.png" alt="EduTag preview" class="quest-thumb" loading="lazy" />
+            <span class="quest-cleared">✓ CLEARED</span>
+            <span class="quest-code">QUEST 01</span>
+          </div>
+          <div class="quest-body">
+            <div class="tag-row"><span class="tag">Python</span><span class="tag">Gemini</span><span class="tag">Education</span></div>
+            <h3 class="quest-title">EduTag</h3>
+            <p class="quest-desc">We're working on a project that aligns standard codes with textbook content by looking at how they're defined.</p>
+            <div class="quest-links">
+              <a href="https://devpost.com/software/edutag" target="_blank" rel="noopener" class="quest-action">Devpost</a>
+              <a href="https://github.com/dothanhtam91/OpenStax---2026-Rice-Datathon-Mapping-Sta" target="_blank" rel="noopener" class="quest-action">GitHub</a>
+              <a href="https://www.kaggle.com/writeups/hrhuynguyen/openstax-2026-rice-datathon-mapping-standards-i" target="_blank" rel="noopener" class="quest-action">Writeup</a>
+              <a href="https://www.youtube.com/watch?v=qcr_z5XwHJ8" target="_blank" rel="noopener" class="quest-action">Video</a>
             </div>
-            <p class="timeline-desc">Specialization: Machine Learning &amp; Data Science</p>
           </div>
         </div>
 
-        <div class="timeline-item reveal">
-          <div class="timeline-card">
-            <div class="timeline-header">
-              <div>
-                <h3 class="timeline-title">Bachelor of Science in Computer Science</h3>
-                <p class="timeline-org">University of Houston — Houston, Texas</p>
-              </div>
-              <span class="timeline-date">Cumulative GPA: 3.74</span>
+        <div class="quest-card reveal">
+          <div class="quest-media">
+            <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/004/697/718/datas/medium.png" alt="CursorGPT preview" class="quest-thumb" loading="lazy" />
+            <span class="quest-cleared">✓ CLEARED</span>
+            <span class="quest-code">QUEST 02</span>
+          </div>
+          <div class="quest-body">
+            <div class="tag-row"><span class="tag">Gemini Live API</span><span class="tag">Google ADK</span><span class="tag">FastAPI</span></div>
+            <h3 class="quest-title">CursorGPT</h3>
+            <p class="quest-desc">Point-and-speak browser assistant where hand gestures provide the where, voice provides the what, and AI handles the rest. Winner at HackHCC: Code Runners.</p>
+            <div class="quest-links">
+              <a href="https://devpost.com/software/cursorgpt" target="_blank" rel="noopener" class="quest-action">Devpost</a>
+              <a href="https://github.com/hrhuynguyen/Desktop-Copilot" target="_blank" rel="noopener" class="quest-action">GitHub</a>
+              <a href="https://www.youtube.com/watch?v=D5i3lYiMdKU" target="_blank" rel="noopener" class="quest-action">Video</a>
             </div>
           </div>
+        </div>
+
+        <div class="quest-card reveal">
+          <div class="quest-media">
+            <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/004/596/335/datas/medium.png" alt="Be My Voice preview" class="quest-thumb" loading="lazy" />
+            <span class="quest-cleared">✓ CLEARED</span>
+            <span class="quest-code">QUEST 03</span>
+          </div>
+          <div class="quest-body">
+            <div class="tag-row"><span class="tag">ElevenLabs</span><span class="tag">FastAPI</span><span class="tag">Accessibility</span></div>
+            <h3 class="quest-title">Be My Voice</h3>
+            <p class="quest-desc">Assistive communication system for stroke and ALS patients that repairs fragmented speech and turns live emotional signals into expressive audio using the patient's own cloned voice.</p>
+            <div class="quest-links">
+              <a href="https://devpost.com/software/be-my-voice-iovkah" target="_blank" rel="noopener" class="quest-action">Devpost</a>
+              <a href="https://github.com/hrhuynguyen/be-my-voices/" target="_blank" rel="noopener" class="quest-action">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="quest-card reveal">
+          <div class="quest-media">
+            <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/004/596/351/datas/medium.jpeg" alt="EleVox preview" class="quest-thumb" loading="lazy" />
+            <span class="quest-cleared">✓ CLEARED</span>
+            <span class="quest-code">QUEST 04</span>
+          </div>
+          <div class="quest-body">
+            <div class="tag-row"><span class="tag">Python</span><span class="tag">React</span><span class="tag">Bioacoustics</span></div>
+            <h3 class="quest-title">EleVox</h3>
+            <p class="quest-desc">Brings elephant communication back to life from noisy recordings, recovering signals tied to behavior, stress, and movement that would otherwise stay hidden.</p>
+            <div class="quest-links">
+              <a href="https://devpost.com/software/voice-izec50" target="_blank" rel="noopener" class="quest-action">Devpost</a>
+              <a href="https://github.com/dothanhtam91/EleVox" target="_blank" rel="noopener" class="quest-action">GitHub</a>
+              <a href="https://www.youtube.com/watch?v=39pZ5VqTMNQ" target="_blank" rel="noopener" class="quest-action">Video</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="quest-card reveal">
+          <div class="quest-media">
+            <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/004/529/116/datas/medium.png" alt="DataForce preview" class="quest-thumb" loading="lazy" />
+            <span class="quest-cleared">✓ CLEARED</span>
+            <span class="quest-code">QUEST 05</span>
+          </div>
+          <div class="quest-body">
+            <div class="tag-row"><span class="tag">Claude Code</span><span class="tag">FastAPI</span><span class="tag">Predictive ML</span></div>
+            <h3 class="quest-title">DataForce</h3>
+            <p class="quest-desc">Turns messy enterprise data into a live insight layer and a deployed predictive model, making analytics and forecasting accessible without a dedicated data science team.</p>
+            <div class="quest-links">
+              <a href="https://devpost.com/software/dataforce" target="_blank" rel="noopener" class="quest-action">Devpost</a>
+              <a href="https://github.com/hrhuynguyen/DataForce-Claude-Hack-2026" target="_blank" rel="noopener" class="quest-action">GitHub</a>
+              <a href="https://www.youtube.com/watch?v=6cLs_UCjpfM" target="_blank" rel="noopener" class="quest-action">Video</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="quest-card reveal">
+          <div class="quest-media">
+            <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/004/596/372/datas/medium.jpeg" alt="ThreeByte preview" class="quest-thumb" loading="lazy" />
+            <span class="quest-cleared">✓ CLEARED</span>
+            <span class="quest-code">QUEST 06</span>
+          </div>
+          <div class="quest-body">
+            <div class="tag-row"><span class="tag">Next.js</span><span class="tag">Supabase</span><span class="tag">Nonprofit</span></div>
+            <h3 class="quest-title">ThreeByte</h3>
+            <p class="quest-desc">Open-source case management platform for nonprofits, track clients, cases and finances in one place, and keep it affordable for organizations with limited budgets.</p>
+            <div class="quest-links">
+              <a href="https://devpost.com/software/threebyte" target="_blank" rel="noopener" class="quest-action">Devpost</a>
+              <a href="https://github.com/2026-ASU-WiCS-Opportunity-Hack/27-three-byte?tab=readme-ov-file" target="_blank" rel="noopener" class="quest-action">GitHub</a>
+              <a href="https://opportunity-hack-26.vercel.app/" target="_blank" rel="noopener" class="quest-action">Live Site</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="quest-card quest-extra">
+          <div class="quest-media">
+            <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/004/596/346/datas/medium.jpeg" alt="WALL-E preview" class="quest-thumb" loading="lazy" />
+            <span class="quest-cleared">✓ CLEARED</span>
+            <span class="quest-code">QUEST 07</span>
+          </div>
+          <div class="quest-body">
+            <div class="tag-row"><span class="tag">BCI</span><span class="tag">Robotics</span><span class="tag">Accessibility</span></div>
+            <h3 class="quest-title">WALL-E</h3>
+            <p class="quest-desc">No mouse. No keyboard. No hands. Use your brain signal and your eyes to control a 3D printed robotic arm in real time. We turned thought into fabrication.</p>
+            <div class="quest-links">
+              <a href="https://devpost.com/software/wall-e-w8lp7k" target="_blank" rel="noopener" class="quest-action">Devpost</a>
+              <a href="https://github.com/GitCat8383/robot-utility-test" target="_blank" rel="noopener" class="quest-action">GitHub</a>
+              <a href="https://www.youtube.com/watch?v=nJj4RPRUzgw" target="_blank" rel="noopener" class="quest-action">Video</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="quest-card quest-extra">
+          <div class="quest-media">
+            <div class="quest-placeholder"><span>BIGQUERY AI</span></div>
+            <span class="quest-code">QUEST 08</span>
+          </div>
+          <div class="quest-body">
+            <div class="tag-row"><span class="tag">GCP</span><span class="tag">BigQuery AI</span><span class="tag">Analytics</span></div>
+            <h3 class="quest-title">Returns &amp; Refunds Intelligence</h3>
+            <p class="quest-desc">Google Cloud hackathon project using BigQuery AI to analyze returns and refunds data, surface operational patterns, and turn business questions into faster insights.</p>
+            <div class="quest-links">
+              <a href="Huy%20T%20Nguyen%20Resume%20(April%2021,%202026).docx.pdf" target="_blank" rel="noopener" class="quest-action">CV</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="quest-card quest-extra">
+          <div class="quest-media">
+            <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/004/357/015/datas/medium.jpg" alt="LyoText preview" class="quest-thumb" loading="lazy" />
+            <span class="quest-code">QUEST 09</span>
+          </div>
+          <div class="quest-body">
+            <div class="tag-row"><span class="tag">EEG</span><span class="tag">Gemini</span><span class="tag">FastAPI</span></div>
+            <h3 class="quest-title">LyoText</h3>
+            <p class="quest-desc">When speech and movement fail, thought remains. LyoText transforms brain signals into meaningful communication using EEG and AI.</p>
+            <div class="quest-links">
+              <a href="https://devpost.com/software/lyotext" target="_blank" rel="noopener" class="quest-action">Devpost</a>
+              <a href="https://github.com/dothanhtam91/LyoText_Final" target="_blank" rel="noopener" class="quest-action">GitHub</a>
+              <a href="https://www.youtube.com/watch?v=b__nb7q0kXw" target="_blank" rel="noopener" class="quest-action">Video</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="quest-card quest-extra">
+          <div class="quest-media">
+            <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/004/269/125/datas/medium.png" alt="BureauBuddy preview" class="quest-thumb" loading="lazy" />
+            <span class="quest-code">QUEST 10</span>
+          </div>
+          <div class="quest-body">
+            <div class="tag-row"><span class="tag">React</span><span class="tag">Python</span><span class="tag">Gemini</span></div>
+            <h3 class="quest-title">BureauBuddy</h3>
+            <p class="quest-desc">An AI tool built to make complex government documents more accessible and understandable to the general population.</p>
+            <div class="quest-links">
+              <a href="https://devpost.com/software/bureaubuddy" target="_blank" rel="noopener" class="quest-action">Devpost</a>
+              <a href="https://github.com/SawyerAlston/BureauBuddy" target="_blank" rel="noopener" class="quest-action">GitHub</a>
+              <a href="https://www.youtube.com/watch?v=m7wurQIRNdI" target="_blank" rel="noopener" class="quest-action">Video</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="quest-card quest-extra">
+          <div class="quest-media">
+            <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/965/577/datas/medium.png" alt="TaskForce preview" class="quest-thumb" loading="lazy" />
+            <span class="quest-code">QUEST 11</span>
+          </div>
+          <div class="quest-body">
+            <div class="tag-row"><span class="tag">Claude</span><span class="tag">Firebase</span><span class="tag">Extension</span></div>
+            <h3 class="quest-title">TaskForce</h3>
+            <p class="quest-desc">A Claude-powered browser extension and administration dashboard that helps team managers keep members focused and accountable.</p>
+            <div class="quest-links">
+              <a href="https://devpost.com/software/tforce" target="_blank" rel="noopener" class="quest-action">Devpost</a>
+              <a href="https://github.com/ChazBTD/contentchecking" target="_blank" rel="noopener" class="quest-action">GitHub</a>
+              <a href="https://www.youtube.com/watch?v=RVci-m1VLBY" target="_blank" rel="noopener" class="quest-action">Video</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="quest-card quest-extra">
+          <div class="quest-media">
+            <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/003/837/893/datas/medium.png" alt="Aidify preview" class="quest-thumb" loading="lazy" />
+            <span class="quest-code">QUEST 12</span>
+          </div>
+          <div class="quest-body">
+            <div class="tag-row"><span class="tag">Wix</span><span class="tag">Accessibility</span><span class="tag">Social Impact</span></div>
+            <h3 class="quest-title">Aidify</h3>
+            <p class="quest-desc">We're Aidify: aid people with technology. We don't just build platforms, we build possibilities.</p>
+            <div class="quest-links">
+              <a href="https://devpost.com/software/aidify" target="_blank" rel="noopener" class="quest-action">Devpost</a>
+              <a href="https://github.com/2025-Arizona-Opportunity-Hack/Aidify-NMTSAWebsite.git" target="_blank" rel="noopener" class="quest-action">GitHub</a>
+              <a href="https://thanhhuy062.wixsite.com/mysite-2" target="_blank" rel="noopener" class="quest-action">Live Site</a>
+              <a href="https://www.youtube.com/watch?v=d--tCbRyV_c" target="_blank" rel="noopener" class="quest-action">Video</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="quest-card quest-extra">
+          <div class="quest-media">
+            <div class="quest-placeholder"><span>AKIRA</span></div>
+            <span class="quest-code">QUEST 13</span>
+          </div>
+          <div class="quest-body">
+            <div class="tag-row"><span class="tag">TypeScript</span><span class="tag">JavaScript</span><span class="tag">Accessibility</span></div>
+            <h3 class="quest-title">Akira</h3>
+            <p class="quest-desc">Browser extension and web app that makes online classrooms more accessible, providing real-time accommodations and support tools for students with disabilities.</p>
+            <div class="quest-links">
+              <a href="https://github.com/hrhuynguyen/akira" target="_blank" rel="noopener" class="quest-action">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="quest-card quest-extra">
+          <div class="quest-media">
+            <div class="quest-placeholder"><span>CHRONOVR</span></div>
+            <span class="quest-code">QUEST 14</span>
+          </div>
+          <div class="quest-body">
+            <div class="tag-row"><span class="tag">TypeScript</span><span class="tag">Generative AI</span><span class="tag">Education</span></div>
+            <h3 class="quest-title">ChronoVR</h3>
+            <p class="quest-desc">An educational tool that uses generative AI to reconstruct historical sites from archaeological data, letting students walk through them and talk with NPCs about daily life.</p>
+            <div class="quest-links">
+              <a href="https://github.com/hrhuynguyen/ChronoVR" target="_blank" rel="noopener" class="quest-action">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="quest-card quest-extra">
+          <div class="quest-media">
+            <div class="quest-placeholder"><span>SOLAR FLARE</span></div>
+            <span class="quest-code">QUEST 15</span>
+          </div>
+          <div class="quest-body">
+            <div class="tag-row"><span class="tag">Python</span><span class="tag">Data Science</span><span class="tag">ML</span></div>
+            <h3 class="quest-title">Solar Flare Prediction</h3>
+            <p class="quest-desc">Data science research applying machine learning models to predict solar flare events from NASA datasets, with feature engineering and classification experiments on astrophysics data.</p>
+            <div class="quest-links">
+              <a href="https://github.com/hrhuynguyen/COSC3337---Solar-Flare" target="_blank" rel="noopener" class="quest-action">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="toggle-btn">
+        <button type="button" class="toggle-amber" data-quest-toggle aria-expanded="false" aria-controls="quest-grid">
+          <span data-quest-toggle-label>▼ Reveal 9 more quests</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SIDE QUESTS (RESEARCH) ═══════════════ -->
+  <section id="sidequests" class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="mascot-face mascot-face-md"><span class="eye"></span><span class="eye"></span></span>
+        <h2 class="section-title">Side quests</h2>
+        <span class="section-pill section-pill-purple">KAGGLE RESEARCH</span>
+      </div>
+      <p class="section-sub reveal">Kaggle competition research — active runs first, then completed challenges.</p>
+
+      <div class="sidequest-list" id="sidequest-list">
+
+        <div class="sidequest-row reveal">
+          <span class="sidequest-date">JUN 2026</span>
+          <span class="sidequest-status sidequest-status-live">LIVE</span>
+          <div class="sidequest-info">
+            <div class="sidequest-title">NVIDIA Nemotron Model Reasoning Challenge</div>
+            <div class="sidequest-desc">Advancing reasoning methods with open NVIDIA Nemotron models on a novel benchmark for general knowledge and deep learning evaluation.</div>
+          </div>
+          <div class="sidequest-tags"><span class="sidequest-tag">Reasoning</span><span class="sidequest-tag">Open Models</span><span class="sidequest-tag">Deep Learning</span></div>
+          <a href="https://www.kaggle.com/competitions/nvidia-nemotron-model-reasoning-challenge" target="_blank" rel="noopener" class="sidequest-link">Kaggle →</a>
+        </div>
+
+        <div class="sidequest-row reveal">
+          <span class="sidequest-date">JUL 2026</span>
+          <span class="sidequest-status sidequest-status-live">LIVE</span>
+          <div class="sidequest-info">
+            <div class="sidequest-title">The 2026 NeuroGolf Championship</div>
+            <div class="sidequest-desc">Designing compact neural networks for ARC-AGI style image transformations, with emphasis on optimization and efficient model behavior.</div>
+          </div>
+          <div class="sidequest-tags"><span class="sidequest-tag">Neural Networks</span><span class="sidequest-tag">Optimization</span><span class="sidequest-tag">ARC-AGI</span></div>
+          <a href="https://www.kaggle.com/competitions/neurogolf-2026" target="_blank" rel="noopener" class="sidequest-link">Kaggle →</a>
+        </div>
+
+        <div class="sidequest-row reveal">
+          <span class="sidequest-date">NOV 2026</span>
+          <span class="sidequest-status sidequest-status-live">LIVE</span>
+          <div class="sidequest-info">
+            <div class="sidequest-title">ARC Prize 2026 - ARC-AGI-2</div>
+            <div class="sidequest-desc">Building approaches for novel reasoning tasks where models must infer patterns from small examples rather than memorized data.</div>
+          </div>
+          <div class="sidequest-tags"><span class="sidequest-tag">Artificial Intelligence</span><span class="sidequest-tag">Reasoning</span><span class="sidequest-tag">Generalization</span></div>
+          <a href="https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2" target="_blank" rel="noopener" class="sidequest-link">Kaggle →</a>
+        </div>
+
+        <div class="sidequest-row reveal">
+          <span class="sidequest-date">OCT 2022</span>
+          <span class="sidequest-status sidequest-status-done">DONE ✓</span>
+          <div class="sidequest-info">
+            <div class="sidequest-title">JPX Tokyo Stock Exchange Prediction</div>
+            <div class="sidequest-desc">Explored market prediction workflows for Japanese equities using tabular financial data and time-aware feature engineering.</div>
+          </div>
+          <div class="sidequest-tags"><span class="sidequest-tag">Finance</span><span class="sidequest-tag">Tabular ML</span><span class="sidequest-tag">Forecasting</span></div>
+          <a href="https://www.kaggle.com/competitions/jpx-tokyo-stock-exchange-prediction" target="_blank" rel="noopener" class="sidequest-link">Kaggle →</a>
+        </div>
+
+        <div class="sidequest-row reveal">
+          <span class="sidequest-date">DEC 2022</span>
+          <span class="sidequest-status sidequest-status-done">DONE ✓</span>
+          <div class="sidequest-info">
+            <div class="sidequest-title">DFL - Bundesliga Data Shootout</div>
+            <div class="sidequest-desc">Worked with video-based sports data to identify plays from match footage and connect temporal signals with structured outcomes.</div>
+          </div>
+          <div class="sidequest-tags"><span class="sidequest-tag">Video ML</span><span class="sidequest-tag">Sports Analytics</span><span class="sidequest-tag">Computer Vision</span></div>
+          <a href="https://www.kaggle.com/competitions/dfl-bundesliga-data-shootout" target="_blank" rel="noopener" class="sidequest-link">Kaggle →</a>
+        </div>
+
+        <div class="sidequest-row reveal">
+          <span class="sidequest-date">JUL 2023</span>
+          <span class="sidequest-status sidequest-status-done">DONE ✓</span>
+          <div class="sidequest-info">
+            <div class="sidequest-title">2023 Kaggle AI Report</div>
+            <div class="sidequest-desc">Contributed research writing on the state of machine learning and deep learning systems across the 2023 AI landscape.</div>
+          </div>
+          <div class="sidequest-tags"><span class="sidequest-tag">AI Research</span><span class="sidequest-tag">Deep Learning</span><span class="sidequest-tag">Writing</span></div>
+          <a href="https://www.kaggle.com/competitions/2023-kaggle-ai-report" target="_blank" rel="noopener" class="sidequest-link">Kaggle →</a>
+        </div>
+
+        <div class="sidequest-row sidequest-extra">
+          <span class="sidequest-date">MAR 2024</span>
+          <span class="sidequest-status sidequest-status-done">DONE ✓</span>
+          <div class="sidequest-info">
+            <div class="sidequest-title">Optiver - Trading at the Close</div>
+            <div class="sidequest-desc">Modeled short-horizon stock movements from high-volume tabular market data using feature engineering and validation design.</div>
+          </div>
+          <div class="sidequest-tags"><span class="sidequest-tag">Market ML</span><span class="sidequest-tag">Tabular Data</span><span class="sidequest-tag">Prediction</span></div>
+          <a href="https://www.kaggle.com/competitions/optiver-trading-at-the-close" target="_blank" rel="noopener" class="sidequest-link">Kaggle →</a>
+        </div>
+
+        <div class="sidequest-row sidequest-extra">
+          <span class="sidequest-date">APR 2024</span>
+          <span class="sidequest-status sidequest-status-done">DONE ✓</span>
+          <div class="sidequest-info">
+            <div class="sidequest-title">PII Data Detection</div>
+            <div class="sidequest-desc">Developed NLP approaches for detecting and removing personally identifiable information from educational text data.</div>
+          </div>
+          <div class="sidequest-tags"><span class="sidequest-tag">NLP</span><span class="sidequest-tag">Education</span><span class="sidequest-tag">Text Classification</span></div>
+          <a href="https://www.kaggle.com/competitions/pii-detection-removal-from-educational-data" target="_blank" rel="noopener" class="sidequest-link">Kaggle →</a>
+        </div>
+
+        <div class="sidequest-row sidequest-extra">
+          <span class="sidequest-date">APR 2024</span>
+          <span class="sidequest-status sidequest-status-done">DONE ✓</span>
+          <div class="sidequest-info">
+            <div class="sidequest-title">LLM Prompt Recovery</div>
+            <div class="sidequest-desc">Investigated prompt reconstruction for transformed text, combining language modeling intuition with NLP evaluation constraints.</div>
+          </div>
+          <div class="sidequest-tags"><span class="sidequest-tag">LLMs</span><span class="sidequest-tag">Prompting</span><span class="sidequest-tag">NLP</span></div>
+          <a href="https://www.kaggle.com/competitions/llm-prompt-recovery" target="_blank" rel="noopener" class="sidequest-link">Kaggle →</a>
+        </div>
+
+        <div class="sidequest-row sidequest-extra">
+          <span class="sidequest-date">JUN 2024</span>
+          <span class="sidequest-status sidequest-status-done">DONE ✓</span>
+          <div class="sidequest-info">
+            <div class="sidequest-title">AI Mathematical Olympiad</div>
+            <div class="sidequest-desc">Researched LLM-based mathematical reasoning with synthetic data generation, chain-of-thought prompting, and fine-tuning workflows.</div>
+          </div>
+          <div class="sidequest-tags"><span class="sidequest-tag">Math Reasoning</span><span class="sidequest-tag">Fine-Tuning</span><span class="sidequest-tag">CoT</span></div>
+          <a href="https://www.kaggle.com/competitions/ai-mathematical-olympiad-prize" target="_blank" rel="noopener" class="sidequest-link">Kaggle →</a>
+        </div>
+
+        <div class="sidequest-row sidequest-extra">
+          <span class="sidequest-date">NOV 2024</span>
+          <span class="sidequest-status sidequest-status-done">DONE ✓</span>
+          <div class="sidequest-info">
+            <div class="sidequest-title">ARC Prize 2024</div>
+            <div class="sidequest-desc">Explored abstraction and reasoning tasks that test generalization from small examples rather than standard large-data training.</div>
+          </div>
+          <div class="sidequest-tags"><span class="sidequest-tag">ARC</span><span class="sidequest-tag">Reasoning</span><span class="sidequest-tag">AI Systems</span></div>
+          <a href="https://www.kaggle.com/competitions/arc-prize-2024" target="_blank" rel="noopener" class="sidequest-link">Kaggle →</a>
+        </div>
+
+        <div class="sidequest-row sidequest-extra">
+          <span class="sidequest-date">JAN 2025</span>
+          <span class="sidequest-status sidequest-status-done">DONE ✓</span>
+          <div class="sidequest-info">
+            <div class="sidequest-title">Google - Unlock Global Communication with Gemma</div>
+            <div class="sidequest-desc">Built and tuned Gemma model variants around language and culture-specific communication tasks.</div>
+          </div>
+          <div class="sidequest-tags"><span class="sidequest-tag">Gemma</span><span class="sidequest-tag">Language</span><span class="sidequest-tag">Text Generation</span></div>
+          <a href="https://www.kaggle.com/competitions/gemma-language-tuning" target="_blank" rel="noopener" class="sidequest-link">Kaggle →</a>
+        </div>
+
+        <div class="sidequest-row sidequest-extra">
+          <span class="sidequest-date">MAR 2025</span>
+          <span class="sidequest-status sidequest-status-done">DONE ✓</span>
+          <div class="sidequest-info">
+            <div class="sidequest-title">FIDE &amp; Google Efficient Chess AI Challenge</div>
+            <div class="sidequest-desc">Developed resource-aware chess agents, balancing strategy quality with strict efficiency constraints.</div>
+          </div>
+          <div class="sidequest-tags"><span class="sidequest-tag">Chess AI</span><span class="sidequest-tag">Agents</span><span class="sidequest-tag">Efficiency</span></div>
+          <a href="https://www.kaggle.com/competitions/fide-google-efficiency-chess-ai-challenge" target="_blank" rel="noopener" class="sidequest-link">Kaggle →</a>
+        </div>
+
+        <div class="sidequest-row sidequest-extra">
+          <span class="sidequest-date">SEP 2025</span>
+          <span class="sidequest-status sidequest-status-done">DONE ✓</span>
+          <div class="sidequest-info">
+            <div class="sidequest-title">BigQuery AI - Building the Future of Data</div>
+            <div class="sidequest-desc">Built AI solutions with BigQuery across multimodal, tabular, and text data for applied cloud analytics workflows.</div>
+          </div>
+          <div class="sidequest-tags"><span class="sidequest-tag">BigQuery AI</span><span class="sidequest-tag">Multimodal</span><span class="sidequest-tag">Cloud Data</span></div>
+          <a href="https://www.kaggle.com/competitions/bigquery-ai-hackathon" target="_blank" rel="noopener" class="sidequest-link">Kaggle →</a>
+        </div>
+
+      </div>
+
+      <div class="toggle-btn">
+        <button type="button" class="toggle-green" data-sidequest-toggle aria-expanded="false" aria-controls="sidequest-list">
+          <span data-sidequest-toggle-label>▼ Show 8 more side quests</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ AWARDS (ACHIEVEMENTS UNLOCKED) ═══════════════ -->
+  <section id="awards" class="section section-alt">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="mascot-face mascot-face-md mascot-face-wobble"><span class="eye"></span><span class="eye"></span></span>
+        <h2 class="section-title">Achievements unlocked</h2>
+      </div>
+      <p class="section-sub reveal">Milestones, awards, and recognitions collected along the way.</p>
+
+      <div class="award-grid">
+
+        <div class="award-card reveal" data-profile-source="devpost" data-profile-url="https://devpost.com/thanhhuy062?ref_content=user-portfolio&amp;ref_feature=portfolio&amp;ref_medium=global-nav">
+          <div class="award-head">
+            <span class="award-badge award-badge-winner">★</span>
+            <div class="award-heading"><h3 class="award-title">9+ Hackathon Wins</h3><span class="award-year">2023–NOW — UNLOCKED</span></div>
+          </div>
+          <p class="award-desc">Nine or more hackathon wins across national and international competitions — spanning AI, accessibility, cloud computing, and data science domains.</p>
+          <div class="award-stats">
+            <div class="award-stat"><span class="award-stat-label">PROJECTS</span><span class="award-stat-value" data-stat="projects">7</span></div>
+            <div class="award-stat"><span class="award-stat-label">HACKATHONS</span><span class="award-stat-value" data-stat="hackathons">12</span></div>
+            <div class="award-stat"><span class="award-stat-label">ACHIEVEMENTS</span><span class="award-stat-value" data-stat="achievements">8</span></div>
+            <div class="award-stat"><span class="award-stat-label">FOLLOWERS</span><span class="award-stat-value" data-stat="followers">7</span></div>
+          </div>
+          <a href="https://devpost.com/thanhhuy062?ref_content=user-portfolio&amp;ref_feature=portfolio&amp;ref_medium=global-nav" target="_blank" rel="noopener" class="award-link">Devpost profile →</a>
+          <p class="award-note">Profile-linked counts refresh when the public page allows it; otherwise these pinned values stay visible.</p>
+        </div>
+
+        <div class="award-card reveal">
+          <div class="award-head">
+            <span class="award-badge award-badge-winner">★</span>
+            <div class="award-heading"><h3 class="award-title">Google DeepMind × Kaggle</h3><span class="award-year">2025 — UNLOCKED</span></div>
+          </div>
+          <p class="award-desc">Won the Vibe Code with Gemini 2.0 Flash competition hosted by Google DeepMind in AI Studio on Kaggle — building a creative AI-powered application with Gemini's multimodal capabilities.</p>
+          <a href="https://www.kaggle.com/competitions/gemini-3/writeups/history-alive-experiencing-time-through-virtua" target="_blank" rel="noopener" class="award-link">Winning writeup →</a>
+        </div>
+
+        <div class="award-card reveal">
+          <div class="award-head">
+            <span class="award-badge award-badge-winner">★</span>
+            <div class="award-heading"><h3 class="award-title">Fifth Place — Google Cloud Next 2024</h3><span class="award-year">2024 — UNLOCKED</span></div>
+          </div>
+          <p class="award-desc">Placed Fifth at the 2024 Google Cloud Next hackathon — building a cloud-native solution leveraging GCP's AI and infrastructure services among hundreds of global teams.</p>
+        </div>
+
+        <div class="award-card reveal" data-profile-source="kaggle" data-profile-url="https://www.kaggle.com/hrhuynguyen">
+          <div class="award-head">
+            <span class="award-badge award-badge-diamond">◆</span>
+            <div class="award-heading"><h3 class="award-title">Kaggle Master</h3><span class="award-year">ONGOING — UNLOCKED</span></div>
+          </div>
+          <p class="award-desc">Reached Kaggle Master tier — top 1% globally across 12M+ users. Competed in ML/data science challenges spanning NLP, computer vision, and tabular data.</p>
+          <div class="award-stats">
+            <div class="award-stat"><span class="award-stat-label">TIER</span><span class="award-stat-value" data-stat="tier">Master</span></div>
+            <div class="award-stat"><span class="award-stat-label">STANDING</span><span class="award-stat-value" data-stat="standing">Top 1%</span></div>
+            <div class="award-stat"><span class="award-stat-label">FOCUS</span><span class="award-stat-value" data-stat="focus">ML Competitions</span></div>
+            <div class="award-stat"><span class="award-stat-label">PROFILE</span><span class="award-stat-value" data-stat="username">@hrhuynguyen</span></div>
+          </div>
+          <a href="https://www.kaggle.com/hrhuynguyen" target="_blank" rel="noopener" class="award-link">Kaggle profile →</a>
+          <p class="award-note">Kaggle doesn't expose a simple public stats endpoint, so this card links to the live profile and keeps pinned highlights visible here.</p>
+        </div>
+
+        <div class="award-card reveal" data-profile-source="leetcode" data-username="hrhuynguyen" data-profile-url="https://leetcode.com/u/hrhuynguyen/">
+          <div class="award-head">
+            <span class="award-badge award-badge-diamond">◆</span>
+            <div class="award-heading"><h3 class="award-title">LeetCode Guardian</h3><span class="award-year">ONGOING — UNLOCKED</span></div>
+          </div>
+          <p class="award-desc">Achieved Guardian rank — contest peak rating 2332, top 0.46% globally. Consistent high performance in weekly and biweekly coding contests.</p>
+          <div class="award-stats">
+            <div class="award-stat"><span class="award-stat-label">CONTEST RATING</span><span class="award-stat-value" data-stat="rating">2332</span></div>
+            <div class="award-stat"><span class="award-stat-label">GLOBAL RANK</span><span class="award-stat-value" data-stat="globalRank">3,661</span></div>
+            <div class="award-stat"><span class="award-stat-label">TOP %</span><span class="award-stat-value" data-stat="topPercent">0.45%</span></div>
+            <div class="award-stat"><span class="award-stat-label">SOLVED</span><span class="award-stat-value" data-stat="solved">745</span></div>
+          </div>
+          <a href="https://leetcode.com/u/hrhuynguyen/" target="_blank" rel="noopener" class="award-link">LeetCode profile →</a>
+          <p class="award-note">This card refreshes from LeetCode's public profile query when the platform allows it.</p>
+        </div>
+
+        <div class="award-card reveal" data-profile-source="codeforces" data-handle="hrhuynguyen" data-profile-url="https://codeforces.com/profile/hrhuynguyen">
+          <div class="award-head">
+            <span class="award-badge award-badge-diamond">◆</span>
+            <div class="award-heading"><h3 class="award-title">Codeforces Candidate Master</h3><span class="award-year">ONGOING — UNLOCKED</span></div>
+          </div>
+          <p class="award-desc">Earned Candidate Master title on Codeforces with a peak rating of 1968 — placing in the top competitive programmers on the platform worldwide.</p>
+          <div class="award-stats">
+            <div class="award-stat"><span class="award-stat-label">RATING</span><span class="award-stat-value" data-stat="rating">1968</span></div>
+            <div class="award-stat"><span class="award-stat-label">RANK</span><span class="award-stat-value" data-stat="rank">Candidate Master</span></div>
+            <div class="award-stat"><span class="award-stat-label">MAX RATING</span><span class="award-stat-value" data-stat="maxRating">1968</span></div>
+            <div class="award-stat"><span class="award-stat-label">COUNTRY</span><span class="award-stat-value" data-stat="country">United States</span></div>
+          </div>
+          <a href="https://codeforces.com/profile/hrhuynguyen" target="_blank" rel="noopener" class="award-link">Codeforces profile →</a>
+          <p class="award-note">This card refreshes from the public Codeforces API when the platform allows it.</p>
+        </div>
+
+        <div class="award-card reveal">
+          <div class="award-head">
+            <span class="award-badge award-badge-diamond">◆</span>
+            <div class="award-heading"><h3 class="award-title">Meta Hacker Cup 2025</h3><span class="award-year">2025 — UNLOCKED</span></div>
+          </div>
+          <p class="award-desc">Ranked in the Top 200 globally in Round 3 of Meta Hacker Cup 2025 — one of the most prestigious algorithmic programming competitions in the world.</p>
+          <a href="https://www.facebook.com/codingcompetitions/hacker-cup/2025/certificate/1463971483964574" target="_blank" rel="noopener" class="award-link">Certificate →</a>
+        </div>
+
+        <div class="award-card reveal">
+          <div class="award-head">
+            <span class="award-badge award-badge-diamond">◆</span>
+            <div class="award-heading"><h3 class="award-title">First Place — Rice Datathon 2026</h3><span class="award-year">2026 — UNLOCKED</span></div>
+          </div>
+          <p class="award-desc">Won First Place in the Expert Track (sponsored by OpenStax) at the 2026 Rice University Datathon — applying advanced ML techniques to an open-ended research problem.</p>
+          <a href="https://devpost.com/software/edutag" target="_blank" rel="noopener" class="award-link">Winning project →</a>
+        </div>
+
+        <div class="award-card reveal">
+          <div class="award-head">
+            <span class="award-badge award-badge-diamond">◆</span>
+            <div class="award-heading"><h3 class="award-title">First Prize — Hook 'Em Hacks 2026</h3><span class="award-year">2026 — UNLOCKED</span></div>
+          </div>
+          <p class="award-desc">Won First Prize in the General Track at UT Austin's Hook 'Em Hacks 2026 with Be My Voice, an assistive AI communication system for stroke and ALS patients that restores clear, expressive speech.</p>
+          <a href="https://devpost.com/software/be-my-voice-iovkah" target="_blank" rel="noopener" class="award-link">Winning project →</a>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════ SKILLS ═══════════════ -->
+  <!-- ═══════════════ SKILL TREE ═══════════════ -->
   <section id="skills" class="section">
     <div class="container">
-      <h2 class="section-title">Skills</h2>
-      <p class="section-sub">Tools and methods I use across AI products, Kaggle research, accessibility systems, and full-stack prototypes</p>
+      <div class="section-head reveal">
+        <span class="mascot-face mascot-face-md"><span class="eye"></span><span class="eye"></span></span>
+        <h2 class="section-title">Skill tree</h2>
+      </div>
+      <p class="section-sub reveal">Tools and methods I use across AI products, Kaggle research, accessibility systems, and full-stack prototypes.</p>
 
-      <div class="skills-dashboard reveal">
+      <div class="skill-tree reveal">
         <div class="skill-tabs" role="tablist" aria-label="Skill categories">
           <button type="button" class="skill-tab active" id="skill-tab-featured" data-skill-tab="featured" role="tab" aria-selected="true" aria-controls="skill-panel-featured">Featured</button>
           <button type="button" class="skill-tab" id="skill-tab-languages" data-skill-tab="languages" role="tab" aria-selected="false" aria-controls="skill-panel-languages">Languages</button>
@@ -157,947 +755,221 @@
           <button type="button" class="skill-tab" id="skill-tab-systems" data-skill-tab="systems" role="tab" aria-selected="false" aria-controls="skill-panel-systems">Systems</button>
         </div>
 
-        <div class="skills-panel-stack">
+        <div class="skill-panel-stack">
           <div class="skill-panel active" id="skill-panel-featured" data-skill-panel="featured" role="tabpanel" aria-labelledby="skill-tab-featured">
-            <div class="skill-badges">
-              <span class="skill-badge"><span class="skill-mark">Py</span>Python</span>
-              <span class="skill-badge"><span class="skill-mark">TS</span>TypeScript</span>
-              <span class="skill-badge"><span class="skill-mark">Re</span>React</span>
-              <span class="skill-badge"><span class="skill-mark">FA</span>FastAPI</span>
-              <span class="skill-badge"><span class="skill-mark">PT</span>PyTorch</span>
-              <span class="skill-badge"><span class="skill-mark">SK</span>scikit-learn</span>
-              <span class="skill-badge"><span class="skill-mark">Gi</span>Gemini</span>
-              <span class="skill-badge"><span class="skill-mark">BQ</span>BigQuery AI</span>
-              <span class="skill-badge"><span class="skill-mark">Kg</span>Kaggle</span>
-              <span class="skill-badge"><span class="skill-mark">GC</span>Google Cloud</span>
-              <span class="skill-badge"><span class="skill-mark">Sp</span>Supabase</span>
-              <span class="skill-badge"><span class="skill-mark">Tw</span>Tailwind CSS</span>
-            </div>
+            <span class="skill-badge"><span class="skill-mark">Py</span><span class="skill-name">Python</span></span>
+            <span class="skill-badge"><span class="skill-mark">TS</span><span class="skill-name">TypeScript</span></span>
+            <span class="skill-badge"><span class="skill-mark">Re</span><span class="skill-name">React</span></span>
+            <span class="skill-badge"><span class="skill-mark">FA</span><span class="skill-name">FastAPI</span></span>
+            <span class="skill-badge"><span class="skill-mark">PT</span><span class="skill-name">PyTorch</span></span>
+            <span class="skill-badge"><span class="skill-mark">SK</span><span class="skill-name">scikit-learn</span></span>
+            <span class="skill-badge"><span class="skill-mark">Gi</span><span class="skill-name">Gemini</span></span>
+            <span class="skill-badge"><span class="skill-mark">BQ</span><span class="skill-name">BigQuery AI</span></span>
+            <span class="skill-badge"><span class="skill-mark">Kg</span><span class="skill-name">Kaggle</span></span>
+            <span class="skill-badge"><span class="skill-mark">GC</span><span class="skill-name">Google Cloud</span></span>
+            <span class="skill-badge"><span class="skill-mark">Sp</span><span class="skill-name">Supabase</span></span>
+            <span class="skill-badge"><span class="skill-mark">Tw</span><span class="skill-name">Tailwind CSS</span></span>
           </div>
 
           <div class="skill-panel" id="skill-panel-languages" data-skill-panel="languages" role="tabpanel" aria-labelledby="skill-tab-languages" hidden>
-            <div class="skill-badges">
-              <span class="skill-badge"><span class="skill-mark">Py</span>Python</span>
-              <span class="skill-badge"><span class="skill-mark">TS</span>TypeScript</span>
-              <span class="skill-badge"><span class="skill-mark">JS</span>JavaScript</span>
-              <span class="skill-badge"><span class="skill-mark">C++</span>C++</span>
-              <span class="skill-badge"><span class="skill-mark">C#</span>C#</span>
-              <span class="skill-badge"><span class="skill-mark">SQL</span>SQL</span>
-              <span class="skill-badge"><span class="skill-mark">Ja</span>Java</span>
-              <span class="skill-badge"><span class="skill-mark">HT</span>HTML</span>
-              <span class="skill-badge"><span class="skill-mark">CS</span>CSS</span>
-              <span class="skill-badge"><span class="skill-mark">Sh</span>Bash</span>
-            </div>
+            <span class="skill-badge"><span class="skill-mark">Py</span><span class="skill-name">Python</span></span>
+            <span class="skill-badge"><span class="skill-mark">TS</span><span class="skill-name">TypeScript</span></span>
+            <span class="skill-badge"><span class="skill-mark">JS</span><span class="skill-name">JavaScript</span></span>
+            <span class="skill-badge"><span class="skill-mark">C++</span><span class="skill-name">C++</span></span>
+            <span class="skill-badge"><span class="skill-mark">C#</span><span class="skill-name">C#</span></span>
+            <span class="skill-badge"><span class="skill-mark">SQL</span><span class="skill-name">SQL</span></span>
+            <span class="skill-badge"><span class="skill-mark">Ja</span><span class="skill-name">Java</span></span>
+            <span class="skill-badge"><span class="skill-mark">HT</span><span class="skill-name">HTML</span></span>
+            <span class="skill-badge"><span class="skill-mark">CS</span><span class="skill-name">CSS</span></span>
+            <span class="skill-badge"><span class="skill-mark">Sh</span><span class="skill-name">Bash</span></span>
           </div>
 
           <div class="skill-panel" id="skill-panel-ai" data-skill-panel="ai" role="tabpanel" aria-labelledby="skill-tab-ai" hidden>
-            <div class="skill-badges">
-              <span class="skill-badge"><span class="skill-mark">PT</span>PyTorch</span>
-              <span class="skill-badge"><span class="skill-mark">TF</span>TensorFlow</span>
-              <span class="skill-badge"><span class="skill-mark">SK</span>scikit-learn</span>
-              <span class="skill-badge"><span class="skill-mark">HF</span>Hugging Face</span>
-              <span class="skill-badge"><span class="skill-mark">LLM</span>LLM Fine-Tuning</span>
-              <span class="skill-badge"><span class="skill-mark">CoT</span>Chain-of-Thought</span>
-              <span class="skill-badge"><span class="skill-mark">RAG</span>RAG</span>
-              <span class="skill-badge"><span class="skill-mark">SD</span>Synthetic Data</span>
-              <span class="skill-badge"><span class="skill-mark">CV</span>Computer Vision</span>
-              <span class="skill-badge"><span class="skill-mark">NLP</span>NLP</span>
-              <span class="skill-badge"><span class="skill-mark">RL</span>Reinforcement Learning</span>
-              <span class="skill-badge"><span class="skill-mark">MM</span>Multimodal AI</span>
-            </div>
+            <span class="skill-badge"><span class="skill-mark">PT</span><span class="skill-name">PyTorch</span></span>
+            <span class="skill-badge"><span class="skill-mark">TF</span><span class="skill-name">TensorFlow</span></span>
+            <span class="skill-badge"><span class="skill-mark">SK</span><span class="skill-name">scikit-learn</span></span>
+            <span class="skill-badge"><span class="skill-mark">HF</span><span class="skill-name">Hugging Face</span></span>
+            <span class="skill-badge"><span class="skill-mark">LLM</span><span class="skill-name">LLM Fine-Tuning</span></span>
+            <span class="skill-badge"><span class="skill-mark">CoT</span><span class="skill-name">Chain-of-Thought</span></span>
+            <span class="skill-badge"><span class="skill-mark">RAG</span><span class="skill-name">RAG</span></span>
+            <span class="skill-badge"><span class="skill-mark">SD</span><span class="skill-name">Synthetic Data</span></span>
+            <span class="skill-badge"><span class="skill-mark">CV</span><span class="skill-name">Computer Vision</span></span>
+            <span class="skill-badge"><span class="skill-mark">NLP</span><span class="skill-name">NLP</span></span>
+            <span class="skill-badge"><span class="skill-mark">RL</span><span class="skill-name">Reinforcement Learning</span></span>
+            <span class="skill-badge"><span class="skill-mark">MM</span><span class="skill-name">Multimodal AI</span></span>
           </div>
 
           <div class="skill-panel" id="skill-panel-research" data-skill-panel="research" role="tabpanel" aria-labelledby="skill-tab-research" hidden>
-            <div class="skill-badges">
-              <span class="skill-badge"><span class="skill-mark">Np</span>NumPy</span>
-              <span class="skill-badge"><span class="skill-mark">Pd</span>Pandas</span>
-              <span class="skill-badge"><span class="skill-mark">XG</span>XGBoost</span>
-              <span class="skill-badge"><span class="skill-mark">FE</span>Feature Engineering</span>
-              <span class="skill-badge"><span class="skill-mark">TS</span>Time Series</span>
-              <span class="skill-badge"><span class="skill-mark">TB</span>Tabular ML</span>
-              <span class="skill-badge"><span class="skill-mark">EV</span>Model Evaluation</span>
-              <span class="skill-badge"><span class="skill-mark">AB</span>Ablation Studies</span>
-              <span class="skill-badge"><span class="skill-mark">EX</span>Experiment Design</span>
-              <span class="skill-badge"><span class="skill-mark">JR</span>Jupyter</span>
-              <span class="skill-badge"><span class="skill-mark">RW</span>Research Writing</span>
-            </div>
+            <span class="skill-badge"><span class="skill-mark">Np</span><span class="skill-name">NumPy</span></span>
+            <span class="skill-badge"><span class="skill-mark">Pd</span><span class="skill-name">Pandas</span></span>
+            <span class="skill-badge"><span class="skill-mark">XG</span><span class="skill-name">XGBoost</span></span>
+            <span class="skill-badge"><span class="skill-mark">FE</span><span class="skill-name">Feature Engineering</span></span>
+            <span class="skill-badge"><span class="skill-mark">TS</span><span class="skill-name">Time Series</span></span>
+            <span class="skill-badge"><span class="skill-mark">TB</span><span class="skill-name">Tabular ML</span></span>
+            <span class="skill-badge"><span class="skill-mark">EV</span><span class="skill-name">Model Evaluation</span></span>
+            <span class="skill-badge"><span class="skill-mark">AB</span><span class="skill-name">Ablation Studies</span></span>
+            <span class="skill-badge"><span class="skill-mark">EX</span><span class="skill-name">Experiment Design</span></span>
+            <span class="skill-badge"><span class="skill-mark">JR</span><span class="skill-name">Jupyter</span></span>
+            <span class="skill-badge"><span class="skill-mark">RW</span><span class="skill-name">Research Writing</span></span>
           </div>
 
           <div class="skill-panel" id="skill-panel-frontend" data-skill-panel="frontend" role="tabpanel" aria-labelledby="skill-tab-frontend" hidden>
-            <div class="skill-badges">
-              <span class="skill-badge"><span class="skill-mark">Re</span>React</span>
-              <span class="skill-badge"><span class="skill-mark">Nx</span>Next.js</span>
-              <span class="skill-badge"><span class="skill-mark">TS</span>TypeScript</span>
-              <span class="skill-badge"><span class="skill-mark">Tw</span>Tailwind CSS</span>
-              <span class="skill-badge"><span class="skill-mark">HT</span>HTML</span>
-              <span class="skill-badge"><span class="skill-mark">CS</span>CSS</span>
-              <span class="skill-badge"><span class="skill-mark">3D</span>Three.js</span>
-              <span class="skill-badge"><span class="skill-mark">UX</span>Accessible UI</span>
-              <span class="skill-badge"><span class="skill-mark">EX</span>Browser Extensions</span>
-            </div>
+            <span class="skill-badge"><span class="skill-mark">Re</span><span class="skill-name">React</span></span>
+            <span class="skill-badge"><span class="skill-mark">Nx</span><span class="skill-name">Next.js</span></span>
+            <span class="skill-badge"><span class="skill-mark">TS</span><span class="skill-name">TypeScript</span></span>
+            <span class="skill-badge"><span class="skill-mark">Tw</span><span class="skill-name">Tailwind CSS</span></span>
+            <span class="skill-badge"><span class="skill-mark">HT</span><span class="skill-name">HTML</span></span>
+            <span class="skill-badge"><span class="skill-mark">CS</span><span class="skill-name">CSS</span></span>
+            <span class="skill-badge"><span class="skill-mark">3D</span><span class="skill-name">Three.js</span></span>
+            <span class="skill-badge"><span class="skill-mark">UX</span><span class="skill-name">Accessible UI</span></span>
+            <span class="skill-badge"><span class="skill-mark">EX</span><span class="skill-name">Browser Extensions</span></span>
           </div>
 
           <div class="skill-panel" id="skill-panel-backend" data-skill-panel="backend" role="tabpanel" aria-labelledby="skill-tab-backend" hidden>
-            <div class="skill-badges">
-              <span class="skill-badge"><span class="skill-mark">FA</span>FastAPI</span>
-              <span class="skill-badge"><span class="skill-mark">Nd</span>Node.js</span>
-              <span class="skill-badge"><span class="skill-mark">Ex</span>Express</span>
-              <span class="skill-badge"><span class="skill-mark">Pg</span>PostgreSQL</span>
-              <span class="skill-badge"><span class="skill-mark">Sp</span>Supabase</span>
-              <span class="skill-badge"><span class="skill-mark">Fb</span>Firebase</span>
-              <span class="skill-badge"><span class="skill-mark">GC</span>Google Cloud</span>
-              <span class="skill-badge"><span class="skill-mark">BQ</span>BigQuery</span>
-              <span class="skill-badge"><span class="skill-mark">API</span>REST APIs</span>
-              <span class="skill-badge"><span class="skill-mark">ADK</span>Google ADK</span>
-              <span class="skill-badge"><span class="skill-mark">GL</span>Gemini Live API</span>
-            </div>
+            <span class="skill-badge"><span class="skill-mark">FA</span><span class="skill-name">FastAPI</span></span>
+            <span class="skill-badge"><span class="skill-mark">Nd</span><span class="skill-name">Node.js</span></span>
+            <span class="skill-badge"><span class="skill-mark">Ex</span><span class="skill-name">Express</span></span>
+            <span class="skill-badge"><span class="skill-mark">Pg</span><span class="skill-name">PostgreSQL</span></span>
+            <span class="skill-badge"><span class="skill-mark">Sp</span><span class="skill-name">Supabase</span></span>
+            <span class="skill-badge"><span class="skill-mark">Fb</span><span class="skill-name">Firebase</span></span>
+            <span class="skill-badge"><span class="skill-mark">GC</span><span class="skill-name">Google Cloud</span></span>
+            <span class="skill-badge"><span class="skill-mark">BQ</span><span class="skill-name">BigQuery</span></span>
+            <span class="skill-badge"><span class="skill-mark">API</span><span class="skill-name">REST APIs</span></span>
+            <span class="skill-badge"><span class="skill-mark">ADK</span><span class="skill-name">Google ADK</span></span>
+            <span class="skill-badge"><span class="skill-mark">GL</span><span class="skill-name">Gemini Live API</span></span>
           </div>
 
           <div class="skill-panel" id="skill-panel-systems" data-skill-panel="systems" role="tabpanel" aria-labelledby="skill-tab-systems" hidden>
-            <div class="skill-badges">
-              <span class="skill-badge"><span class="skill-mark">Git</span>Git</span>
-              <span class="skill-badge"><span class="skill-mark">GH</span>GitHub</span>
-              <span class="skill-badge"><span class="skill-mark">Ln</span>Linux</span>
-              <span class="skill-badge"><span class="skill-mark">CI</span>CI/CD</span>
-              <span class="skill-badge"><span class="skill-mark">DS</span>Data Structures</span>
-              <span class="skill-badge"><span class="skill-mark">AG</span>Algorithms</span>
-              <span class="skill-badge"><span class="skill-mark">CP</span>Competitive Programming</span>
-              <span class="skill-badge"><span class="skill-mark">BCI</span>Brain-Computer Interfaces</span>
-              <span class="skill-badge"><span class="skill-mark">EEG</span>EEG Signals</span>
-              <span class="skill-badge"><span class="skill-mark">AX</span>Accessibility Engineering</span>
-              <span class="skill-badge"><span class="skill-mark">AI</span>Agentic Workflows</span>
-            </div>
+            <span class="skill-badge"><span class="skill-mark">Git</span><span class="skill-name">Git</span></span>
+            <span class="skill-badge"><span class="skill-mark">GH</span><span class="skill-name">GitHub</span></span>
+            <span class="skill-badge"><span class="skill-mark">Ln</span><span class="skill-name">Linux</span></span>
+            <span class="skill-badge"><span class="skill-mark">CI</span><span class="skill-name">CI/CD</span></span>
+            <span class="skill-badge"><span class="skill-mark">DS</span><span class="skill-name">Data Structures</span></span>
+            <span class="skill-badge"><span class="skill-mark">AG</span><span class="skill-name">Algorithms</span></span>
+            <span class="skill-badge"><span class="skill-mark">CP</span><span class="skill-name">Competitive Programming</span></span>
+            <span class="skill-badge"><span class="skill-mark">BCI</span><span class="skill-name">Brain-Computer Interfaces</span></span>
+            <span class="skill-badge"><span class="skill-mark">EEG</span><span class="skill-name">EEG Signals</span></span>
+            <span class="skill-badge"><span class="skill-mark">AX</span><span class="skill-name">Accessibility Engineering</span></span>
+            <span class="skill-badge"><span class="skill-mark">AI</span><span class="skill-name">Agentic Workflows</span></span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════ ACHIEVEMENTS ═══════════════ -->
-  <section id="achievements" class="section">
-    <div class="container">
-      <h2 class="section-title">Achievements</h2>
-      <p class="section-sub">Milestones, awards, and recognitions</p>
-
-      <div class="achievements-grid">
-
-        <div class="achievement-card achievement-featured reveal">
-          <span class="achievement-featured-badge">★ Winner</span>
-          <div class="achievement-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-          </div>
-          <h3 class="achievement-title">9+ Hackathon Wins</h3>
-          <p class="achievement-desc">Accumulated nine or more hackathon wins across national and international competitions — spanning AI, accessibility, cloud computing, and data science domains.</p>
-          <span class="achievement-year">2023–Present</span>
-          <div class="achievement-dashboard" data-profile-source="devpost" data-profile-url="https://devpost.com/thanhhuy062?ref_content=user-portfolio&amp;ref_feature=portfolio&amp;ref_medium=global-nav">
-            <div class="achievement-dashboard-label">Devpost Dashboard</div>
-            <div class="achievement-stats">
-              <div class="achievement-stat">
-                <span class="achievement-stat-label">Projects</span>
-                <span class="achievement-stat-value" data-stat="projects">7</span>
-              </div>
-              <div class="achievement-stat">
-                <span class="achievement-stat-label">Hackathons</span>
-                <span class="achievement-stat-value" data-stat="hackathons">12</span>
-              </div>
-              <div class="achievement-stat">
-                <span class="achievement-stat-label">Achievements</span>
-                <span class="achievement-stat-value" data-stat="achievements">8</span>
-              </div>
-              <div class="achievement-stat">
-                <span class="achievement-stat-label">Followers</span>
-                <span class="achievement-stat-value" data-stat="followers">7</span>
-              </div>
-            </div>
-            <a href="https://devpost.com/thanhhuy062?ref_content=user-portfolio&amp;ref_feature=portfolio&amp;ref_medium=global-nav" target="_blank" rel="noopener" class="achievement-profile-link">View Devpost Profile</a>
-            <p class="achievement-dashboard-note">Profile-linked counts refresh when the public page allows it; otherwise these pinned values stay visible.</p>
-          </div>
-        </div>
-
-        <div class="achievement-card achievement-featured reveal">
-          <span class="achievement-featured-badge">★ Winner</span>
-          <div class="achievement-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
-          <h3 class="achievement-title">Google DeepMind × Kaggle</h3>
-          <p class="achievement-desc">Won the <strong>Vibe Code with Gemini 2.0 Flash</strong> competition hosted by Google DeepMind in AI Studio on Kaggle — building a creative AI-powered application with Gemini's multimodal capabilities.</p>
-          <span class="achievement-year">2025</span>
-          <div class="achievement-links">
-            <a href="https://www.kaggle.com/competitions/gemini-3/writeups/history-alive-experiencing-time-through-virtua" target="_blank" rel="noopener" class="achievement-profile-link">View Winning Writeup</a>
-          </div>
-        </div>
-
-        <div class="achievement-card achievement-featured reveal">
-          <span class="achievement-featured-badge">★ Winner</span>
-          <div class="achievement-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9z"/></svg>
-          </div>
-          <h3 class="achievement-title">Fifth Place — Google Cloud Next 2024</h3>
-          <p class="achievement-desc">Placed Fifth at the 2024 Google Cloud Next hackathon — building a cloud-native solution leveraging GCP's AI and infrastructure services among hundreds of global teams.</p>
-          <span class="achievement-year">2024</span>
-        </div>
-
-        <div class="achievement-card achievement-kaggle reveal">
-          <div class="achievement-icon">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.155 0 .25.051.28.153.029.1-.011.196-.128.291l-5.895 5.671 6.244 7.797c.104.104.128.208.1.308z"/></svg>
-          </div>
-          <h3 class="achievement-title">Kaggle Master</h3>
-          <p class="achievement-desc">Reached Kaggle Master tier — top 1% globally across 12M+ users. Competed in ML/data science challenges spanning NLP, computer vision, and tabular data.</p>
-          <span class="achievement-year">Ongoing</span>
-          <div class="achievement-dashboard" data-profile-source="kaggle" data-profile-url="https://www.kaggle.com/hrhuynguyen">
-            <div class="achievement-dashboard-label">Kaggle Dashboard</div>
-            <div class="achievement-stats">
-              <div class="achievement-stat">
-                <span class="achievement-stat-label">Tier</span>
-                <span class="achievement-stat-value" data-stat="tier">Master</span>
-              </div>
-              <div class="achievement-stat">
-                <span class="achievement-stat-label">Standing</span>
-                <span class="achievement-stat-value" data-stat="standing">Top 1%</span>
-              </div>
-              <div class="achievement-stat">
-                <span class="achievement-stat-label">Focus</span>
-                <span class="achievement-stat-value" data-stat="focus">ML Competitions</span>
-              </div>
-              <div class="achievement-stat">
-                <span class="achievement-stat-label">Profile</span>
-                <span class="achievement-stat-value" data-stat="username">@hrhuynguyen</span>
-              </div>
-            </div>
-            <a href="https://www.kaggle.com/hrhuynguyen" target="_blank" rel="noopener" class="achievement-profile-link">View Kaggle Profile</a>
-            <p class="achievement-dashboard-note">Kaggle does not expose a simple public client-side stats endpoint, so this card links to the live profile and keeps your pinned highlights visible here.</p>
-          </div>
-        </div>
-
-        <div class="achievement-card achievement-leetcode reveal">
-          <div class="achievement-icon">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg>
-          </div>
-          <h3 class="achievement-title">LeetCode Guardian</h3>
-          <p class="achievement-desc">Achieved Guardian rank — contest peak rating 2332, top 0.46% globally. Consistent high performance in weekly and biweekly coding contests.</p>
-          <span class="achievement-year">Ongoing</span>
-          <div class="achievement-dashboard" data-profile-source="leetcode" data-username="hrhuynguyen" data-profile-url="https://leetcode.com/u/hrhuynguyen/">
-            <div class="achievement-dashboard-label">LeetCode Dashboard</div>
-            <div class="achievement-stats">
-              <div class="achievement-stat">
-                <span class="achievement-stat-label">Contest Rating</span>
-                <span class="achievement-stat-value" data-stat="rating">2332</span>
-              </div>
-              <div class="achievement-stat">
-                <span class="achievement-stat-label">Global Rank</span>
-                <span class="achievement-stat-value" data-stat="globalRank">3,661</span>
-              </div>
-              <div class="achievement-stat">
-                <span class="achievement-stat-label">Top %</span>
-                <span class="achievement-stat-value" data-stat="topPercent">0.45%</span>
-              </div>
-              <div class="achievement-stat">
-                <span class="achievement-stat-label">Solved</span>
-                <span class="achievement-stat-value" data-stat="solved">745</span>
-              </div>
-            </div>
-            <a href="https://leetcode.com/u/hrhuynguyen/" target="_blank" rel="noopener" class="achievement-profile-link">View LeetCode Profile</a>
-            <p class="achievement-dashboard-note">This card refreshes from LeetCode's public GraphQL profile data when the platform allows it.</p>
-          </div>
-        </div>
-
-        <div class="achievement-card achievement-codeforces reveal">
-          <div class="achievement-icon">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.5 7.5C5.328 7.5 6 8.172 6 9v10.5c0 .828-.672 1.5-1.5 1.5h-3C.672 21 0 20.328 0 19.5V9c0-.828.672-1.5 1.5-1.5h3zm9-4.5c.828 0 1.5.672 1.5 1.5v15c0 .828-.672 1.5-1.5 1.5h-3c-.828 0-1.5-.672-1.5-1.5V4.5C9 3.672 9.672 3 10.5 3h3zm9 7.5c.828 0 1.5.672 1.5 1.5v9c0 .828-.672 1.5-1.5 1.5h-3c-.828 0-1.5-.672-1.5-1.5v-9c0-.828.672-1.5 1.5-1.5h3z"/></svg>
-          </div>
-          <h3 class="achievement-title">Codeforces Candidate Master</h3>
-          <p class="achievement-desc">Earned Candidate Master title on Codeforces with a peak rating of 1968 — placing in the top competitive programmers on the platform worldwide.</p>
-          <span class="achievement-year">Ongoing</span>
-          <div class="achievement-dashboard" data-profile-source="codeforces" data-handle="hrhuynguyen" data-profile-url="https://codeforces.com/profile/hrhuynguyen">
-            <div class="achievement-dashboard-label">Codeforces Dashboard</div>
-            <div class="achievement-stats">
-              <div class="achievement-stat">
-                <span class="achievement-stat-label">Rating</span>
-                <span class="achievement-stat-value" data-stat="rating">1968</span>
-              </div>
-              <div class="achievement-stat">
-                <span class="achievement-stat-label">Rank</span>
-                <span class="achievement-stat-value" data-stat="rank">Candidate Master</span>
-              </div>
-              <div class="achievement-stat">
-                <span class="achievement-stat-label">Max Rating</span>
-                <span class="achievement-stat-value" data-stat="maxRating">1968</span>
-              </div>
-              <div class="achievement-stat">
-                <span class="achievement-stat-label">Country</span>
-                <span class="achievement-stat-value" data-stat="country">United States</span>
-              </div>
-            </div>
-            <a href="https://codeforces.com/profile/hrhuynguyen" target="_blank" rel="noopener" class="achievement-profile-link">View Codeforces Profile</a>
-            <p class="achievement-dashboard-note">This card refreshes from Codeforces' public API when the platform allows it.</p>
-          </div>
-        </div>
-
-        <div class="achievement-card achievement-meta reveal">
-          <div class="achievement-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-          </div>
-          <h3 class="achievement-title">Meta Hacker Cup 2025</h3>
-          <p class="achievement-desc">Ranked in the <strong>Top 200</strong> globally in Round 3 of Meta Hacker Cup 2025 — one of the most prestigious algorithmic programming competitions in the world.</p>
-          <span class="achievement-year">2025</span>
-          <div class="achievement-links">
-            <a href="https://www.facebook.com/codingcompetitions/hacker-cup/2025/certificate/1463971483964574" target="_blank" rel="noopener" class="achievement-profile-link">View Certificate</a>
-          </div>
-        </div>
-
-        <div class="achievement-card reveal">
-          <div class="achievement-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
-          </div>
-          <h3 class="achievement-title">First Place — Rice Datathon 2026</h3>
-          <p class="achievement-desc">Won First Place in the Expert Track (sponsored by OpenStax) at the 2026 Rice University Datathon — applying advanced ML techniques to an open-ended research problem.</p>
-          <span class="achievement-year">2026</span>
-          <div class="achievement-links">
-            <a href="https://devpost.com/software/edutag" target="_blank" rel="noopener" class="achievement-profile-link">View Winning Project</a>
-          </div>
-        </div>
-
-        <div class="achievement-card reveal">
-          <div class="achievement-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
-          </div>
-          <h3 class="achievement-title">First Prize — Hook 'Em Hacks 2026</h3>
-          <p class="achievement-desc">Won <strong>First Prize in the General Track</strong> at UT Austin's Hook 'Em Hacks 2026 with <strong>Be My Voice</strong>, an assistive AI communication system for stroke and ALS patients that restores clear, expressive speech.</p>
-          <span class="achievement-year">2026</span>
-          <div class="achievement-links">
-            <a href="https://devpost.com/software/be-my-voice-iovkah" target="_blank" rel="noopener" class="achievement-profile-link">View Winning Project</a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════ PROJECTS ═══════════════ -->
-  <section id="projects" class="section section-alt">
-    <div class="container">
-      <h2 class="section-title">Projects</h2>
-      <p class="section-sub">Things I've built — from hackathon experiments to research tools</p>
-
-      <div class="carousel-wrap">
-        <button class="carousel-btn carousel-prev" aria-label="Previous">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
-        <div class="carousel" id="projects-carousel">
-
-          <div class="project-card">
-            <div class="project-media">
-              <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/004/203/923/datas/medium.png" alt="EduTag preview" class="project-thumb" loading="lazy" />
-              <span class="project-badge">★ Winner</span>
-            </div>
-            <div class="project-card-body">
-              <div class="project-tags">
-                <span class="tag-purple">Python</span>
-                <span class="tag-purple">Gemini</span>
-                <span class="tag-purple">Education</span>
-              </div>
-              <h3 class="project-title">EduTag</h3>
-              <p class="project-desc">We're working on a project that aligns standard codes with textbook content by looking at how they're defined.</p>
-              <div class="project-links">
-                <a href="https://devpost.com/software/edutag" target="_blank" rel="noopener" class="project-action">Devpost</a>
-                <a href="https://github.com/dothanhtam91/OpenStax---2026-Rice-Datathon-Mapping-Sta" target="_blank" rel="noopener" class="project-action">GitHub</a>
-                <a href="https://www.kaggle.com/writeups/hrhuynguyen/openstax-2026-rice-datathon-mapping-standards-i" target="_blank" rel="noopener" class="project-action">Writeup</a>
-                <a href="https://www.youtube.com/watch?v=qcr_z5XwHJ8" target="_blank" rel="noopener" class="project-action">Video</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-media">
-              <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/004/697/718/datas/medium.png" alt="CursorGPT preview" class="project-thumb" loading="lazy" />
-              <span class="project-badge">★ Winner</span>
-            </div>
-            <div class="project-card-body">
-              <div class="project-tags">
-                <span class="tag-purple">Gemini Live API</span>
-                <span class="tag-purple">Google ADK</span>
-                <span class="tag-purple">FastAPI</span>
-              </div>
-              <h3 class="project-title">CursorGPT</h3>
-              <p class="project-desc">Point-and-speak browser assistant where hand gestures provide the where, voice provides the what, and AI handles the rest. Winner at HackHCC: Code Runners.</p>
-              <div class="project-links">
-                <a href="https://devpost.com/software/cursorgpt" target="_blank" rel="noopener" class="project-action">Devpost</a>
-                <a href="https://github.com/hrhuynguyen/Desktop-Copilot" target="_blank" rel="noopener" class="project-action">GitHub</a>
-                <a href="https://www.youtube.com/watch?v=D5i3lYiMdKU" target="_blank" rel="noopener" class="project-action">Video</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-media">
-              <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/004/596/335/datas/medium.png" alt="Be My Voice preview" class="project-thumb" loading="lazy" />
-              <span class="project-badge">★ Winner</span>
-            </div>
-            <div class="project-card-body">
-              <div class="project-tags">
-                <span class="tag-purple">ElevenLabs</span>
-                <span class="tag-purple">FastAPI</span>
-                <span class="tag-purple">Accessibility</span>
-              </div>
-              <h3 class="project-title">Be My Voice</h3>
-              <p class="project-desc">Assistive communication system for stroke and ALS patients that repairs fragmented speech and turns live emotional signals into expressive audio using the patient’s own cloned voice.</p>
-              <div class="project-links">
-                <a href="https://devpost.com/software/be-my-voice-iovkah" target="_blank" rel="noopener" class="project-action">Devpost</a>
-                <a href="https://github.com/hrhuynguyen/be-my-voices/" target="_blank" rel="noopener" class="project-action">GitHub</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-media">
-              <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/004/596/351/datas/medium.jpeg" alt="EleVox preview" class="project-thumb" loading="lazy" />
-              <span class="project-badge">★ Winner</span>
-            </div>
-            <div class="project-card-body">
-              <div class="project-tags">
-                <span class="tag-purple">Python</span>
-                <span class="tag-purple">React</span>
-                <span class="tag-purple">Bioacoustics</span>
-              </div>
-              <h3 class="project-title">EleVox</h3>
-              <p class="project-desc">Brings elephant communication back to life from noisy recordings, recovering signals tied to behavior, stress, and movement that would otherwise stay hidden.</p>
-              <div class="project-links">
-                <a href="https://devpost.com/software/voice-izec50" target="_blank" rel="noopener" class="project-action">Devpost</a>
-                <a href="https://github.com/dothanhtam91/EleVox" target="_blank" rel="noopener" class="project-action">GitHub</a>
-                <a href="https://www.youtube.com/watch?v=39pZ5VqTMNQ" target="_blank" rel="noopener" class="project-action">Video</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-media">
-              <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/004/529/116/datas/medium.png" alt="DataForce preview" class="project-thumb" loading="lazy" />
-              <span class="project-badge">★ Winner</span>
-            </div>
-            <div class="project-card-body">
-              <div class="project-tags">
-                <span class="tag-purple">Claude Code</span>
-                <span class="tag-purple">FastAPI</span>
-                <span class="tag-purple">Predictive ML</span>
-              </div>
-              <h3 class="project-title">DataForce</h3>
-              <p class="project-desc">Turns messy enterprise data into a live insight layer and a deployed predictive model, making analytics and forecasting accessible without a dedicated data science team.</p>
-              <div class="project-links">
-                <a href="https://devpost.com/software/dataforce" target="_blank" rel="noopener" class="project-action">Devpost</a>
-                <a href="https://github.com/hrhuynguyen/DataForce-Claude-Hack-2026" target="_blank" rel="noopener" class="project-action">GitHub</a>
-                <a href="https://www.youtube.com/watch?v=6cLs_UCjpfM" target="_blank" rel="noopener" class="project-action">Video</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-media">
-              <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/004/596/372/datas/medium.jpeg" alt="ThreeByte preview" class="project-thumb" loading="lazy" />
-              <span class="project-badge">★ Winner</span>
-            </div>
-            <div class="project-card-body">
-              <div class="project-tags">
-                <span class="tag-purple">Next.js</span>
-                <span class="tag-purple">Supabase</span>
-                <span class="tag-purple">Nonprofit</span>
-              </div>
-              <h3 class="project-title">ThreeByte</h3>
-              <p class="project-desc">Open-source case management platform for nonprofits, track clients, cases and finances in one place, and keep it affordable for organizations with limited budgets.</p>
-              <div class="project-links">
-                <a href="https://devpost.com/software/threebyte" target="_blank" rel="noopener" class="project-action">Devpost</a>
-                <a href="https://github.com/2026-ASU-WiCS-Opportunity-Hack/27-three-byte?tab=readme-ov-file" target="_blank" rel="noopener" class="project-action">GitHub</a>
-                <a href="https://opportunity-hack-26.vercel.app/" target="_blank" rel="noopener" class="project-action">Live Site</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-media">
-              <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/004/596/346/datas/medium.jpeg" alt="WALL-E preview" class="project-thumb" loading="lazy" />
-              <span class="project-badge">★ Winner</span>
-            </div>
-            <div class="project-card-body">
-              <div class="project-tags">
-                <span class="tag-purple">BCI</span>
-                <span class="tag-purple">Robotics</span>
-                <span class="tag-purple">Accessibility</span>
-              </div>
-              <h3 class="project-title">WALL-E</h3>
-              <p class="project-desc">No mouse. No keyboard. No hands. Use your brain signal and your eyes to control a 3D printed robotic arm in real time. We turned thought into fabrication.</p>
-              <div class="project-links">
-                <a href="https://devpost.com/software/wall-e-w8lp7k" target="_blank" rel="noopener" class="project-action">Devpost</a>
-                <a href="https://github.com/GitCat8383/robot-utility-test" target="_blank" rel="noopener" class="project-action">GitHub</a>
-                <a href="https://www.youtube.com/watch?v=nJj4RPRUzgw" target="_blank" rel="noopener" class="project-action">Video</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-media project-media-github">
-              <span class="project-placeholder">BigQuery AI</span>
-            </div>
-            <div class="project-card-body">
-              <div class="project-tags">
-                <span class="tag-purple">GCP</span>
-                <span class="tag-purple">BigQuery AI</span>
-                <span class="tag-purple">Analytics</span>
-              </div>
-              <h3 class="project-title">Returns &amp; Refunds Intelligence</h3>
-              <p class="project-desc">Google Cloud hackathon project using BigQuery AI to analyze returns and refunds data, surface operational patterns, and turn business questions into faster insights.</p>
-              <div class="project-links">
-                <a href="Huy%20T%20Nguyen%20Resume%20(April%2021,%202026).docx.pdf" target="_blank" rel="noopener" class="project-action">CV</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-media">
-              <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/004/357/015/datas/medium.jpg" alt="LyoText preview" class="project-thumb" loading="lazy" />
-            </div>
-            <div class="project-card-body">
-              <div class="project-tags">
-                <span class="tag-purple">EEG</span>
-                <span class="tag-purple">Gemini</span>
-                <span class="tag-purple">FastAPI</span>
-              </div>
-              <h3 class="project-title">LyoText</h3>
-              <p class="project-desc">When speech and movement fail, thought remains. LyoText transforms brain signals into meaningful communication using EEG and AI.</p>
-              <div class="project-links">
-                <a href="https://devpost.com/software/lyotext" target="_blank" rel="noopener" class="project-action">Devpost</a>
-                <a href="https://github.com/dothanhtam91/LyoText_Final" target="_blank" rel="noopener" class="project-action">GitHub</a>
-                <a href="https://www.youtube.com/watch?v=b__nb7q0kXw" target="_blank" rel="noopener" class="project-action">Video</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-media">
-              <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/004/269/125/datas/medium.png" alt="BureauBuddy preview" class="project-thumb" loading="lazy" />
-            </div>
-            <div class="project-card-body">
-              <div class="project-tags">
-                <span class="tag-purple">React</span>
-                <span class="tag-purple">Python</span>
-                <span class="tag-purple">Gemini</span>
-              </div>
-              <h3 class="project-title">BureauBuddy</h3>
-              <p class="project-desc">An AI tool built to make complex government documents more accessible and understandable to the general population.</p>
-              <div class="project-links">
-                <a href="https://devpost.com/software/bureaubuddy" target="_blank" rel="noopener" class="project-action">Devpost</a>
-                <a href="https://github.com/SawyerAlston/BureauBuddy" target="_blank" rel="noopener" class="project-action">GitHub</a>
-                <a href="https://www.youtube.com/watch?v=m7wurQIRNdI" target="_blank" rel="noopener" class="project-action">Video</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-media">
-              <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/965/577/datas/medium.png" alt="TaskForce preview" class="project-thumb" loading="lazy" />
-            </div>
-            <div class="project-card-body">
-              <div class="project-tags">
-                <span class="tag-purple">Claude</span>
-                <span class="tag-purple">Firebase</span>
-                <span class="tag-purple">Extension</span>
-              </div>
-              <h3 class="project-title">TaskForce</h3>
-              <p class="project-desc">A Claude-powered browser extension and administration dashboard that helps team managers keep members focused and accountable.</p>
-              <div class="project-links">
-                <a href="https://devpost.com/software/tforce" target="_blank" rel="noopener" class="project-action">Devpost</a>
-                <a href="https://github.com/ChazBTD/contentchecking" target="_blank" rel="noopener" class="project-action">GitHub</a>
-                <a href="https://www.youtube.com/watch?v=RVci-m1VLBY" target="_blank" rel="noopener" class="project-action">Video</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-media">
-              <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/003/837/893/datas/medium.png" alt="Aidify preview" class="project-thumb" loading="lazy" />
-            </div>
-            <div class="project-card-body">
-              <div class="project-tags">
-                <span class="tag-purple">Wix</span>
-                <span class="tag-purple">Accessibility</span>
-                <span class="tag-purple">Social Impact</span>
-              </div>
-              <h3 class="project-title">Aidify</h3>
-              <p class="project-desc">We're Aidify: aid people with technology. We don't just build platforms, we build possibilities.</p>
-              <div class="project-links">
-                <a href="https://devpost.com/software/aidify" target="_blank" rel="noopener" class="project-action">Devpost</a>
-                <a href="https://github.com/2025-Arizona-Opportunity-Hack/Aidify-NMTSAWebsite.git" target="_blank" rel="noopener" class="project-action">GitHub</a>
-                <a href="https://thanhhuy062.wixsite.com/mysite-2" target="_blank" rel="noopener" class="project-action">Live Site</a>
-                <a href="https://www.youtube.com/watch?v=d--tCbRyV_c" target="_blank" rel="noopener" class="project-action">Video</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-media project-media-github">
-              <span class="project-placeholder">Akira</span>
-            </div>
-            <div class="project-card-body">
-              <div class="project-tags">
-                <span class="tag-purple">TypeScript</span>
-                <span class="tag-purple">JavaScript</span>
-                <span class="tag-purple">Accessibility</span>
-              </div>
-              <h3 class="project-title">Akira</h3>
-              <p class="project-desc">Browser extension and web app that makes online classrooms more accessible, providing real-time accommodations and support tools for students with disabilities.</p>
-              <div class="project-links">
-                <a href="https://github.com/hrhuynguyen/akira" target="_blank" rel="noopener" class="project-action">GitHub</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-media project-media-github">
-              <span class="project-placeholder">ChronoVR</span>
-            </div>
-            <div class="project-card-body">
-              <div class="project-tags">
-                <span class="tag-purple">TypeScript</span>
-                <span class="tag-purple">Generative AI</span>
-                <span class="tag-purple">Education</span>
-              </div>
-              <h3 class="project-title">ChronoVR</h3>
-              <p class="project-desc">An educational tool that uses generative AI to reconstruct historical sites from archaeological data, letting students walk through them and talk with NPCs about daily life.</p>
-              <div class="project-links">
-                <a href="https://github.com/hrhuynguyen/ChronoVR" target="_blank" rel="noopener" class="project-action">GitHub</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-media project-media-github">
-              <span class="project-placeholder">Solar Flare</span>
-            </div>
-            <div class="project-card-body">
-              <div class="project-tags">
-                <span class="tag-purple">Python</span>
-                <span class="tag-purple">Data Science</span>
-                <span class="tag-purple">ML</span>
-              </div>
-              <h3 class="project-title">Solar Flare Prediction</h3>
-              <p class="project-desc">Data science research applying machine learning models to predict solar flare events from NASA datasets, with feature engineering and classification experiments on astrophysics data.</p>
-              <div class="project-links">
-                <a href="https://github.com/hrhuynguyen/COSC3337---Solar-Flare" target="_blank" rel="noopener" class="project-action">GitHub</a>
-              </div>
-            </div>
-          </div>
-
-        </div><!-- /.carousel -->
-        <button class="carousel-btn carousel-next" aria-label="Next">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-      </div><!-- /.carousel-wrap -->
-
-      <div class="carousel-dots" id="projects-dots"></div>
-    </div>
-  </section>
-
-  <!-- ═══════════════ MACHINE LEARNING RESEARCH ═══════════════ -->
-  <section id="ml-research" class="section">
-    <div class="container">
-      <h2 class="section-title">Machine Learning Research Projects</h2>
-      <p class="section-sub">Kaggle competition research, ordered with active work first, then completed challenges from earliest to latest.</p>
-
-      <div class="research-grid is-collapsed" id="ml-research-grid" data-research-grid>
-        <article class="research-card reveal research-active">
-          <div class="research-card-top">
-            <span class="research-status">Active</span>
-            <span class="research-date">Jun 2026</span>
-          </div>
-          <h3 class="research-title">NVIDIA Nemotron Model Reasoning Challenge</h3>
-          <p class="research-desc">Advancing reasoning methods with open NVIDIA Nemotron models on a novel benchmark for general knowledge and deep learning evaluation.</p>
-          <div class="research-tags">
-            <span class="tag-purple">Reasoning</span>
-            <span class="tag-purple">Open Models</span>
-            <span class="tag-purple">Deep Learning</span>
-          </div>
-          <a href="https://www.kaggle.com/competitions/nvidia-nemotron-model-reasoning-challenge" target="_blank" rel="noopener" class="project-action">Kaggle</a>
-        </article>
-
-        <article class="research-card reveal research-active">
-          <div class="research-card-top">
-            <span class="research-status">Active</span>
-            <span class="research-date">Jul 2026</span>
-          </div>
-          <h3 class="research-title">The 2026 NeuroGolf Championship</h3>
-          <p class="research-desc">Designing compact neural networks for ARC-AGI style image transformations, with emphasis on optimization and efficient model behavior.</p>
-          <div class="research-tags">
-            <span class="tag-purple">Neural Networks</span>
-            <span class="tag-purple">Optimization</span>
-            <span class="tag-purple">ARC-AGI</span>
-          </div>
-          <a href="https://www.kaggle.com/competitions/neurogolf-2026" target="_blank" rel="noopener" class="project-action">Kaggle</a>
-        </article>
-
-        <article class="research-card reveal research-active">
-          <div class="research-card-top">
-            <span class="research-status">Active</span>
-            <span class="research-date">Nov 2026</span>
-          </div>
-          <h3 class="research-title">ARC Prize 2026 - ARC-AGI-2</h3>
-          <p class="research-desc">Building approaches for novel reasoning tasks where models must infer patterns from small examples rather than memorized data.</p>
-          <div class="research-tags">
-            <span class="tag-purple">Artificial Intelligence</span>
-            <span class="tag-purple">Reasoning</span>
-            <span class="tag-purple">Generalization</span>
-          </div>
-          <a href="https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2" target="_blank" rel="noopener" class="project-action">Kaggle</a>
-        </article>
-
-        <article class="research-card reveal">
-          <div class="research-card-top">
-            <span class="research-status research-status-complete">Completed</span>
-            <span class="research-date">Oct 2022</span>
-          </div>
-          <h3 class="research-title">JPX Tokyo Stock Exchange Prediction</h3>
-          <p class="research-desc">Explored market prediction workflows for Japanese equities using tabular financial data and time-aware feature engineering.</p>
-          <div class="research-tags">
-            <span class="tag-purple">Finance</span>
-            <span class="tag-purple">Tabular ML</span>
-            <span class="tag-purple">Forecasting</span>
-          </div>
-          <a href="https://www.kaggle.com/competitions/jpx-tokyo-stock-exchange-prediction" target="_blank" rel="noopener" class="project-action">Kaggle</a>
-        </article>
-
-        <article class="research-card reveal">
-          <div class="research-card-top">
-            <span class="research-status research-status-complete">Completed</span>
-            <span class="research-date">Dec 2022</span>
-          </div>
-          <h3 class="research-title">DFL - Bundesliga Data Shootout</h3>
-          <p class="research-desc">Worked with video-based sports data to identify plays from match footage and connect temporal signals with structured outcomes.</p>
-          <div class="research-tags">
-            <span class="tag-purple">Video ML</span>
-            <span class="tag-purple">Sports Analytics</span>
-            <span class="tag-purple">Computer Vision</span>
-          </div>
-          <a href="https://www.kaggle.com/competitions/dfl-bundesliga-data-shootout" target="_blank" rel="noopener" class="project-action">Kaggle</a>
-        </article>
-
-        <article class="research-card reveal">
-          <div class="research-card-top">
-            <span class="research-status research-status-complete">Completed</span>
-            <span class="research-date">Jul 2023</span>
-          </div>
-          <h3 class="research-title">2023 Kaggle AI Report</h3>
-          <p class="research-desc">Contributed research writing on the state of machine learning and deep learning systems across the 2023 AI landscape.</p>
-          <div class="research-tags">
-            <span class="tag-purple">AI Research</span>
-            <span class="tag-purple">Deep Learning</span>
-            <span class="tag-purple">Writing</span>
-          </div>
-          <a href="https://www.kaggle.com/competitions/2023-kaggle-ai-report" target="_blank" rel="noopener" class="project-action">Kaggle</a>
-        </article>
-
-        <article class="research-card reveal research-extra">
-          <div class="research-card-top">
-            <span class="research-status research-status-complete">Completed</span>
-            <span class="research-date">Mar 2024</span>
-          </div>
-          <h3 class="research-title">Optiver - Trading at the Close</h3>
-          <p class="research-desc">Modeled short-horizon stock movements from high-volume tabular market data using feature engineering and validation design.</p>
-          <div class="research-tags">
-            <span class="tag-purple">Market ML</span>
-            <span class="tag-purple">Tabular Data</span>
-            <span class="tag-purple">Prediction</span>
-          </div>
-          <a href="https://www.kaggle.com/competitions/optiver-trading-at-the-close" target="_blank" rel="noopener" class="project-action">Kaggle</a>
-        </article>
-
-        <article class="research-card reveal research-extra">
-          <div class="research-card-top">
-            <span class="research-status research-status-complete">Completed</span>
-            <span class="research-date">Apr 2024</span>
-          </div>
-          <h3 class="research-title">PII Data Detection</h3>
-          <p class="research-desc">Developed NLP approaches for detecting and removing personally identifiable information from educational text data.</p>
-          <div class="research-tags">
-            <span class="tag-purple">NLP</span>
-            <span class="tag-purple">Education</span>
-            <span class="tag-purple">Text Classification</span>
-          </div>
-          <a href="https://www.kaggle.com/competitions/pii-detection-removal-from-educational-data" target="_blank" rel="noopener" class="project-action">Kaggle</a>
-        </article>
-
-        <article class="research-card reveal research-extra">
-          <div class="research-card-top">
-            <span class="research-status research-status-complete">Completed</span>
-            <span class="research-date">Apr 2024</span>
-          </div>
-          <h3 class="research-title">LLM Prompt Recovery</h3>
-          <p class="research-desc">Investigated prompt reconstruction for transformed text, combining language modeling intuition with NLP evaluation constraints.</p>
-          <div class="research-tags">
-            <span class="tag-purple">LLMs</span>
-            <span class="tag-purple">Prompting</span>
-            <span class="tag-purple">NLP</span>
-          </div>
-          <a href="https://www.kaggle.com/competitions/llm-prompt-recovery" target="_blank" rel="noopener" class="project-action">Kaggle</a>
-        </article>
-
-        <article class="research-card reveal research-extra">
-          <div class="research-card-top">
-            <span class="research-status research-status-complete">Completed</span>
-            <span class="research-date">Jun 2024</span>
-          </div>
-          <h3 class="research-title">AI Mathematical Olympiad</h3>
-          <p class="research-desc">Researched LLM-based mathematical reasoning with synthetic data generation, chain-of-thought prompting, and fine-tuning workflows.</p>
-          <div class="research-tags">
-            <span class="tag-purple">Math Reasoning</span>
-            <span class="tag-purple">Fine-Tuning</span>
-            <span class="tag-purple">CoT</span>
-          </div>
-          <a href="https://www.kaggle.com/competitions/ai-mathematical-olympiad-prize" target="_blank" rel="noopener" class="project-action">Kaggle</a>
-        </article>
-
-        <article class="research-card reveal research-extra">
-          <div class="research-card-top">
-            <span class="research-status research-status-complete">Completed</span>
-            <span class="research-date">Nov 2024</span>
-          </div>
-          <h3 class="research-title">ARC Prize 2024</h3>
-          <p class="research-desc">Explored abstraction and reasoning tasks that test generalization from small examples rather than standard large-data training.</p>
-          <div class="research-tags">
-            <span class="tag-purple">ARC</span>
-            <span class="tag-purple">Reasoning</span>
-            <span class="tag-purple">AI Systems</span>
-          </div>
-          <a href="https://www.kaggle.com/competitions/arc-prize-2024" target="_blank" rel="noopener" class="project-action">Kaggle</a>
-        </article>
-
-        <article class="research-card reveal research-extra">
-          <div class="research-card-top">
-            <span class="research-status research-status-complete">Completed</span>
-            <span class="research-date">Jan 2025</span>
-          </div>
-          <h3 class="research-title">Google - Unlock Global Communication with Gemma</h3>
-          <p class="research-desc">Built and tuned Gemma model variants around language and culture-specific communication tasks.</p>
-          <div class="research-tags">
-            <span class="tag-purple">Gemma</span>
-            <span class="tag-purple">Language</span>
-            <span class="tag-purple">Text Generation</span>
-          </div>
-          <a href="https://www.kaggle.com/competitions/gemma-language-tuning" target="_blank" rel="noopener" class="project-action">Kaggle</a>
-        </article>
-
-        <article class="research-card reveal research-extra">
-          <div class="research-card-top">
-            <span class="research-status research-status-complete">Completed</span>
-            <span class="research-date">Mar 2025</span>
-          </div>
-          <h3 class="research-title">FIDE &amp; Google Efficient Chess AI Challenge</h3>
-          <p class="research-desc">Developed resource-aware chess agents, balancing strategy quality with strict efficiency constraints.</p>
-          <div class="research-tags">
-            <span class="tag-purple">Chess AI</span>
-            <span class="tag-purple">Agents</span>
-            <span class="tag-purple">Efficiency</span>
-          </div>
-          <a href="https://www.kaggle.com/competitions/fide-google-efficiency-chess-ai-challenge" target="_blank" rel="noopener" class="project-action">Kaggle</a>
-        </article>
-
-        <article class="research-card reveal research-extra">
-          <div class="research-card-top">
-            <span class="research-status research-status-complete">Completed</span>
-            <span class="research-date">Sep 2025</span>
-          </div>
-          <h3 class="research-title">BigQuery AI - Building the Future of Data</h3>
-          <p class="research-desc">Built AI solutions with BigQuery across multimodal, tabular, and text data for applied cloud analytics workflows.</p>
-          <div class="research-tags">
-            <span class="tag-purple">BigQuery AI</span>
-            <span class="tag-purple">Multimodal</span>
-            <span class="tag-purple">Cloud Data</span>
-          </div>
-          <a href="https://www.kaggle.com/competitions/bigquery-ai-hackathon" target="_blank" rel="noopener" class="project-action">Kaggle</a>
-        </article>
-      </div>
-      <div class="research-expand-controls">
-        <button type="button" class="project-action research-toggle" data-research-toggle aria-expanded="false" aria-controls="ml-research-grid">
-          <span data-research-toggle-label>Show 8 more projects</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════ EXPERIENCE ═══════════════ -->
-  <section id="experience" class="section">
-    <div class="container">
-      <h2 class="section-title">Experience</h2>
-      <p class="section-sub">Where I've applied my skills</p>
-
-      <div class="timeline">
-
-        <div class="timeline-item reveal">
-          <div class="timeline-card">
-            <div class="timeline-header">
-              <div>
-                <h3 class="timeline-title">Software Developer</h3>
-                <p class="timeline-org">Hackathon Projects &amp; Open Source</p>
-              </div>
-              <span class="timeline-date">2023 – Present</span>
-            </div>
-            <p class="timeline-desc">
-              Built and shipped multiple full-stack applications and research prototypes across AI, accessibility,
-              and robotics domains. Competed in Hacklytics, Opportunity Hack, and other national hackathons.
-            </p>
-            <ul class="timeline-bullets">
-              <li>Developed LyoText BCI system using EEG signal processing and Gemini AI</li>
-              <li>Built Akira accessibility extension deployed for online classroom environments</li>
-              <li>Shipped ChronoVR generative AI educational tool using historical datasets</li>
-            </ul>
-            <div class="timeline-tags">
-              <span class="tag-purple">Python</span>
-              <span class="tag-purple">TypeScript</span>
-              <span class="tag-purple">AI/ML</span>
-              <span class="tag-purple">Full-Stack</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item reveal">
-          <div class="timeline-card">
-            <div class="timeline-header">
-              <div>
-                <h3 class="timeline-title">Research &amp; Course Projects</h3>
-                <p class="timeline-org">University of Houston — COSC Dept.</p>
-              </div>
-              <span class="timeline-date">2021 – Present</span>
-            </div>
-            <p class="timeline-desc">
-              Applied computer science fundamentals through research-oriented coursework in data science, operating
-              systems, and software engineering, tackling real-world datasets and systems design challenges.
-            </p>
-            <ul class="timeline-bullets">
-              <li>Solar flare prediction using NASA datasets and classification algorithms</li>
-              <li>Systems programming in C++ covering process scheduling and IPC</li>
-              <li>Full-stack software engineering projects in C# and JavaScript</li>
-            </ul>
-            <div class="timeline-tags">
-              <span class="tag-purple">C++</span>
-              <span class="tag-purple">C#</span>
-              <span class="tag-purple">Data Science</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════ CONTACT ═══════════════ -->
-  <section id="contact" class="section">
+  <!-- ═══════════════ STORY MODE (Education + Experience) ═══════════════ -->
+  <section id="story" class="section section-alt">
     <div class="container container-sm">
-      <h2 class="section-title">Contact</h2>
-      <p class="section-sub">Let's build something meaningful together</p>
+      <div class="section-head reveal">
+        <span class="mascot-face mascot-face-md"><span class="eye"></span><span class="eye"></span></span>
+        <h2 class="section-title">Story mode</h2>
+      </div>
+      <p class="section-sub reveal">Education &amp; experience — the campaign so far.</p>
 
+      <div class="story-track">
+
+        <div class="story-item reveal">
+          <div class="story-rail"><span class="story-num">01</span><span class="story-line"></span></div>
+          <div class="story-content">
+            <div class="story-card">
+              <div class="story-card-top">
+                <div>
+                  <span class="story-kind">EDUCATION</span>
+                  <h3 class="story-title">Master's in Computer Science</h3>
+                  <p class="story-org">Rice University — Houston, Texas</p>
+                </div>
+                <span class="story-date">Grad: May 2027</span>
+              </div>
+              <p class="story-desc">Specialization: Machine Learning &amp; Data Science</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="story-item reveal">
+          <div class="story-rail"><span class="story-num">02</span><span class="story-line"></span></div>
+          <div class="story-content">
+            <div class="story-card">
+              <div class="story-card-top">
+                <div>
+                  <span class="story-kind">EDUCATION</span>
+                  <h3 class="story-title">Bachelor of Science in Computer Science</h3>
+                  <p class="story-org">University of Houston — Houston, Texas</p>
+                </div>
+                <span class="story-date">GPA: 3.74</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="story-item reveal">
+          <div class="story-rail"><span class="story-num">03</span><span class="story-line"></span></div>
+          <div class="story-content">
+            <div class="story-card">
+              <div class="story-card-top">
+                <div>
+                  <span class="story-kind">EXPERIENCE</span>
+                  <h3 class="story-title">Software Developer</h3>
+                  <p class="story-org">Hackathon Projects &amp; Open Source</p>
+                </div>
+                <span class="story-date">2023 – Present</span>
+              </div>
+              <p class="story-desc">Built and shipped multiple full-stack applications and research prototypes across AI, accessibility, and robotics domains. Competed in Hacklytics, Opportunity Hack, and other national hackathons.</p>
+              <div class="story-bullets">
+                <div class="story-bullet"><span>Developed LyoText BCI system using EEG signal processing and Gemini AI</span></div>
+                <div class="story-bullet"><span>Built Akira accessibility extension deployed for online classroom environments</span></div>
+                <div class="story-bullet"><span>Shipped ChronoVR generative AI educational tool using historical datasets</span></div>
+              </div>
+              <div class="tag-row"><span class="tag">Python</span><span class="tag">TypeScript</span><span class="tag">AI/ML</span><span class="tag">Full-Stack</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="story-item reveal">
+          <div class="story-rail"><span class="story-num">04</span></div>
+          <div class="story-content">
+            <div class="story-card">
+              <div class="story-card-top">
+                <div>
+                  <span class="story-kind">EXPERIENCE</span>
+                  <h3 class="story-title">Research &amp; Course Projects</h3>
+                  <p class="story-org">University of Houston — COSC Dept.</p>
+                </div>
+                <span class="story-date">2021 – Present</span>
+              </div>
+              <p class="story-desc">Applied computer science fundamentals through research-oriented coursework in data science, operating systems, and software engineering, tackling real-world datasets and systems design challenges.</p>
+              <div class="story-bullets">
+                <div class="story-bullet"><span>Solar flare prediction using NASA datasets and classification algorithms</span></div>
+                <div class="story-bullet"><span>Systems programming in C++ covering process scheduling and IPC</span></div>
+                <div class="story-bullet"><span>Full-stack software engineering projects in C# and JavaScript</span></div>
+              </div>
+              <div class="tag-row"><span class="tag">C++</span><span class="tag">C#</span><span class="tag">Data Science</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CONTACT (PARTY UP) ═══════════════ -->
+  <section id="contact" class="section">
+    <div class="container container-xs">
       <div class="contact-card reveal">
-        <p class="contact-text">
-          I'm open to research collaborations, engineering roles, and interesting projects.
-          Whether you have an opportunity in mind or just want to connect — reach out!
-        </p>
-        <a href="mailto:hn33@rice.edu" class="btn btn-pink btn-lg">Send a Message</a>
+        <div class="contact-rocket rocket-green" aria-hidden="true">
+          <div class="rocket">
+            <div class="rocket-hull"></div>
+            <div class="rocket-band"></div>
+            <div class="rocket-window"></div>
+            <div class="rocket-fin rocket-fin-l"></div>
+            <div class="rocket-fin rocket-fin-r"></div>
+            <div class="rocket-nozzle"></div>
+            <div class="rocket-flame"></div>
+          </div>
+        </div>
+        <div class="contact-mascot"><span class="mascot-face mascot-face-lg"><span class="eye"></span><span class="eye"></span></span></div>
+        <h2 class="contact-title">Party up?</h2>
+        <p class="contact-text">I'm open to research collaborations, engineering roles, and interesting projects. Whether you have an opportunity in mind or just want to connect — reach out!</p>
+        <a href="mailto:hn33@rice.edu" class="btn btn-amber btn-lg">Send a message</a>
         <div class="contact-links">
           <a href="mailto:hn33@rice.edu">hn33@rice.edu</a>
           <a href="tel:+18329338271">832-933-8271</a>
@@ -1115,7 +987,7 @@
   <!-- ═══════════════ FOOTER ═══════════════ -->
   <footer class="footer">
     <div class="footer-inner">
-      <span>Designed &amp; built by <span class="pink">Huy T. Nguyen</span></span>
+      <span class="footer-note">Designed &amp; built by <span class="amber" style="font-weight:700">Huy T. Nguyen</span> — with Orbit on copilot duty</span>
       <div class="footer-links">
         <a href="https://github.com/hrhuynguyen" target="_blank" rel="noopener">GitHub</a>
         <a href="https://www.linkedin.com/in/huy-nguyen-a39815195/" target="_blank" rel="noopener">LinkedIn</a>
@@ -1123,6 +995,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=9"></script>
+  <script src="script.js?v=10"></script>
 </body>
 </html>

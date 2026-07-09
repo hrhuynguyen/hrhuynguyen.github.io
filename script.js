@@ -23,241 +23,17 @@ const navObserver = new IntersectionObserver(entries => {
 sections.forEach(section => navObserver.observe(section));
 
 /* ═══════════════════════════════════════════════════
-   SECTION DECOR
+   XP SCROLL PROGRESS
    ═══════════════════════════════════════════════════ */
-const rocketIcon = `
-  <svg viewBox="0 0 120 120" aria-hidden="true">
-    <ellipse cx="60" cy="103" rx="20" ry="8" fill="rgba(255,255,255,0.14)" />
-    <path d="M65 20c18 8 29 28 24 58L60 94 31 78c-5-30 6-50 24-58Z" fill="#93c5fd" stroke="#f8fafc" stroke-width="4" stroke-linejoin="round" />
-    <path d="M60 18c9 0 16 4 22 11-8 2-15 2-22 2s-14 0-22-2c6-7 13-11 22-11Z" fill="#f9a8d4" />
-    <circle cx="60" cy="52" r="12" fill="#eff6ff" stroke="#38bdf8" stroke-width="4" />
-    <circle cx="60" cy="52" r="5" fill="#38bdf8" opacity="0.75" />
-    <path d="M43 73c4 4 10 6 17 6s13-2 17-6" fill="none" stroke="#1e3a8a" stroke-width="4" stroke-linecap="round" />
-    <circle cx="52" cy="67" r="2.5" fill="#1e3a8a" />
-    <circle cx="68" cy="67" r="2.5" fill="#1e3a8a" />
-    <path d="M36 79 24 92l15-3 6-11Z" fill="#fbbf24" stroke="#fff7db" stroke-width="4" stroke-linejoin="round" />
-    <path d="M84 79 96 92l-15-3-6-11Z" fill="#fbbf24" stroke="#fff7db" stroke-width="4" stroke-linejoin="round" />
-    <path class="rocket-flame" d="M60 94c-7 9-7 14 0 22 7-8 7-13 0-22Z" fill="#fb7185" />
-    <path class="rocket-flame" d="M60 95c-4 6-4 10 0 16 4-6 4-10 0-16Z" fill="#fde68a" />
-  </svg>
-`;
-
-const robotIcon = `
-  <svg viewBox="0 0 120 120" aria-hidden="true">
-    <ellipse cx="60" cy="103" rx="21" ry="8" fill="rgba(255,255,255,0.14)" />
-    <path d="M60 18v11" fill="none" stroke="#fff7db" stroke-width="4" stroke-linecap="round" />
-    <circle cx="60" cy="15" r="6" fill="#f472b6" stroke="#fff7db" stroke-width="4" />
-    <rect x="28" y="30" width="64" height="50" rx="20" fill="#fde68a" stroke="#fff7db" stroke-width="4" />
-    <rect x="37" y="41" width="46" height="22" rx="11" fill="#93c5fd" />
-    <circle class="robot-eye" cx="50" cy="52" r="5" fill="#1e3a8a" />
-    <circle class="robot-eye" cx="70" cy="52" r="5" fill="#1e3a8a" />
-    <circle cx="42" cy="63" r="4" fill="#f9a8d4" opacity="0.9" />
-    <circle cx="78" cy="63" r="4" fill="#f9a8d4" opacity="0.9" />
-    <path d="M49 68c3 3 7 4 11 4s8-1 11-4" fill="none" stroke="#92400e" stroke-width="4" stroke-linecap="round" />
-    <path d="M28 52H17" fill="none" stroke="#fff7db" stroke-width="4" stroke-linecap="round" />
-    <g class="robot-wave-arm">
-      <path d="M92 52h11" fill="none" stroke="#fff7db" stroke-width="4" stroke-linecap="round" />
-      <path d="M103 52c5-1 8-4 9-9" fill="none" stroke="#fff7db" stroke-width="4" stroke-linecap="round" />
-    </g>
-    <path d="M42 80v15" fill="none" stroke="#fff7db" stroke-width="4" stroke-linecap="round" />
-    <path d="M78 80v15" fill="none" stroke="#fff7db" stroke-width="4" stroke-linecap="round" />
-    <path d="M39 96c2 3 4 4 7 4" fill="none" stroke="#fff7db" stroke-width="4" stroke-linecap="round" />
-    <path d="M74 100c3 0 5-1 7-4" fill="none" stroke="#fff7db" stroke-width="4" stroke-linecap="round" />
-  </svg>
-`;
-
-const starIcon = `
-  <svg viewBox="0 0 120 120" aria-hidden="true">
-    <path class="star-core" d="M60 18c7 20 10 23 31 31-21 8-24 11-31 31-7-20-10-23-31-31 21-8 24-11 31-31Z" fill="#fef08a" stroke="#fff7db" stroke-width="4" stroke-linejoin="round" />
-    <circle cx="50" cy="54" r="3.6" fill="#854d0e" />
-    <circle cx="70" cy="54" r="3.6" fill="#854d0e" />
-    <path d="M50 67c3 3 6 4 10 4s7-1 10-4" fill="none" stroke="#854d0e" stroke-width="4" stroke-linecap="round" />
-    <circle cx="39" cy="40" r="4" fill="#f9a8d4" opacity="0.9" />
-    <circle cx="82" cy="42" r="3.4" fill="#93c5fd" opacity="0.9" />
-  </svg>
-`;
-
-const bubbleIcon = `
-  <svg viewBox="0 0 120 120" aria-hidden="true">
-    <path d="M28 34c0-9 7-16 16-16h32c10 0 18 8 18 18v16c0 10-8 18-18 18H57L40 86l4-16h-2c-8 0-14-6-14-14V34Z" fill="#fce7f3" stroke="#fff7db" stroke-width="4" stroke-linejoin="round" />
-    <path class="bubble-heart" d="M60 57c-9-6-13-10-13-16 0-5 3-8 8-8 3 0 5 1 7 4 2-3 4-4 7-4 5 0 8 3 8 8 0 6-4 10-13 16l-2 1-2-1Z" fill="#f472b6" />
-    <circle cx="88" cy="82" r="6" fill="#bae6fd" opacity="0.95" />
-    <circle cx="99" cy="92" r="3.5" fill="#fef08a" opacity="0.95" />
-  </svg>
-`;
-
-const sceneLayouts = [
-  [
-    { type: 'rocket', pos: 'left: 3%; top: 12%;', size: '5.8rem', rotate: '-14deg', parallaxX: '-14px', parallaxY: '10px', opacity: '0.24', duration: '9s', delay: '-2s' },
-    { type: 'robot', pos: 'left: 16%; top: 40%;', size: '5.1rem', rotate: '8deg', parallaxX: '-10px', parallaxY: '8px', opacity: '0.2', duration: '8.6s', delay: '-1.5s' },
-    { type: 'rocket', pos: 'right: 8%; top: 18%;', size: '5.4rem', rotate: '12deg', parallaxX: '12px', parallaxY: '-9px', opacity: '0.25', duration: '8.8s', delay: '-3.2s' },
-    { type: 'robot', pos: 'right: 4%; top: 52%;', size: '5rem', rotate: '-9deg', parallaxX: '9px', parallaxY: '10px', opacity: '0.21', duration: '9.6s', delay: '-0.8s' },
-    { type: 'rocket', pos: 'left: 30%; bottom: 8%;', size: '4.9rem', rotate: '-10deg', parallaxX: '-7px', parallaxY: '9px', opacity: '0.18', duration: '8.1s', delay: '-4s' },
-    { type: 'robot', pos: 'right: 27%; bottom: 7%;', size: '4.6rem', rotate: '7deg', parallaxX: '8px', parallaxY: '-8px', opacity: '0.18', duration: '9.9s', delay: '-2.7s' },
-    { type: 'star', pos: 'left: 22%; top: 16%;', size: '3rem', rotate: '4deg', parallaxX: '-5px', parallaxY: '5px', opacity: '0.2', duration: '6.4s', delay: '-0.9s' },
-    { type: 'bubble', pos: 'right: 19%; top: 34%;', size: '3.6rem', rotate: '-5deg', parallaxX: '6px', parallaxY: '-4px', opacity: '0.18', duration: '7.1s', delay: '-2.2s' },
-    { type: 'rocket', pos: 'left: 48%; top: 8%;', size: '4.5rem', rotate: '6deg', parallaxX: '6px', parallaxY: '-6px', opacity: '0.15', duration: '7.8s', delay: '-1.9s' },
-    { type: 'robot', pos: 'left: 52%; bottom: 15%;', size: '4.3rem', rotate: '-5deg', parallaxX: '-6px', parallaxY: '7px', opacity: '0.14', duration: '10.2s', delay: '-3.7s' },
-    { type: 'star', pos: 'right: 43%; bottom: 12%;', size: '2.7rem', rotate: '10deg', parallaxX: '4px', parallaxY: '4px', opacity: '0.15', duration: '5.8s', delay: '-1.1s' },
-    { type: 'bubble', pos: 'left: 60%; top: 26%;', size: '3.1rem', rotate: '7deg', parallaxX: '-4px', parallaxY: '4px', opacity: '0.14', duration: '6.8s', delay: '-3.3s' },
-  ],
-  [
-    { type: 'robot', pos: 'left: 5%; top: 18%;', size: '5.6rem', rotate: '-12deg', parallaxX: '-11px', parallaxY: '8px', opacity: '0.23', duration: '9.2s', delay: '-2.8s' },
-    { type: 'rocket', pos: 'left: 23%; top: 6%;', size: '5rem', rotate: '11deg', parallaxX: '9px', parallaxY: '-10px', opacity: '0.19', duration: '8.1s', delay: '-1.3s' },
-    { type: 'robot', pos: 'right: 10%; top: 14%;', size: '5.2rem', rotate: '10deg', parallaxX: '10px', parallaxY: '-8px', opacity: '0.22', duration: '9.8s', delay: '-3.1s' },
-    { type: 'rocket', pos: 'right: 3%; bottom: 18%;', size: '5.6rem', rotate: '-14deg', parallaxX: '13px', parallaxY: '10px', opacity: '0.24', duration: '8.9s', delay: '-4.2s' },
-    { type: 'robot', pos: 'left: 34%; bottom: 9%;', size: '4.7rem', rotate: '6deg', parallaxX: '-7px', parallaxY: '7px', opacity: '0.18', duration: '10.4s', delay: '-1.7s' },
-    { type: 'rocket', pos: 'right: 33%; bottom: 6%;', size: '4.8rem', rotate: '9deg', parallaxX: '7px', parallaxY: '-6px', opacity: '0.17', duration: '8.4s', delay: '-2.1s' },
-    { type: 'star', pos: 'left: 16%; top: 58%;', size: '2.9rem', rotate: '-8deg', parallaxX: '-4px', parallaxY: '4px', opacity: '0.18', duration: '5.9s', delay: '-2.7s' },
-    { type: 'bubble', pos: 'right: 18%; top: 38%;', size: '3.4rem', rotate: '6deg', parallaxX: '5px', parallaxY: '-5px', opacity: '0.17', duration: '7.3s', delay: '-0.6s' },
-    { type: 'robot', pos: 'left: 52%; top: 22%;', size: '4.4rem', rotate: '-6deg', parallaxX: '-6px', parallaxY: '6px', opacity: '0.14', duration: '9.5s', delay: '-0.9s' },
-    { type: 'rocket', pos: 'left: 58%; bottom: 20%;', size: '4.2rem', rotate: '-8deg', parallaxX: '5px', parallaxY: '5px', opacity: '0.13', duration: '7.6s', delay: '-3.4s' },
-    { type: 'star', pos: 'right: 44%; top: 12%;', size: '2.5rem', rotate: '12deg', parallaxX: '4px', parallaxY: '3px', opacity: '0.14', duration: '5.4s', delay: '-1.8s' },
-    { type: 'bubble', pos: 'left: 63%; bottom: 10%;', size: '2.9rem', rotate: '-6deg', parallaxX: '-4px', parallaxY: '4px', opacity: '0.13', duration: '6.9s', delay: '-2.9s' },
-  ],
-  [
-    { type: 'rocket', pos: 'left: 8%; top: 10%;', size: '5.4rem', rotate: '-11deg', parallaxX: '-12px', parallaxY: '10px', opacity: '0.24', duration: '8.7s', delay: '-2.6s' },
-    { type: 'robot', pos: 'left: 6%; bottom: 14%;', size: '5.3rem', rotate: '9deg', parallaxX: '-10px', parallaxY: '9px', opacity: '0.21', duration: '10.1s', delay: '-1.2s' },
-    { type: 'rocket', pos: 'right: 16%; top: 12%;', size: '5rem', rotate: '10deg', parallaxX: '11px', parallaxY: '-7px', opacity: '0.21', duration: '8.2s', delay: '-3.9s' },
-    { type: 'robot', pos: 'right: 6%; bottom: 10%;', size: '5.2rem', rotate: '-10deg', parallaxX: '10px', parallaxY: '10px', opacity: '0.22', duration: '9.3s', delay: '-2.4s' },
-    { type: 'rocket', pos: 'left: 32%; top: 28%;', size: '4.8rem', rotate: '8deg', parallaxX: '7px', parallaxY: '-7px', opacity: '0.17', duration: '7.9s', delay: '-1.8s' },
-    { type: 'robot', pos: 'right: 31%; top: 36%;', size: '4.6rem', rotate: '6deg', parallaxX: '-7px', parallaxY: '7px', opacity: '0.17', duration: '10.6s', delay: '-4.1s' },
-    { type: 'star', pos: 'left: 23%; bottom: 24%;', size: '2.8rem', rotate: '6deg', parallaxX: '-3px', parallaxY: '3px', opacity: '0.18', duration: '5.5s', delay: '-3.1s' },
-    { type: 'bubble', pos: 'right: 21%; top: 28%;', size: '3.5rem', rotate: '-7deg', parallaxX: '5px', parallaxY: '-5px', opacity: '0.18', duration: '7.5s', delay: '-1.4s' },
-    { type: 'rocket', pos: 'left: 48%; bottom: 7%;', size: '4.3rem', rotate: '-7deg', parallaxX: '5px', parallaxY: '6px', opacity: '0.14', duration: '8.3s', delay: '-0.7s' },
-    { type: 'robot', pos: 'left: 57%; top: 8%;', size: '4.1rem', rotate: '-4deg', parallaxX: '-5px', parallaxY: '5px', opacity: '0.13', duration: '9.7s', delay: '-3s' },
-    { type: 'star', pos: 'right: 40%; bottom: 12%;', size: '2.6rem', rotate: '-10deg', parallaxX: '4px', parallaxY: '4px', opacity: '0.14', duration: '5.6s', delay: '-2.2s' },
-    { type: 'bubble', pos: 'left: 64%; top: 18%;', size: '3rem', rotate: '5deg', parallaxX: '-4px', parallaxY: '4px', opacity: '0.13', duration: '6.7s', delay: '-0.8s' },
-  ],
-];
-
-function buildSpriteMarkup(sprite) {
-  const iconMap = {
-    rocket: rocketIcon,
-    robot: robotIcon,
-    star: starIcon,
-    bubble: bubbleIcon,
-  };
-  const icon = iconMap[sprite.type] || robotIcon;
-  const style = [
-    sprite.pos,
-    `--size: ${sprite.size}`,
-    `--rotate: ${sprite.rotate}`,
-    `--parallax-x: ${sprite.parallaxX}`,
-    `--parallax-y: ${sprite.parallaxY}`,
-    `--opacity: ${sprite.opacity}`,
-    `--float-duration: ${sprite.duration}`,
-    `--float-delay: ${sprite.delay}`,
-  ].join('; ');
-
-  return `<div class="scene-sprite scene-${sprite.type}" style="${style}">${icon}</div>`;
+const xpBar = document.getElementById('xp-bar');
+function updateXpBar() {
+  if (!xpBar) return;
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  const p = max > 0 ? (window.scrollY / max) * 100 : 0;
+  xpBar.style.width = p.toFixed(1) + '%';
 }
-
-function buildSectionScene(index) {
-  const layout = sceneLayouts[index % sceneLayouts.length];
-  const scene = document.createElement('div');
-  scene.className = 'section-scene';
-  scene.setAttribute('aria-hidden', 'true');
-  scene.innerHTML = layout.map(buildSpriteMarkup).join('');
-  return scene;
-}
-
-Array.from(sections).forEach((section, index) => {
-  if (section.querySelector('.section-scene')) return;
-
-  const scene = buildSectionScene(index);
-  if (section.id === 'home') {
-    const stars = section.querySelector('#stars');
-    if (stars) {
-      stars.insertAdjacentElement('afterend', scene);
-    } else {
-      section.prepend(scene);
-    }
-  } else {
-    section.prepend(scene);
-  }
-
-  section.style.setProperty('--scene-x', '0');
-  section.style.setProperty('--scene-y', '0');
-
-  const updateScene = event => {
-    const rect = section.getBoundingClientRect();
-    const x = ((event.clientX - rect.left) / rect.width) - 0.5;
-    const y = ((event.clientY - rect.top) / rect.height) - 0.5;
-    section.style.setProperty('--scene-x', x.toFixed(3));
-    section.style.setProperty('--scene-y', y.toFixed(3));
-  };
-
-  section.addEventListener('pointermove', updateScene);
-  section.addEventListener('pointerleave', () => {
-    section.style.setProperty('--scene-x', '0');
-    section.style.setProperty('--scene-y', '0');
-  });
-});
-
-/* ═══════════════════════════════════════════════════
-   STARFIELD CANVAS
-   ═══════════════════════════════════════════════════ */
-const canvas = document.getElementById('stars');
-const ctx = canvas.getContext('2d');
-let W, H, particles;
-
-function resize() {
-  W = canvas.width  = canvas.offsetWidth;
-  H = canvas.height = canvas.offsetHeight;
-  init();
-}
-
-function init() {
-  const count = Math.floor((W * H) / 8000);
-  particles = Array.from({ length: count }, () => ({
-    x: Math.random() * W,
-    y: Math.random() * H,
-    r: Math.random() * 1.2 + 0.2,
-    vx: (Math.random() - 0.5) * 0.15,
-    vy: (Math.random() - 0.5) * 0.15,
-    alpha: Math.random() * 0.6 + 0.2,
-  }));
-}
-
-function draw() {
-  ctx.clearRect(0, 0, W, H);
-
-  // Connection lines
-  for (let i = 0; i < particles.length; i++) {
-    for (let j = i + 1; j < particles.length; j++) {
-      const dx = particles[i].x - particles[j].x;
-      const dy = particles[i].y - particles[j].y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 100) {
-        ctx.beginPath();
-        ctx.strokeStyle = `rgba(114, 9, 183, ${0.15 * (1 - dist / 100)})`;
-        ctx.lineWidth = 0.5;
-        ctx.moveTo(particles[i].x, particles[i].y);
-        ctx.lineTo(particles[j].x, particles[j].y);
-        ctx.stroke();
-      }
-    }
-  }
-
-  // Stars
-  particles.forEach(p => {
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(247, 37, 133, ${p.alpha})`;
-    ctx.fill();
-    p.x += p.vx;
-    p.y += p.vy;
-    if (p.x < 0 || p.x > W) p.vx *= -1;
-    if (p.y < 0 || p.y > H) p.vy *= -1;
-  });
-
-  requestAnimationFrame(draw);
-}
-
-window.addEventListener('resize', resize);
-resize();
-draw();
+window.addEventListener('scroll', updateXpBar, { passive: true });
+updateXpBar();
 
 /* ═══════════════════════════════════════════════════
    TYPEWRITER
@@ -275,77 +51,203 @@ function type() {
   const phrase = phrases[pi];
   if (!del) {
     typedEl.textContent = phrase.slice(0, ++ci);
-    if (ci === phrase.length) { del = true; setTimeout(type, 1800); return; }
+    if (ci === phrase.length) { del = true; setTimeout(type, 1900); return; }
   } else {
     typedEl.textContent = phrase.slice(0, --ci);
     if (ci === 0) { del = false; pi = (pi + 1) % phrases.length; }
   }
-  setTimeout(type, del ? 40 : 75);
+  setTimeout(type, del ? 36 : 72);
 }
-type();
+if (typedEl) setTimeout(type, 500);
 
 /* ═══════════════════════════════════════════════════
-   PROJECTS CAROUSEL
+   MASCOT SPEECH
    ═══════════════════════════════════════════════════ */
-const carousel = document.getElementById('projects-carousel');
-const dotsContainer = document.getElementById('projects-dots');
-const cards = carousel ? Array.from(carousel.querySelectorAll('.project-card')) : [];
-
-// Determine cards per page based on viewport
-function perPage() {
-  if (window.innerWidth >= 1024) return 3;
-  if (window.innerWidth >= 768)  return 2;
-  return 1;
+const mascotMsgEl = document.getElementById('mascot-msg');
+const mascotMessages = [
+  "Hi! I'm Orbit — Huy's copilot.",
+  '9+ hackathon wins and counting…',
+  'Scroll down to start the quest ↓',
+  'Achievement unlocked: Kaggle Master.',
+  'Peak 2332 on LeetCode. Nominal.',
+];
+if (mascotMsgEl) {
+  let mi = 0;
+  setInterval(() => {
+    mi = (mi + 1) % mascotMessages.length;
+    mascotMsgEl.textContent = mascotMessages[mi];
+  }, 4200);
 }
 
-let page = 0;
-let pp = perPage();
-let totalPages = Math.ceil(cards.length / pp);
+/* ═══════════════════════════════════════════════════
+   STARFIELD CANVAS (with comets)
+   ═══════════════════════════════════════════════════ */
+const canvas = document.getElementById('stars');
+const ctx = canvas.getContext('2d');
+let W = 0, H = 0, stars = [], comets = [];
+let mx = 0, my = 0, smx = 0, smy = 0;
+const STAR_DENSITY = 1.4;
 
-function buildDots() {
-  if (!dotsContainer) return;
-  dotsContainer.innerHTML = '';
-  for (let i = 0; i < totalPages; i++) {
-    const dot = document.createElement('button');
-    dot.className = 'dot' + (i === page ? ' active' : '');
-    dot.setAttribute('aria-label', `Page ${i + 1}`);
-    dot.addEventListener('click', () => goTo(i));
-    dotsContainer.appendChild(dot);
+function resizeStars() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+  const n = Math.round((W * H) / 10000 * STAR_DENSITY);
+  stars = [];
+  for (let i = 0; i < n; i++) {
+    const z = 0.25 + Math.random() * 0.75;
+    const tint = Math.random();
+    stars.push({
+      x: Math.random() * W, y: Math.random() * H, z,
+      r: z * (0.6 + Math.random() * 1.1),
+      ph: Math.random() * Math.PI * 2,
+      sp: 0.4 + Math.random() * 1.2,
+      c: tint < 0.82 ? '207,224,255' : (tint < 0.91 ? '255,180,84' : '63,227,155'),
+    });
   }
 }
+window.addEventListener('resize', resizeStars);
+window.addEventListener('mousemove', e => {
+  mx = (e.clientX / W) * 2 - 1;
+  my = (e.clientY / H) * 2 - 1;
+});
+resizeStars();
 
-function updateDots() {
-  dotsContainer?.querySelectorAll('.dot').forEach((d, i) => {
-    d.classList.toggle('active', i === page);
-  });
+let t = 0;
+function drawStars() {
+  t += 0.016;
+  smx += (mx - smx) * 0.04;
+  smy += (my - smy) * 0.04;
+  ctx.clearRect(0, 0, W, H);
+  for (const s of stars) {
+    s.x -= s.z * 0.05;
+    if (s.x < -2) s.x = W + 2;
+    const a = (0.32 + 0.6 * (0.5 + 0.5 * Math.sin(t * s.sp + s.ph))) * s.z;
+    const px = s.x - smx * s.z * 20;
+    const py = s.y - smy * s.z * 20;
+    ctx.beginPath();
+    ctx.arc(px, py, s.r, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(' + s.c + ',' + a.toFixed(3) + ')';
+    ctx.fill();
+  }
+  if (comets.length < 2 && Math.random() < 0.003) {
+    const fromLeft = Math.random() < 0.5;
+    comets.push({
+      x: fromLeft ? -60 : Math.random() * W,
+      y: fromLeft ? Math.random() * H * 0.5 : -60,
+      vx: 7 + Math.random() * 5,
+      vy: 3 + Math.random() * 3,
+      life: 1,
+    });
+  }
+  comets = comets.filter(c => c.life > 0 && c.x < W + 200 && c.y < H + 200);
+  for (const c of comets) {
+    c.x += c.vx; c.y += c.vy; c.life -= 0.004;
+    const grad = ctx.createLinearGradient(c.x, c.y, c.x - c.vx * 16, c.y - c.vy * 16);
+    grad.addColorStop(0, 'rgba(255,232,200,' + (0.9 * c.life).toFixed(3) + ')');
+    grad.addColorStop(1, 'rgba(255,180,84,0)');
+    ctx.strokeStyle = grad;
+    ctx.lineWidth = 1.6;
+    ctx.beginPath();
+    ctx.moveTo(c.x, c.y);
+    ctx.lineTo(c.x - c.vx * 16, c.y - c.vy * 16);
+    ctx.stroke();
+  }
+  requestAnimationFrame(drawStars);
 }
-
-function goTo(p) {
-  page = Math.max(0, Math.min(p, totalPages - 1));
-  cards.forEach((c, i) => {
-    const slot = Math.floor(i / pp);
-    c.style.display = slot === page ? '' : 'none';
-  });
-  updateDots();
-}
-
-function initCarousel() {
-  pp = perPage();
-  totalPages = Math.ceil(cards.length / pp);
-  page = Math.min(page, totalPages - 1);
-  buildDots();
-  goTo(page);
-}
-
-document.querySelector('.carousel-prev')?.addEventListener('click', () => goTo(page - 1));
-document.querySelector('.carousel-next')?.addEventListener('click', () => goTo(page + 1));
-window.addEventListener('resize', initCarousel);
-initCarousel();
+drawStars();
 
 /* ═══════════════════════════════════════════════════
-   PROFILE DASHBOARDS
+   SKILL TREE TABS
    ═══════════════════════════════════════════════════ */
-const dashboardCards = document.querySelectorAll('.achievement-dashboard[data-profile-source]');
+const skillTabs = Array.from(document.querySelectorAll('[data-skill-tab]'));
+const skillPanels = Array.from(document.querySelectorAll('[data-skill-panel]'));
+
+function activateSkillTab(tab) {
+  const target = tab.dataset.skillTab;
+  skillTabs.forEach(btn => {
+    const isActive = btn === tab;
+    btn.classList.toggle('active', isActive);
+    btn.setAttribute('aria-selected', String(isActive));
+    btn.tabIndex = isActive ? 0 : -1;
+  });
+  skillPanels.forEach(panel => {
+    const isActive = panel.dataset.skillPanel === target;
+    panel.classList.toggle('active', isActive);
+    panel.hidden = !isActive;
+  });
+}
+
+skillTabs.forEach((tab, index) => {
+  tab.tabIndex = tab.classList.contains('active') ? 0 : -1;
+  tab.addEventListener('click', () => activateSkillTab(tab));
+  tab.addEventListener('keydown', event => {
+    if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+    event.preventDefault();
+    let nextIndex = index;
+    if (event.key === 'ArrowRight') nextIndex = (index + 1) % skillTabs.length;
+    if (event.key === 'ArrowLeft') nextIndex = (index - 1 + skillTabs.length) % skillTabs.length;
+    if (event.key === 'Home') nextIndex = 0;
+    if (event.key === 'End') nextIndex = skillTabs.length - 1;
+    skillTabs[nextIndex].focus();
+    activateSkillTab(skillTabs[nextIndex]);
+  });
+});
+
+/* ═══════════════════════════════════════════════════
+   QUESTS EXPANDER
+   ═══════════════════════════════════════════════════ */
+function setupExpander({ toggleSelector, gridSelector, extraSelector, labelSelector, moreLabel, lessLabel, sectionId }) {
+  const grid = document.querySelector(gridSelector);
+  const toggleBtn = document.querySelector(toggleSelector);
+  const label = document.querySelector(labelSelector);
+  const extraCards = grid ? Array.from(grid.querySelectorAll(extraSelector)) : [];
+  if (!grid || !toggleBtn) return;
+
+  function setExpanded(expanded) {
+    grid.classList.toggle('is-expanded', expanded);
+    toggleBtn.setAttribute('aria-expanded', String(expanded));
+    if (label) label.textContent = expanded ? `▲ Collapse ${lessLabel}` : `▼ ${moreLabel}`;
+    extraCards.forEach((card, index) => {
+      if (expanded) {
+        setTimeout(() => card.classList.add('visible'), index * 55);
+      } else {
+        card.classList.remove('visible');
+      }
+    });
+    if (!expanded) {
+      document.getElementById(sectionId)?.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    }
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    setExpanded(toggleBtn.getAttribute('aria-expanded') !== 'true');
+  });
+}
+
+setupExpander({
+  toggleSelector: '[data-quest-toggle]',
+  gridSelector: '#quest-grid',
+  extraSelector: '.quest-extra',
+  labelSelector: '[data-quest-toggle-label]',
+  moreLabel: 'Reveal 9 more quests',
+  lessLabel: 'quest log',
+  sectionId: 'quests',
+});
+
+setupExpander({
+  toggleSelector: '[data-sidequest-toggle]',
+  gridSelector: '#sidequest-list',
+  extraSelector: '.sidequest-extra',
+  labelSelector: '[data-sidequest-toggle-label]',
+  moreLabel: 'Show 8 more side quests',
+  lessLabel: 'side quests',
+  sectionId: 'sidequests',
+});
+
+/* ═══════════════════════════════════════════════════
+   LIVE PROFILE DASHBOARDS (Awards)
+   ═══════════════════════════════════════════════════ */
+const dashboardCards = document.querySelectorAll('.award-card[data-profile-source]');
 
 function formatInteger(value) {
   const number = Number(value);
@@ -373,7 +275,7 @@ function setDashboardStat(card, key, value) {
 }
 
 function setDashboardNote(card, value) {
-  const note = card.querySelector('.achievement-dashboard-note');
+  const note = card.querySelector('.award-note');
   if (note && value) note.textContent = value;
 }
 
@@ -477,83 +379,15 @@ dashboardCards.forEach(card => {
 });
 
 /* ═══════════════════════════════════════════════════
-   SKILLS DASHBOARD
-   ═══════════════════════════════════════════════════ */
-const skillTabs = Array.from(document.querySelectorAll('[data-skill-tab]'));
-const skillPanels = Array.from(document.querySelectorAll('[data-skill-panel]'));
-
-function activateSkillTab(tab) {
-  const target = tab.dataset.skillTab;
-  skillTabs.forEach(btn => {
-    const isActive = btn === tab;
-    btn.classList.toggle('active', isActive);
-    btn.setAttribute('aria-selected', String(isActive));
-    btn.tabIndex = isActive ? 0 : -1;
-  });
-  skillPanels.forEach(panel => {
-    const isActive = panel.dataset.skillPanel === target;
-    panel.classList.toggle('active', isActive);
-    panel.hidden = !isActive;
-  });
-}
-
-skillTabs.forEach((tab, index) => {
-  tab.tabIndex = tab.classList.contains('active') ? 0 : -1;
-  tab.addEventListener('click', () => activateSkillTab(tab));
-  tab.addEventListener('keydown', event => {
-    if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
-    event.preventDefault();
-    let nextIndex = index;
-    if (event.key === 'ArrowRight') nextIndex = (index + 1) % skillTabs.length;
-    if (event.key === 'ArrowLeft') nextIndex = (index - 1 + skillTabs.length) % skillTabs.length;
-    if (event.key === 'Home') nextIndex = 0;
-    if (event.key === 'End') nextIndex = skillTabs.length - 1;
-    skillTabs[nextIndex].focus();
-    activateSkillTab(skillTabs[nextIndex]);
-  });
-});
-
-/* ═══════════════════════════════════════════════════
-   RESEARCH EXPANDER
-   ═══════════════════════════════════════════════════ */
-const researchGrid = document.querySelector('[data-research-grid]');
-const researchToggle = document.querySelector('[data-research-toggle]');
-const researchToggleLabel = document.querySelector('[data-research-toggle-label]');
-const researchExtraCards = researchGrid ? Array.from(researchGrid.querySelectorAll('.research-extra')) : [];
-
-function setResearchExpanded(expanded) {
-  if (!researchGrid || !researchToggle) return;
-  researchGrid.classList.toggle('is-collapsed', !expanded);
-  researchToggle.setAttribute('aria-expanded', String(expanded));
-  if (researchToggleLabel) {
-    researchToggleLabel.textContent = expanded ? 'Show fewer projects' : `Show ${researchExtraCards.length} more projects`;
-  }
-  researchExtraCards.forEach((card, index) => {
-    if (expanded) {
-      setTimeout(() => card.classList.add('visible'), index * 55);
-    } else {
-      card.classList.remove('visible');
-    }
-  });
-  if (!expanded) {
-    document.getElementById('ml-research')?.scrollIntoView({ block: 'start', behavior: 'smooth' });
-  }
-}
-
-researchToggle?.addEventListener('click', () => {
-  setResearchExpanded(researchToggle.getAttribute('aria-expanded') !== 'true');
-});
-
-/* ═══════════════════════════════════════════════════
    SCROLL REVEAL
    ═══════════════════════════════════════════════════ */
-const revealEls = document.querySelectorAll('.reveal, .timeline-item, .achievement-card, .contact-card');
+const revealEls = document.querySelectorAll('.reveal');
 const revealObs = new IntersectionObserver(entries => {
-  entries.forEach((e, _, all) => {
+  entries.forEach(e => {
     if (e.isIntersecting) {
-      const group = Array.from(e.target.parentElement?.querySelectorAll('.reveal, .timeline-item, .achievement-card') ?? []);
+      const group = Array.from(e.target.parentElement?.querySelectorAll('.reveal') ?? []);
       const idx = group.indexOf(e.target);
-      setTimeout(() => e.target.classList.add('visible'), idx * 100);
+      setTimeout(() => e.target.classList.add('visible'), idx * 90);
       revealObs.unobserve(e.target);
     }
   });
