@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=21" />
+  <link rel="stylesheet" href="styles.css?v=22" />
 </head>
 <body>
 
@@ -47,6 +47,7 @@
         <span class="nav-pill" aria-hidden="true"></span>
         <a href="#highlights">Highlights</a>
         <a href="#projects">Projects</a>
+        <a href="#playground">Playground</a>
         <a href="#research">Research</a>
         <a href="#skills">Skills</a>
         <a href="#journey">Journey</a>
@@ -540,11 +541,96 @@
       </div>
     </section>
 
+    <!-- ═══════════ PLAYGROUND (3D LAUNCH & CATCH) ═══════════ -->
+    <section class="section" id="playground">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">03 — Playground</p>
+          <h2 class="section-title">Mission control</h2>
+          <p class="section-lead">Rockets and robots are why I got into engineering. This is a small tribute: a stylised super-heavy rocket and a catch tower with chopstick arms, built in Three.js from plain cylinders, cones, and boxes. Press launch, then drag to orbit the scene.</p>
+        </header>
+
+        <div class="stage reveal" id="stage">
+          <div class="stage-sky" aria-hidden="true"></div>
+          <svg class="stage-poster" viewBox="0 0 400 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+            <rect x="0" y="236" width="400" height="64" fill="#6B667D"/>
+            <ellipse cx="208" cy="238" rx="70" ry="6" fill="#7A7690"/>
+            <rect x="112" y="46" width="22" height="192" fill="#2F3142"/>
+            <g stroke="#7B7E99" stroke-width="1.2" opacity=".8">
+              <line x1="112" y1="66" x2="134" y2="66"/><line x1="112" y1="86" x2="134" y2="86"/><line x1="112" y1="106" x2="134" y2="106"/><line x1="112" y1="126" x2="134" y2="126"/><line x1="112" y1="146" x2="134" y2="146"/><line x1="112" y1="166" x2="134" y2="166"/><line x1="112" y1="186" x2="134" y2="186"/><line x1="112" y1="206" x2="134" y2="206"/><line x1="112" y1="226" x2="134" y2="226"/>
+            </g>
+            <rect x="108" y="40" width="30" height="7" rx="1.5" fill="#F0876A"/>
+            <rect x="134" y="118" width="14" height="14" fill="#23252F"/>
+            <rect x="146" y="120" width="52" height="7" rx="2" fill="#3A3D4A" transform="rotate(-9 146 124)"/>
+            <rect x="146" y="124" width="52" height="7" rx="2" fill="#3A3D4A" transform="rotate(9 146 128)"/>
+            <rect x="196" y="217" width="26" height="10" fill="#4A4C58"/>
+            <rect x="196" y="105" width="26" height="114" fill="#DFE0E6"/>
+            <rect x="196" y="105" width="26" height="6" fill="#3A3D4A"/>
+            <path d="M196 105 V52 Q209 24 222 52 V105 Z" fill="#DFE0E6"/>
+            <path d="M196 105 V52 Q202 34 209 26 V105 Z" fill="#23252F"/>
+            <rect x="188" y="62" width="8" height="14" rx="1" fill="#DFE0E6"/><rect x="222" y="62" width="8" height="14" rx="1" fill="#DFE0E6"/>
+            <rect x="186" y="84" width="10" height="20" rx="1" fill="#DFE0E6"/><rect x="222" y="84" width="10" height="20" rx="1" fill="#DFE0E6"/>
+            <rect x="188" y="112" width="8" height="5" fill="#B9BAC4"/><rect x="222" y="112" width="8" height="5" fill="#B9BAC4"/>
+            <circle cx="214" cy="78" r="5.5" fill="#FFB49B"/><circle cx="212" cy="77" r="1" fill="#171A21"/><circle cx="216" cy="77" r="1" fill="#171A21"/>
+            <g fill="#4A4C58"><circle cx="200" cy="228" r="2.2"/><circle cx="205" cy="229" r="2.2"/><circle cx="210" cy="229" r="2.2"/><circle cx="215" cy="229" r="2.2"/><circle cx="220" cy="228" r="2.2"/></g>
+          </svg>
+          <div class="stage-canvas" aria-hidden="true"></div>
+          <div class="stage-fade" aria-hidden="true"></div>
+
+          <div class="hud">
+            <div class="hud-top">
+              <div class="hud-block">
+                <span class="hud-label">Mission</span>
+                <span class="hud-value">Portfolio-1<span class="hud-sub"> · Flight test</span></span>
+              </div>
+              <div class="hud-block hud-right">
+                <span class="hud-label">Mission clock</span>
+                <span class="hud-value hud-clock" id="hud-clock">T-00:00:03</span>
+              </div>
+            </div>
+
+            <div class="hud-center" id="hud-center">
+              <p class="hud-status" id="hud-status">Vehicle on the pad</p>
+              <button type="button" class="btn btn-launch" id="launch-btn">Launch</button>
+              <p class="hud-hint" id="hud-hint">Drag to orbit the camera</p>
+            </div>
+
+            <div class="hud-bottom">
+              <div class="hud-block">
+                <span class="hud-label">Booster</span>
+                <span class="hud-value" id="hud-booster">Go for launch</span>
+              </div>
+              <div class="hud-block hud-tele">
+                <span><span class="hud-label">Altitude</span><span class="hud-value" id="hud-alt">0.0 km</span></span>
+                <span><span class="hud-label">Speed</span><span class="hud-value" id="hud-speed">0 km/h</span></span>
+              </div>
+              <div class="hud-block hud-right">
+                <span class="hud-label">Ship</span>
+                <span class="hud-value" id="hud-ship">Go for launch</span>
+              </div>
+            </div>
+
+            <div class="hud-orbit" id="hud-orbit" aria-live="polite">
+              <span class="brand-face" aria-hidden="true"><i></i><i></i></span>
+              <span id="hud-orbit-text">All systems nominal. Ready when you are.</span>
+            </div>
+            <div class="hud-progress" aria-hidden="true"><span id="hud-progress"></span></div>
+          </div>
+        </div>
+
+        <ul class="stage-notes reveal">
+          <li><b>Built with</b> Three.js primitives only: cylinders, cones, boxes, and a lot of easing curves. No models, no textures apart from Orbit's mission patch.</li>
+          <li><b>Sequence</b> Countdown, liftoff, hot staging, booster flip and boostback, landing burn, then the tower's arms close for the catch.</li>
+          <li><b>Interaction</b> Drag or swipe sideways to orbit the camera at any point. The scene only renders while on screen and respects reduced-motion settings.</li>
+        </ul>
+      </div>
+    </section>
+
     <!-- ═══════════ RESEARCH ═══════════ -->
     <section class="section" id="research">
       <div class="container">
         <header class="section-head reveal">
-          <p class="eyebrow">03 — Research</p>
+          <p class="eyebrow">04 — Research</p>
           <h2 class="section-title">Kaggle competitions</h2>
           <p class="section-lead">Competition research across reasoning, NLP, vision, and tabular ML. Active runs first, then completed challenges.</p>
         </header>
@@ -719,7 +805,7 @@
     <section class="section section-alt" id="skills">
       <div class="container">
         <header class="section-head reveal">
-          <p class="eyebrow">04 — Skills</p>
+          <p class="eyebrow">05 — Skills</p>
           <h2 class="section-title">Tools I reach for</h2>
           <p class="section-lead">Across AI products, Kaggle research, accessibility systems, and full-stack prototypes.</p>
         </header>
@@ -766,7 +852,7 @@
     <section class="section" id="journey">
       <div class="container container-sm">
         <header class="section-head reveal">
-          <p class="eyebrow">05 — Journey</p>
+          <p class="eyebrow">06 — Journey</p>
           <h2 class="section-title">Education &amp; experience</h2>
         </header>
 
@@ -852,7 +938,7 @@
       <div class="container container-xs">
         <div class="card contact reveal">
           <span class="contact-face" aria-hidden="true"><i></i><i></i></span>
-          <p class="eyebrow">06 — Contact</p>
+          <p class="eyebrow">07 — Contact</p>
           <h2 class="section-title">Let's build something together</h2>
           <p class="section-lead">I'm open to research collaborations, engineering roles, and interesting projects. If you have an opportunity in mind or just want to connect, say hello.</p>
           <div class="contact-actions">
@@ -881,5 +967,6 @@
   </footer>
 
   <script src="script.js?v=20"></script>
+  <script src="launch.js?v=1"></script>
 </body>
 </html>
