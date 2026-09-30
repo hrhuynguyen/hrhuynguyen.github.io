@@ -443,6 +443,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .badge-win { color: var(--butter-deep); }
 .badge-win::before { content: '★ '; }
 .project-body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.project-venue { display: flex; align-items: flex-start; gap: 6px; font-family: var(--mono); font-size: .72rem; line-height: 1.5; color: var(--ink-3); }
+.project-venue .icon { width: 14px; height: 14px; margin-top: 2px; }
+.project-venue.is-win { color: var(--butter-deep); }
 .project-body .card-title { margin: 0; }
 .project-body .card-text { flex: 1; }
 .links { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 6px; padding-top: 14px; border-top: 1px solid var(--line); }

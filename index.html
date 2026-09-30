@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=20" />
+  <link rel="stylesheet" href="styles.css?v=21" />
 </head>
 <body>
 
@@ -142,10 +142,10 @@
             <h3 class="card-title">9+ Hackathon Wins</h3>
             <p class="card-text">Nine or more wins across national and international competitions spanning AI, accessibility, cloud, and data science.</p>
             <dl class="stats">
-              <div><dt>Projects</dt><dd data-stat="projects">7</dd></div>
-              <div><dt>Hackathons</dt><dd data-stat="hackathons">12</dd></div>
-              <div><dt>Achievements</dt><dd data-stat="achievements">8</dd></div>
-              <div><dt>Followers</dt><dd data-stat="followers">7</dd></div>
+              <div><dt>Projects</dt><dd data-stat="projects">11</dd></div>
+              <div><dt>Hackathons</dt><dd data-stat="hackathons">15</dd></div>
+              <div><dt>Achievements</dt><dd data-stat="achievements">10</dd></div>
+              <div><dt>Followers</dt><dd data-stat="followers">15</dd></div>
             </dl>
             <a href="https://devpost.com/thanhhuy062?ref_content=user-portfolio&amp;ref_feature=portfolio&amp;ref_medium=global-nav" target="_blank" rel="noopener" class="card-link">Devpost profile <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
             <p class="card-note">Pinned values are shown when the public page can't be read.</p>
@@ -260,7 +260,7 @@
         <header class="section-head reveal">
           <p class="eyebrow">02 — Projects</p>
           <h2 class="section-title">Selected work</h2>
-          <p class="section-lead">Things I've built, from hackathon experiments to research tools. Award winners come first.</p>
+          <p class="section-lead">Things I've built, from hackathon experiments to research tools. Award winners come first, with the hackathon and prize noted on each card.</p>
         </header>
 
         <div class="grid grid-3 projects" id="project-grid">
@@ -271,9 +271,10 @@
               <span class="badge badge-win">Winner</span>
             </div>
             <div class="project-body">
-              <ul class="tags"><li>Python</li><li>Gemini</li><li>Education</li></ul>
+              <p class="project-venue is-win"><svg class="icon" aria-hidden="true"><use href="#i-trophy"/></svg>Rice Datathon 2026 · OpenStax Track winner</p>
               <h3 class="card-title">EduTag</h3>
-              <p class="card-text">Aligns education standard codes with textbook content by analysing how each standard is defined. First place at Rice Datathon 2026.</p>
+              <p class="card-text">Maps education standard codes to OpenStax textbook content by learning how each standard is defined, using transformer embeddings and Gemini.</p>
+              <ul class="tags"><li>Python</li><li>Gemini</li><li>Hugging Face</li></ul>
               <div class="links">
                 <a href="https://devpost.com/software/edutag" target="_blank" rel="noopener">Devpost</a>
                 <a href="https://github.com/dothanhtam91/OpenStax---2026-Rice-Datathon-Mapping-Sta" target="_blank" rel="noopener">GitHub</a>
@@ -289,9 +290,10 @@
               <span class="badge badge-win">Winner</span>
             </div>
             <div class="project-body">
-              <ul class="tags"><li>Gemini Live API</li><li>Google ADK</li><li>FastAPI</li></ul>
+              <p class="project-venue is-win"><svg class="icon" aria-hidden="true"><use href="#i-trophy"/></svg>HackHCC: Code Runners · MLH Best Use of Gemini API</p>
               <h3 class="card-title">CursorGPT</h3>
-              <p class="card-text">Point-and-speak browser assistant: hand gestures provide the where, voice provides the what, and AI handles the rest. Winner at HackHCC: Code Runners.</p>
+              <p class="card-text">Point-and-speak interface for computing: your gesture provides the where, your voice provides the what, and AI does the rest.</p>
+              <ul class="tags"><li>Gemini Live API</li><li>Google ADK</li><li>FastAPI</li></ul>
               <div class="links">
                 <a href="https://devpost.com/software/cursorgpt" target="_blank" rel="noopener">Devpost</a>
                 <a href="https://github.com/hrhuynguyen/Desktop-Copilot" target="_blank" rel="noopener">GitHub</a>
@@ -306,12 +308,14 @@
               <span class="badge badge-win">Winner</span>
             </div>
             <div class="project-body">
-              <ul class="tags"><li>ElevenLabs</li><li>FastAPI</li><li>Accessibility</li></ul>
-              <h3 class="card-title">Be My Voice</h3>
-              <p class="card-text">Assistive communication for stroke and ALS patients that repairs fragmented speech and turns live emotional signals into expressive audio in the patient's own cloned voice.</p>
+              <p class="project-venue is-win"><svg class="icon" aria-hidden="true"><use href="#i-trophy"/></svg>Hook 'Em Hacks · Best Use of ElevenLabs</p>
+              <h3 class="card-title">Be My Voices</h3>
+              <p class="card-text">Assistive communication wearable for stroke and ALS patients. Clones the patient's original voice from old recordings, reconstructs broken speech with Gemini, and speaks it back clearly and expressively.</p>
+              <ul class="tags"><li>ElevenLabs</li><li>Gemini</li><li>FastAPI</li></ul>
               <div class="links">
                 <a href="https://devpost.com/software/be-my-voice-iovkah" target="_blank" rel="noopener">Devpost</a>
                 <a href="https://github.com/hrhuynguyen/be-my-voices/" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.youtube.com/watch?v=ahI4ef02JMg" target="_blank" rel="noopener">Video</a>
               </div>
             </div>
           </article>
@@ -322,9 +326,10 @@
               <span class="badge badge-win">Winner</span>
             </div>
             <div class="project-body">
-              <ul class="tags"><li>Python</li><li>React</li><li>Bioacoustics</li></ul>
+              <p class="project-venue is-win"><svg class="icon" aria-hidden="true"><use href="#i-trophy"/></svg>HackSMU VII · Best Use of DigitalOcean Gradient AI</p>
               <h3 class="card-title">EleVox</h3>
-              <p class="card-text">Brings elephant communication back from noisy recordings, recovering signals tied to behaviour, stress, and movement that would otherwise stay hidden.</p>
+              <p class="card-text">Recovers elephant communication from noisy field recordings with U-Net denoising, revealing signals about behaviour, stress, and movement that were previously lost.</p>
+              <ul class="tags"><li>Python</li><li>U-Net</li><li>React</li></ul>
               <div class="links">
                 <a href="https://devpost.com/software/voice-izec50" target="_blank" rel="noopener">Devpost</a>
                 <a href="https://github.com/dothanhtam91/EleVox" target="_blank" rel="noopener">GitHub</a>
@@ -335,30 +340,14 @@
 
           <article class="card project reveal">
             <div class="project-media">
-              <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/004/529/116/datas/medium.png" alt="" loading="lazy" />
+              <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/004/596/346/datas/medium.jpeg" alt="" loading="lazy" />
               <span class="badge badge-win">Winner</span>
             </div>
             <div class="project-body">
-              <ul class="tags"><li>Claude Code</li><li>FastAPI</li><li>Predictive ML</li></ul>
-              <h3 class="card-title">DataForce</h3>
-              <p class="card-text">Turns messy enterprise data into a live insight layer and a deployed predictive model, so analytics and forecasting don't need a dedicated data science team.</p>
-              <div class="links">
-                <a href="https://devpost.com/software/dataforce" target="_blank" rel="noopener">Devpost</a>
-                <a href="https://github.com/hrhuynguyen/DataForce-Claude-Hack-2026" target="_blank" rel="noopener">GitHub</a>
-                <a href="https://www.youtube.com/watch?v=6cLs_UCjpfM" target="_blank" rel="noopener">Video</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card project reveal">
-            <div class="project-media">
-              <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/004/596/372/datas/medium.jpeg" alt="" loading="lazy" />
-              <span class="badge badge-win">Winner</span>
-            </div>
-            <div class="project-body">
-              <ul class="tags"><li>Next.js</li><li>Supabase</li><li>Nonprofit</li></ul>
+              <p class="project-venue is-win"><svg class="icon" aria-hidden="true"><use href="#i-trophy"/></svg>WiCS × Opportunity Hack 2026 · Top freshman/sophomore team</p>
               <h3 class="card-title">ThreeByte</h3>
-              <p class="card-text">Open-source case management for nonprofits: clients, cases, and finances in one place, kept affordable for organisations with limited budgets.</p>
+              <p class="card-text">Open-source case management platform for nonprofits: clients, cases, and finances in one role-based portal, affordable at under $30 a month.</p>
+              <ul class="tags"><li>Next.js</li><li>Supabase</li><li>TypeScript</li></ul>
               <div class="links">
                 <a href="https://devpost.com/software/threebyte" target="_blank" rel="noopener">Devpost</a>
                 <a href="https://github.com/2026-ASU-WiCS-Opportunity-Hack/27-three-byte?tab=readme-ov-file" target="_blank" rel="noopener">GitHub</a>
@@ -367,15 +356,51 @@
             </div>
           </article>
 
-          <article class="card project is-extra">
+          <article class="card project reveal">
             <div class="project-media">
-              <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/004/596/346/datas/medium.jpeg" alt="" loading="lazy" />
+              <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/004/636/049/datas/medium.png" alt="" loading="lazy" />
               <span class="badge badge-win">Winner</span>
             </div>
             <div class="project-body">
-              <ul class="tags"><li>BCI</li><li>Robotics</li><li>Accessibility</li></ul>
+              <p class="project-venue is-win"><svg class="icon" aria-hidden="true"><use href="#i-trophy"/></svg>DSH Hacks V1 special prizes · Grizzly Hacks III third place</p>
+              <h3 class="card-title">PocketGuru</h3>
+              <p class="card-text">One photo, ten seconds: turns your notes into a study guide, flashcards, a quiz, and an AI tutor, so every student has help on hand.</p>
+              <ul class="tags"><li>Gemini</li><li>PostgreSQL</li><li>Vite</li></ul>
+              <div class="links">
+                <a href="https://devpost.com/software/pocketguru" target="_blank" rel="noopener">Devpost</a>
+                <a href="https://github.com/hrhuynguyen/PocketGuru" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://pocket-guru-azure.vercel.app/" target="_blank" rel="noopener">Live site</a>
+                <a href="https://www.youtube.com/watch?v=gZo2CY1Bfoc" target="_blank" rel="noopener">Video</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project is-extra">
+            <div class="project-media">
+              <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/004/529/116/datas/medium.png" alt="" loading="lazy" />
+            </div>
+            <div class="project-body">
+              <p class="project-venue"><svg class="icon" aria-hidden="true"><use href="#i-flag"/></svg>Y-Claude Builder Club Hackathon · Hackspire</p>
+              <h3 class="card-title">DataForce</h3>
+              <p class="card-text">Turns unstructured enterprise data into a live, queryable insight layer and a deployed predictive model, with no code and no data scientist required.</p>
+              <ul class="tags"><li>Claude Code</li><li>FastAPI</li><li>React</li></ul>
+              <div class="links">
+                <a href="https://devpost.com/software/dataforce" target="_blank" rel="noopener">Devpost</a>
+                <a href="https://github.com/hrhuynguyen/DataForce-Claude-Hack-2026" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.youtube.com/watch?v=6cLs_UCjpfM" target="_blank" rel="noopener">Video</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project is-extra">
+            <div class="project-media">
+              <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/004/596/372/datas/medium.jpeg" alt="" loading="lazy" />
+            </div>
+            <div class="project-body">
+              <p class="project-venue"><svg class="icon" aria-hidden="true"><use href="#i-flag"/></svg>VandyHacks XII · Frostbyte Hackathon</p>
               <h3 class="card-title">WALL-E</h3>
-              <p class="card-text">No mouse, no keyboard, no hands. Brain signals and eye tracking control a 3D-printed robotic arm in real time. We turned thought into fabrication.</p>
+              <p class="card-text">Helps stroke and ALS patients control a 3D-printed robotic arm with EEG signals and gaze, using computer vision and depth estimation to turn intent into movement.</p>
+              <ul class="tags"><li>BCI</li><li>Robotics</li><li>Computer vision</li></ul>
               <div class="links">
                 <a href="https://devpost.com/software/wall-e-w8lp7k" target="_blank" rel="noopener">Devpost</a>
                 <a href="https://github.com/GitCat8383/robot-utility-test" target="_blank" rel="noopener">GitHub</a>
@@ -385,25 +410,14 @@
           </article>
 
           <article class="card project is-extra">
-            <div class="project-media placeholder ph-lavender" data-letter="R"></div>
-            <div class="project-body">
-              <ul class="tags"><li>GCP</li><li>BigQuery AI</li><li>Analytics</li></ul>
-              <h3 class="card-title">Returns &amp; Refunds Intelligence</h3>
-              <p class="card-text">Google Cloud hackathon project using BigQuery AI to analyse returns and refunds data, surface operational patterns, and turn business questions into faster insights.</p>
-              <div class="links">
-                <a href="Huy%20T%20Nguyen%20Resume%20(April%2021,%202026).docx.pdf" target="_blank" rel="noopener">Résumé</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card project is-extra">
             <div class="project-media">
               <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/004/357/015/datas/medium.jpg" alt="" loading="lazy" />
             </div>
             <div class="project-body">
-              <ul class="tags"><li>EEG</li><li>Gemini</li><li>FastAPI</li></ul>
+              <p class="project-venue"><svg class="icon" aria-hidden="true"><use href="#i-flag"/></svg>Hacklytics 2026: Golden Byte · Orion Build Challenge</p>
               <h3 class="card-title">LyoText</h3>
-              <p class="card-text">When speech and movement fail, thought remains. LyoText transforms brain signals into meaningful communication using EEG and AI.</p>
+              <p class="card-text">Turns brain signals into speech: a Muse 2 headset detects blinks and jaw clenches to drive a scanning keyboard, and Gemini completes the sentence and speaks it aloud.</p>
+              <ul class="tags"><li>EEG</li><li>Gemini</li><li>FastAPI</li></ul>
               <div class="links">
                 <a href="https://devpost.com/software/lyotext" target="_blank" rel="noopener">Devpost</a>
                 <a href="https://github.com/dothanhtam91/LyoText_Final" target="_blank" rel="noopener">GitHub</a>
@@ -417,9 +431,10 @@
               <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/004/269/125/datas/medium.png" alt="" loading="lazy" />
             </div>
             <div class="project-body">
-              <ul class="tags"><li>React</li><li>Python</li><li>Gemini</li></ul>
+              <p class="project-venue"><svg class="icon" aria-hidden="true"><use href="#i-flag"/></svg>TIDALHACK:26</p>
               <h3 class="card-title">BureauBuddy</h3>
-              <p class="card-text">An AI tool that makes complex government documents more accessible and understandable for everyone.</p>
+              <p class="card-text">AI tool that makes complex government documents accessible: it summarises, simplifies, translates, reads aloud, and suggests next steps.</p>
+              <ul class="tags"><li>React</li><li>Python</li><li>Gemini</li></ul>
               <div class="links">
                 <a href="https://devpost.com/software/bureaubuddy" target="_blank" rel="noopener">Devpost</a>
                 <a href="https://github.com/SawyerAlston/BureauBuddy" target="_blank" rel="noopener">GitHub</a>
@@ -430,28 +445,13 @@
 
           <article class="card project is-extra">
             <div class="project-media">
-              <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/965/577/datas/medium.png" alt="" loading="lazy" />
-            </div>
-            <div class="project-body">
-              <ul class="tags"><li>Claude</li><li>Firebase</li><li>Extension</li></ul>
-              <h3 class="card-title">TaskForce</h3>
-              <p class="card-text">A Claude-powered browser extension and admin dashboard that helps team managers keep members focused and accountable.</p>
-              <div class="links">
-                <a href="https://devpost.com/software/tforce" target="_blank" rel="noopener">Devpost</a>
-                <a href="https://github.com/ChazBTD/contentchecking" target="_blank" rel="noopener">GitHub</a>
-                <a href="https://www.youtube.com/watch?v=RVci-m1VLBY" target="_blank" rel="noopener">Video</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card project is-extra">
-            <div class="project-media">
               <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/003/837/893/datas/medium.png" alt="" loading="lazy" />
             </div>
             <div class="project-body">
-              <ul class="tags"><li>Wix</li><li>Accessibility</li><li>Social impact</li></ul>
+              <p class="project-venue"><svg class="icon" aria-hidden="true"><use href="#i-flag"/></svg>Opportunity Hack 2025 · ASU Fall Hackathon</p>
               <h3 class="card-title">Aidify</h3>
-              <p class="card-text">Aidify: aid people with technology. We don't just build platforms, we build possibilities.</p>
+              <p class="card-text">Redesigned the NMTSA nonprofit website for clarity and accessibility, with a simplified homepage, consistent navigation, and clear paths to programs and ways to get involved.</p>
+              <ul class="tags"><li>Wix</li><li>Accessibility</li><li>Nonprofit</li></ul>
               <div class="links">
                 <a href="https://devpost.com/software/aidify" target="_blank" rel="noopener">Devpost</a>
                 <a href="https://github.com/2025-Arizona-Opportunity-Hack/Aidify-NMTSAWebsite.git" target="_blank" rel="noopener">GitHub</a>
@@ -462,11 +462,42 @@
           </article>
 
           <article class="card project is-extra">
+            <div class="project-media">
+              <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/965/577/datas/medium.png" alt="" loading="lazy" />
+            </div>
+            <div class="project-body">
+              <p class="project-venue"><svg class="icon" aria-hidden="true"><use href="#i-spark"/></svg>Team build</p>
+              <h3 class="card-title">TaskForce</h3>
+              <p class="card-text">Claude-powered browser extension and admin dashboard that keeps teams focused: the LLM flags non-work sites in real time and managers can warn or block them.</p>
+              <ul class="tags"><li>Claude</li><li>Firebase</li><li>Streamlit</li></ul>
+              <div class="links">
+                <a href="https://devpost.com/software/tforce" target="_blank" rel="noopener">Devpost</a>
+                <a href="https://github.com/ChazBTD/contentchecking" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.youtube.com/watch?v=RVci-m1VLBY" target="_blank" rel="noopener">Video</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project is-extra">
+            <div class="project-media placeholder ph-lavender" data-letter="R"></div>
+            <div class="project-body">
+              <p class="project-venue"><svg class="icon" aria-hidden="true"><use href="#i-flag"/></svg>BigQuery AI Hackathon · Kaggle</p>
+              <h3 class="card-title">Returns &amp; Refunds Intelligence</h3>
+              <p class="card-text">Uses BigQuery AI to analyse returns and refunds data, surface operational patterns, and turn business questions into faster insights.</p>
+              <ul class="tags"><li>GCP</li><li>BigQuery AI</li><li>Analytics</li></ul>
+              <div class="links">
+                <a href="Huy%20T%20Nguyen%20Resume%20(April%2021,%202026).docx.pdf" target="_blank" rel="noopener">Résumé</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project is-extra">
             <div class="project-media placeholder ph-mint" data-letter="A"></div>
             <div class="project-body">
-              <ul class="tags"><li>TypeScript</li><li>JavaScript</li><li>Accessibility</li></ul>
+              <p class="project-venue"><svg class="icon" aria-hidden="true"><use href="#i-spark"/></svg>Independent build</p>
               <h3 class="card-title">Akira</h3>
               <p class="card-text">Browser extension and web app that makes online classrooms more accessible, with real-time accommodations and support tools for students with disabilities.</p>
+              <ul class="tags"><li>TypeScript</li><li>JavaScript</li><li>Accessibility</li></ul>
               <div class="links">
                 <a href="https://github.com/hrhuynguyen/akira" target="_blank" rel="noopener">GitHub</a>
               </div>
@@ -476,9 +507,10 @@
           <article class="card project is-extra">
             <div class="project-media placeholder ph-peach" data-letter="C"></div>
             <div class="project-body">
-              <ul class="tags"><li>TypeScript</li><li>Generative AI</li><li>Education</li></ul>
+              <p class="project-venue"><svg class="icon" aria-hidden="true"><use href="#i-spark"/></svg>Independent build</p>
               <h3 class="card-title">ChronoVR</h3>
               <p class="card-text">Educational tool that uses generative AI to reconstruct historical sites from archaeological data, letting students walk through them and talk with NPCs about daily life.</p>
+              <ul class="tags"><li>TypeScript</li><li>Generative AI</li><li>Education</li></ul>
               <div class="links">
                 <a href="https://github.com/hrhuynguyen/ChronoVR" target="_blank" rel="noopener">GitHub</a>
               </div>
@@ -488,9 +520,10 @@
           <article class="card project is-extra">
             <div class="project-media placeholder ph-butter" data-letter="S"></div>
             <div class="project-body">
-              <ul class="tags"><li>Python</li><li>Data science</li><li>ML</li></ul>
+              <p class="project-venue"><svg class="icon" aria-hidden="true"><use href="#i-spark"/></svg>Course project · University of Houston</p>
               <h3 class="card-title">Solar Flare Prediction</h3>
               <p class="card-text">Machine learning models that predict solar flare events from NASA datasets, with feature engineering and classification experiments on astrophysics data.</p>
+              <ul class="tags"><li>Python</li><li>Data science</li><li>ML</li></ul>
               <div class="links">
                 <a href="https://github.com/hrhuynguyen/COSC3337---Solar-Flare" target="_blank" rel="noopener">GitHub</a>
               </div>
@@ -500,8 +533,8 @@
         </div>
 
         <div class="more">
-          <button type="button" class="btn btn-ghost" data-expander="#project-grid" data-more="Show 9 more projects" data-less="Show fewer projects" aria-expanded="false" aria-controls="project-grid">
-            <span>Show 9 more projects</span><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg>
+          <button type="button" class="btn btn-ghost" data-expander="#project-grid" data-more="Show 10 more projects" data-less="Show fewer projects" aria-expanded="false" aria-controls="project-grid">
+            <span>Show 10 more projects</span><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg>
           </button>
         </div>
       </div>
