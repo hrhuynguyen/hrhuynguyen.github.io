@@ -697,3 +697,19 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .hud-orbit { left: 12px; bottom: 74px; font-size: .74rem; max-width: calc(100% - 24px); }
   .btn-launch { padding: 14px 28px; font-size: .95rem; }
 }
+
+/* Research ribbons (Kaggle medals) */
+.ribbon {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-bottom: 8px;
+  padding: 5px 11px 5px 9px;
+  border-radius: 999px;
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .03em; line-height: 1.4;
+  color: #6b3a14;
+  background: linear-gradient(135deg, #f6dcc8, #e9b891);
+  box-shadow: inset 0 0 0 1px rgba(107, 58, 20, .18);
+}
+.ribbon .icon { width: 14px; height: 14px; }
+.ribbon-silver { color: #41464f; background: linear-gradient(135deg, #eef0f3, #c9ced6); box-shadow: inset 0 0 0 1px rgba(65, 70, 79, .18); }
+.ribbon-gold { color: #7a5200; background: linear-gradient(135deg, #fff0bf, #f1cf6a); box-shadow: inset 0 0 0 1px rgba(122, 82, 0, .2); }
+.rrow-medal:hover { background: var(--butter-soft); }
