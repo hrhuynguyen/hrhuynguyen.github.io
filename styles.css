@@ -286,7 +286,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    ═══════════════════════════════════════════════════════════════ */
 .hero { position: relative; padding: clamp(56px, 8vw, 110px) 0 clamp(64px, 8vw, 100px); overflow: hidden; }
 .hero-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
-.blob { position: absolute; border-radius: 50%; filter: blur(70px); opacity: .55; animation: drift 18s ease-in-out infinite alternate; }
+.blob { position: absolute; border-radius: 50%; filter: blur(70px); opacity: .38; animation: drift 18s ease-in-out infinite alternate; }
 .blob-1 { width: 520px; height: 520px; background: var(--accent-soft); top: -180px; left: -160px; }
 .blob-2 { width: 460px; height: 460px; background: var(--peach-soft); top: 30%; right: -160px; animation-delay: -6s; }
 .blob-3 { width: 380px; height: 380px; background: var(--mint-soft); bottom: -180px; left: 35%; animation-delay: -12s; }
@@ -761,3 +761,52 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .ribbon-gold { color: #7a5200; background: linear-gradient(135deg, #fff0bf, #f1cf6a); box-shadow: inset 0 0 0 1px rgba(122, 82, 0, .2); }
 .rrow-medal:hover { background: var(--butter-soft); }
 .rwriteup { margin-top: 12px; font-size: .88rem; }
+
+/* ═══════════════════════════════════════════════════════════════
+   COSMOS — animated sky behind the whole page
+   ═══════════════════════════════════════════════════════════════ */
+.cosmos { position: fixed; inset: -28px; z-index: 0; pointer-events: none; overflow: hidden; }
+.cosmos svg { display: block; width: 100%; height: 100%; }
+main, .footer { position: relative; z-index: 1; }
+.section-alt { background: rgba(255, 255, 255, .72); }
+
+.cz-star { animation: cz-twinkle var(--d, 3s) ease-in-out infinite alternate; }
+@keyframes cz-twinkle { from { opacity: .18; } to { opacity: .75; } }
+
+.cz-drift { animation: cz-drift var(--dur, 16s) ease-in-out infinite alternate; }
+@keyframes cz-drift { from { translate: 0 -10px; } to { translate: 0 10px; } }
+
+.cz-spin-slow { transform-box: fill-box; transform-origin: center; animation: cz-spin 120s linear infinite; }
+.cz-orbit { transform-box: view-box; animation: cz-spin 14s linear infinite; }
+@keyframes cz-spin { to { transform: rotate(360deg); } }
+
+.cz-hover { animation: cz-hover 2.8s ease-in-out infinite alternate; }
+@keyframes cz-hover { from { translate: 0 -6px; } to { translate: 0 6px; } }
+
+.cz-rocket { animation: cz-fly linear infinite; }
+@keyframes cz-fly { from { transform: translate(var(--x0), var(--y0)); } to { transform: translate(var(--x1), var(--y1)); } }
+.cz-flame { transform-box: fill-box; transform-origin: 50% 0; animation: cz-flicker .32s ease-in-out infinite alternate; }
+@keyframes cz-flicker { from { transform: scaleY(.7) scaleX(.9); } to { transform: scaleY(1.15) scaleX(1.05); } }
+
+.cz-car { animation: cz-glide linear infinite; }
+@keyframes cz-glide { from { transform: translate(var(--x0), var(--y)); } to { transform: translate(var(--x1), var(--y)); } }
+.cz-bob { animation: cz-bob 3.4s ease-in-out infinite alternate; }
+@keyframes cz-bob { from { transform: translateY(-7px) rotate(-2deg); } to { transform: translateY(7px) rotate(2deg); } }
+
+.cz-ufo { animation: cz-glide linear infinite; }
+.cz-wobble { animation: cz-wobble 5s ease-in-out infinite alternate; }
+@keyframes cz-wobble { from { transform: translateY(-10px) rotate(-5deg); } to { transform: translateY(10px) rotate(5deg); } }
+
+.cz-shoot { opacity: 0; animation: cz-shoot linear infinite; }
+@keyframes cz-shoot {
+  0% { transform: translate(var(--x0), var(--y0)); opacity: 0; }
+  2% { opacity: 1; }
+  12% { transform: translate(calc(var(--x0) + 420px), calc(var(--y0) - 140px)); opacity: 0; }
+  100% { transform: translate(calc(var(--x0) + 420px), calc(var(--y0) - 140px)); opacity: 0; }
+}
+
+.cz-const path { stroke: #8e8cf0; stroke-width: 1.2; opacity: .45; }
+.cz-const circle { fill: #8e8cf0; opacity: .7; }
+
+.cz-static .cz-rocket, .cz-static .cz-car, .cz-static .cz-ufo, .cz-static .cz-star, .cz-static .cz-drift, .cz-static .cz-hover, .cz-static .cz-bob, .cz-static .cz-wobble, .cz-static .cz-spin-slow, .cz-static .cz-orbit, .cz-static .cz-flame { animation: none; }
+.cz-static .cz-ufo { transform: translate(var(--x0), var(--y)); }
