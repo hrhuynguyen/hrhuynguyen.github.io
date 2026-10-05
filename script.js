@@ -333,6 +333,35 @@ dashboardCards.forEach(card => {
 });
 
 /* ═══════════════════════════════════════════════════
+   CARD FX — cursor spotlight, lit edge, 3D tilt
+   ═══════════════════════════════════════════════════ */
+const fxTargets = $$('.card, .rrow, .float-card');
+fxTargets.forEach(el => {
+  const fx = document.createElement('span');
+  fx.className = 'fx';
+  fx.setAttribute('aria-hidden', 'true');
+  el.appendChild(fx);
+});
+const canTilt = window.matchMedia('(hover: hover) and (pointer: fine)').matches && !reduceMotion;
+fxTargets.forEach(el => {
+  const tilts = canTilt && el.classList.contains('card') && !el.classList.contains('contact');
+  el.addEventListener('pointermove', e => {
+    const r = el.getBoundingClientRect();
+    const x = e.clientX - r.left, y = e.clientY - r.top;
+    el.style.setProperty('--mx', `${x.toFixed(1)}px`);
+    el.style.setProperty('--my', `${y.toFixed(1)}px`);
+    if (tilts) {
+      el.style.setProperty('--rx', `${((0.5 - y / r.height) * 5).toFixed(2)}deg`);
+      el.style.setProperty('--ry', `${((x / r.width - 0.5) * 5).toFixed(2)}deg`);
+    }
+  }, { passive: true });
+  el.addEventListener('pointerleave', () => {
+    el.style.setProperty('--rx', '0deg');
+    el.style.setProperty('--ry', '0deg');
+  });
+});
+
+/* ═══════════════════════════════════════════════════
    FOOTER YEAR
    ═══════════════════════════════════════════════════ */
 const year = $('#year');
