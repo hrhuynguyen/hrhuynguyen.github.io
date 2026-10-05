@@ -517,7 +517,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* ═══════════════════════════════════════════════════════════════
    RESEARCH LIST
    ═══════════════════════════════════════════════════════════════ */
-.rlist { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.rlist { display: flex; flex-direction: column; border-top: 1px solid var(--line); background: rgba(255, 255, 255, .6); border-radius: var(--radius); }
 .rrow {
   display: grid; grid-template-columns: 92px 84px 1fr auto; gap: 20px; align-items: start;
   padding: 24px 12px; border-bottom: 1px solid var(--line);
@@ -525,6 +525,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   transition: background var(--t), transform var(--t);
 }
 .rrow { position: relative; --mx: 50%; --my: 50%; }
+.rrow.is-extra { display: none; }
 .rrow:hover { background: var(--surface); transform: translateX(4px); }
 .rrow > :not(.fx) { position: relative; z-index: 1; }
 .rdate { font-family: var(--mono); font-size: .78rem; color: var(--ink-3); padding-top: 4px; }
