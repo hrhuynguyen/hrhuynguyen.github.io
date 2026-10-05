@@ -306,6 +306,199 @@
     qd.add(qdArm);
     scene.add(qd);
 
+    /* ─────────── spaceport scenery: planets, rockets, robots, technology ─────────── */
+    const animators = [];
+    const scenery = new THREE.Group();
+    scene.add(scenery);
+    {
+      const white = new THREE.MeshStandardMaterial({ color: 0xf1f1f5, metalness: 0.2, roughness: 0.5 });
+      const navy = new THREE.MeshStandardMaterial({ color: 0x2f3160, metalness: 0.3, roughness: 0.6 });
+      const butter = new THREE.MeshStandardMaterial({ color: 0xf1cf6a, metalness: 0.1, roughness: 0.6 });
+      const concrete = new THREE.MeshStandardMaterial({ color: 0xe6e3ea, roughness: 0.85 });
+      const lamp = new THREE.MeshBasicMaterial({ color: 0xffd9a8 });
+      const blade = new THREE.MeshStandardMaterial({ color: 0x8e90a8, transparent: true, opacity: 0.6 });
+      const add = (m, x, y, z, parent = scenery) => { m.position.set(x, y, z); parent.add(m); return m; };
+
+      /* planets, beyond the fog */
+      const planetMat = new THREE.MeshStandardMaterial({ color: 0xb9b6ff, roughness: 0.9, metalness: 0, fog: false });
+      const planet = add(mesh(new THREE.SphereGeometry(34, 48, 32), planetMat), -294, 74, -190);
+      planet.scale.setScalar(0.7);
+      const bandMat = new THREE.MeshStandardMaterial({ color: 0x9d99ea, roughness: 0.9, fog: false });
+      for (const [y, r] of [[8, 33.1], [-6, 33.6], [16, 30.2], [-18, 29.0]]) {
+        const band = mesh(new THREE.TorusGeometry(r, 1.1, 8, 72), bandMat);
+        band.rotation.x = Math.PI / 2; band.position.y = y; planet.add(band);
+      }
+      const ring = mesh(new THREE.RingGeometry(44, 66, 80), new THREE.MeshStandardMaterial({ color: 0xe6e3ff, roughness: 0.8, fog: false, side: THREE.DoubleSide, transparent: true, opacity: 0.85 }));
+      ring.rotation.x = Math.PI / 2 - 0.42; ring.rotation.y = 0.25;
+      planet.add(ring);
+      const moonMat = new THREE.MeshStandardMaterial({ color: 0xefecf6, roughness: 1, fog: false });
+      const moon = add(mesh(new THREE.SphereGeometry(13, 36, 24), moonMat), -69, 70, -260);
+      const craterMat = new THREE.MeshStandardMaterial({ color: 0xd7d3e3, roughness: 1, fog: false });
+      for (const [phi, theta, r] of [[1.2, 0.3, 3.2], [1.8, 0.9, 2.2], [1.0, 1.3, 2.6], [2.1, 0.1, 1.8], [1.5, 1.9, 1.4]]) {
+        const c = mesh(new THREE.SphereGeometry(r, 16, 12), craterMat);
+        c.position.setFromSphericalCoords(12.4, phi, theta);
+        moon.add(c);
+      }
+      animators.push(dt => { planet.rotation.y += dt * 0.02; moon.rotation.y += dt * 0.03; });
+
+      /* propellant tank farm with piping */
+      for (let i = 0; i < 5; i++) {
+        const h = 5 + (i % 3) * 0.8, x = -34 + i * 3.1;
+        add(mesh(new THREE.CylinderGeometry(1.15, 1.15, h, 24), white), x, h / 2, -14);
+        add(mesh(new THREE.SphereGeometry(1.15, 24, 12, 0, Math.PI * 2, 0, Math.PI / 2), white), x, h, -14);
+        add(mesh(new THREE.CylinderGeometry(1.3, 1.3, 0.25, 24), steelDark), x, 0.12, -14);
+      }
+      add(mesh(new THREE.CylinderGeometry(0.12, 0.12, 13.5, 10), steelDark), -28, 2.4, -12.6).rotation.z = Math.PI / 2;
+      add(mesh(new THREE.CylinderGeometry(0.1, 0.1, 10, 10), steelDark), -22, 0.6, -7).rotation.x = Math.PI / 2;
+
+      /* lighting masts */
+      for (const [x, z] of [[-20, -6], [-8, -36], [-34, -22], [10, -40]]) {
+        add(mesh(new THREE.CylinderGeometry(0.12, 0.2, 15, 10), steelDark), x, 7.5, z);
+        add(mesh(new THREE.BoxGeometry(0.9, 0.5, 0.9), lamp), x, 15.1, z);
+      }
+
+      /* solar array */
+      for (let i = 0; i < 7; i++) {
+        const x = -46 + i * 1.9;
+        add(mesh(new THREE.BoxGeometry(1.7, 0.08, 1.2), navy), x, 0.95, -30).rotation.x = -0.55;
+        add(mesh(new THREE.BoxGeometry(0.12, 0.9, 0.12), steelDark), x, 0.45, -30);
+      }
+
+      /* control building, radar dome, tracking dish */
+      add(mesh(new THREE.BoxGeometry(6.5, 2.2, 3.2), concrete), 4, 1.1, -44);
+      add(mesh(new THREE.BoxGeometry(6.9, 0.25, 3.6), steelDark), 4, 2.3, -44);
+      add(mesh(new THREE.BoxGeometry(5.6, 0.5, 0.06), navy), 4, 1.3, -42.37);
+      add(mesh(new THREE.CylinderGeometry(1.0, 1.1, 1.2, 20), steelDark), 8.6, 2.95, -44.5);
+      add(mesh(new THREE.SphereGeometry(1.5, 28, 18), white), 8.6, 4.6, -44.5);
+      const dishBase = add(new THREE.Group(), -44, 0, -8);
+      add(mesh(new THREE.CylinderGeometry(0.22, 0.32, 3.2, 12), steelDark), 0, 1.6, 0, dishBase);
+      const dishHead = add(new THREE.Group(), 0, 3.3, 0, dishBase);
+      const dish = add(mesh(new THREE.ConeGeometry(1.9, 0.8, 28, 1, true), new THREE.MeshStandardMaterial({ color: 0xf1f1f5, roughness: 0.5, side: THREE.DoubleSide })), 0, 0.5, 0, dishHead);
+      dish.rotation.x = Math.PI - 0.9;
+      add(mesh(new THREE.CylinderGeometry(0.05, 0.05, 1.4, 8), steelDark), 0, 0.9, 0.5, dishHead).rotation.x = 0.9;
+      animators.push(dt => { dishHead.rotation.y += dt * 0.25; });
+
+      /* extra pads with Falcon-style rockets and strongbacks */
+      const falconPad = (px, pz, ry) => {
+        const g = add(new THREE.Group(), px, 0, pz);
+        g.rotation.y = ry;
+        add(mesh(new THREE.CylinderGeometry(3, 3, 0.2, 32), padMat), 0, 0.1, 0, g);
+        add(mesh(new THREE.CylinderGeometry(0.32, 0.32, 6, 24), white), 0, 3.5, 0, g);
+        add(mesh(new THREE.CylinderGeometry(0.33, 0.33, 0.5, 24), steelDark), 0, 4.7, 0, g);
+        add(mesh(new THREE.ConeGeometry(0.32, 1.1, 24), white), 0, 7.05, 0, g);
+        add(mesh(new THREE.CylinderGeometry(0.34, 0.34, 0.5, 24), steelDark), 0, 0.75, 0, g);
+        for (let i = 0; i < 4; i++) {
+          const a = i * Math.PI / 2 + Math.PI / 4;
+          const leg = add(mesh(new THREE.BoxGeometry(0.1, 2.3, 0.22), steelDark), Math.cos(a) * 0.42, 1.3, Math.sin(a) * 0.42, g);
+          leg.rotation.y = -a; leg.rotation.z = 0.1;
+        }
+        add(mesh(new THREE.BoxGeometry(0.6, 7.6, 0.6), towerMat), 0.95, 3.8, 0, g);
+        add(mesh(new THREE.BoxGeometry(1.0, 0.3, 0.5), steelDark), 0.5, 5.9, 0, g);
+      };
+      falconPad(-40, -16, 0.4);
+      falconPad(-6, -56, -0.6);
+
+      /* distant rocket that launches on a loop */
+      const bgRocket = add(new THREE.Group(), -16, 0, -70);
+      add(mesh(new THREE.CylinderGeometry(0.42, 0.42, 7, 20), white), 0, 3.5, 0, bgRocket);
+      add(mesh(new THREE.ConeGeometry(0.42, 1.3, 20), white), 0, 7.65, 0, bgRocket);
+      add(mesh(new THREE.CylinderGeometry(0.45, 0.45, 0.6, 20), steelDark), 0, 0.3, 0, bgRocket);
+      for (let i = 0; i < 3; i++) { const a = i * Math.PI * 2 / 3; add(mesh(new THREE.BoxGeometry(0.4, 1.2, 0.1), white), Math.cos(a) * 0.5, 0.6, Math.sin(a) * 0.5, bgRocket).rotation.y = -a; }
+      const bgFlame = buildFlame(0.4, 2.8); bgFlame.position.y = -0.05; bgRocket.add(bgFlame);
+      add(mesh(new THREE.CylinderGeometry(3.2, 3.2, 0.2, 32), padMat), -16, 0.1, -70);
+      add(mesh(new THREE.BoxGeometry(0.9, 9, 0.9), towerMat), -17.9, 4.5, -70.7);
+      animators.push((dt, time) => {
+        const c = (time + 11) % 32;
+        if (c < 4) { bgRocket.visible = true; bgRocket.position.y = 0; bgRocket.rotation.z = 0; setFlame(bgFlame, smooth(3.2, 3.9, c), time); }
+        else if (c < 16) { const p = (c - 4) / 12; bgRocket.position.y = 120 * p * p; bgRocket.rotation.z = -0.14 * p; setFlame(bgFlame, 1, time); }
+        else { bgRocket.visible = false; setFlame(bgFlame, 0, time); }
+      });
+
+      /* tiny rockets on the horizon */
+      for (const [x, z, h] of [[-117, -50, 8], [-94, -82, 7], [-52, -113, 9], [-15, -126, 7.5]]) {
+        add(mesh(new THREE.CylinderGeometry(0.5, 0.5, h, 12), white), x, h / 2, z);
+        add(mesh(new THREE.ConeGeometry(0.5, 1.4, 12), white), x, h + 0.7, z);
+        add(mesh(new THREE.BoxGeometry(0.9, h + 2, 0.9), towerMat), x - 2.2, (h + 2) / 2, z);
+      }
+
+      /* robot dog patrolling behind the tower */
+      const dog = add(new THREE.Group(), -21, 0, -10);
+      add(mesh(new THREE.BoxGeometry(1.1, 0.34, 0.46), butter), 0, 0.72, 0, dog);
+      add(mesh(new THREE.BoxGeometry(0.34, 0.26, 0.3), steelDark), 0.62, 0.86, 0, dog);
+      add(mesh(new THREE.BoxGeometry(0.1, 0.08, 0.2), lamp), 0.8, 0.86, 0, dog);
+      const hips = [];
+      for (const [x, z] of [[0.4, 0.18], [0.4, -0.18], [-0.4, 0.18], [-0.4, -0.18]]) {
+        const hip = add(new THREE.Group(), x, 0.62, z, dog);
+        add(mesh(new THREE.BoxGeometry(0.1, 0.64, 0.12), steelDark), 0, -0.32, 0, hip);
+        hips.push(hip);
+      }
+      animators.push((dt, time) => {
+        const s = Math.sin(time * 0.35);
+        dog.position.x = -21 + s * 5;
+        dog.rotation.y = Math.cos(time * 0.35) >= 0 ? 0 : Math.PI;
+        hips.forEach((hip, i) => { hip.rotation.z = Math.sin(time * 7 + (i % 3 === 0 ? 0 : Math.PI)) * 0.45; });
+        dog.position.y = Math.abs(Math.sin(time * 7)) * 0.05;
+      });
+
+      /* six-wheel rover circling on the right */
+      const rover = add(new THREE.Group(), -2, 0, -26);
+      add(mesh(new THREE.BoxGeometry(1.5, 0.4, 1.0), white), 0, 0.7, 0, rover);
+      add(mesh(new THREE.BoxGeometry(0.9, 0.3, 0.7), navy), -0.1, 1.05, 0, rover);
+      add(mesh(new THREE.CylinderGeometry(0.05, 0.05, 0.9, 8), steelDark), 0.4, 1.6, 0, rover);
+      add(mesh(new THREE.BoxGeometry(0.34, 0.2, 0.26), steelDark), 0.4, 2.1, 0, rover);
+      add(mesh(new THREE.BoxGeometry(0.9, 0.05, 0.6), navy), -0.1, 1.24, 0, rover);
+      const wheelGeo = new THREE.CylinderGeometry(0.26, 0.26, 0.2, 14);
+      for (const [x, z] of [[0.55, 0.55], [0, 0.55], [-0.55, 0.55], [0.55, -0.55], [0, -0.55], [-0.55, -0.55]]) {
+        add(mesh(wheelGeo, steelDark), x, 0.26, z, rover).rotation.x = Math.PI / 2;
+      }
+      animators.push((dt, time) => {
+        const a = time * 0.18;
+        rover.position.set(-2 + Math.cos(a) * 4.5, 0, -26 + Math.sin(a) * 4.5);
+        rover.rotation.y = Math.atan2(-Math.cos(a), -Math.sin(a));
+      });
+
+      /* industrial robotic arm near the control building */
+      const armBase = add(new THREE.Group(), 6, 0, -30);
+      add(mesh(new THREE.CylinderGeometry(0.7, 0.9, 0.5, 20), steelDark), 0, 0.25, 0, armBase);
+      const shoulder = add(new THREE.Group(), 0, 0.5, 0, armBase);
+      add(mesh(new THREE.BoxGeometry(0.5, 0.6, 0.5), accent), 0, 0.3, 0, shoulder);
+      const upper = add(new THREE.Group(), 0, 0.6, 0, shoulder);
+      add(mesh(new THREE.BoxGeometry(0.3, 2.4, 0.3), white), 0, 1.2, 0, upper);
+      const elbow = add(new THREE.Group(), 0, 2.4, 0, upper);
+      add(mesh(new THREE.BoxGeometry(0.26, 2.0, 0.26), white), 0, 1.0, 0, elbow);
+      const wrist = add(new THREE.Group(), 0, 2.0, 0, elbow);
+      add(mesh(new THREE.BoxGeometry(0.12, 0.5, 0.3), accent), 0.13, 0.25, 0, wrist);
+      add(mesh(new THREE.BoxGeometry(0.12, 0.5, 0.3), accent), -0.13, 0.25, 0, wrist);
+      animators.push((dt, time) => {
+        shoulder.rotation.y = Math.sin(time * 0.4) * 1.2;
+        upper.rotation.z = 0.5 + Math.sin(time * 0.6) * 0.35;
+        elbow.rotation.z = -0.9 + Math.sin(time * 0.6 + 1.2) * 0.5;
+        wrist.rotation.z = Math.sin(time * 1.1) * 0.4;
+      });
+
+      /* quadcopter drones */
+      const drones = [];
+      for (const [cx, cy, cz, r, speed] of [[-18, 6.5, -8, 3.0, 0.45], [-4, 8, -30, 4.0, -0.35]]) {
+        const d = add(new THREE.Group(), cx, cy, cz);
+        add(mesh(new THREE.BoxGeometry(0.5, 0.18, 0.5), steelDark), 0, 0, 0, d);
+        add(mesh(new THREE.BoxGeometry(0.2, 0.12, 0.2), accent), 0, 0.12, 0, d);
+        const rotors = [];
+        for (const [x, z] of [[0.38, 0.38], [-0.38, 0.38], [0.38, -0.38], [-0.38, -0.38]]) {
+          add(mesh(new THREE.BoxGeometry(0.36, 0.03, 0.08), steelDark), x / 2, 0.08, z / 2, d).rotation.y = Math.atan2(-z, x);
+          rotors.push(add(mesh(new THREE.BoxGeometry(0.7, 0.02, 0.08), blade), x, 0.14, z, d));
+        }
+        drones.push({ d, cx, cy, cz, r, speed, rotors, phase: Math.random() * 6 });
+      }
+      animators.push((dt, time) => {
+        for (const o of drones) {
+          const a = time * o.speed + o.phase;
+          o.d.position.set(o.cx + Math.cos(a) * o.r, o.cy + Math.sin(time * 1.3 + o.phase) * 0.35, o.cz + Math.sin(a) * o.r);
+          o.d.rotation.y = -a; o.d.rotation.z = Math.sin(time * 1.3 + o.phase) * 0.08;
+          o.rotors.forEach(rt => { rt.rotation.y += dt * 40; });
+        }
+      });
+    }
+
     /* cartoon smoke puffs */
     const PUFFS = 150;
     const puffs = new THREE.InstancedMesh(new THREE.SphereGeometry(0.32, 10, 8), new THREE.MeshStandardMaterial({ color: 0xf7f3f6, roughness: 1, transparent: true, opacity: 0.9 }), PUFFS);
@@ -577,6 +770,7 @@
 
       updateMission(dt);
       updatePuffs(dt);
+      for (const a of animators) a(dt, state.time);
 
       // idle auto-orbit when not dragging and not flying
       if (!orbit.dragging && (rig.mode !== 'follow') && !reduceMotion) orbit.auto += dt * 0.06;
